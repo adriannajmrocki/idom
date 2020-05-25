@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 
 export class Header extends Component {
-  static propType = {
+  static propTypes = {
     auth: PropTypes.object.isRequired,
     // logout: PropTypes.func.isRequired
   }
@@ -25,6 +25,9 @@ export class Header extends Component {
           <Link to='/dashboard' className="nav-link">Dashboard</Link>
         </li>
         <li className="nav-item">
+          <Link to='/admin' className="nav-link">Admin</Link>
+        </li>
+        <li className="nav-item">
           <button /* onClick={this.props.logout} */ className="nav-link btn btn-info btn-sm text-light">Wyloguj</button>
         </li>
       </ul>
@@ -38,9 +41,6 @@ export class Header extends Component {
         <li className="nav-item">
           <Link to='/login' className="nav-link">Logowanie</Link>
         </li>
-        {/* <li className="nav-item">
-          <Link to='/dashboard' className="nav-link">Dashboard</Link>
-        </li> */}
       </ul>
     )
 

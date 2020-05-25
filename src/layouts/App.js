@@ -14,17 +14,21 @@ import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import RegistrationPage from "../pages/RegistrationPage";
 import Dashboard from '../pages/Dashboard';
+import AdminPage from '../pages/AdminPage';
+import ResetPasswordPage from '../pages/ResetPasswordPage';
+import NewPasswordPage from '../pages/NewPasswordPage';
 import Alerts from "./Alerts";
 import PrivateRoute from '../components/PrivateRoute';
 
 import { Provider } from "react-redux";
 import store from "../store";
+
 import { loadUser } from '../actions/auth';
 
 // Alert Options
 const alertOptions = {
   timeout: 3000,
-  position: "top center",
+  position: "top center"
 };
 
 class App extends Component {
@@ -45,7 +49,10 @@ class App extends Component {
                   <Route exact path='/' component={HomePage} />
                   <Route path='/register' component={RegistrationPage} />
                   <Route path='/login' component={LoginPage} />
+                  <Route path='/resetpwd' component={ResetPasswordPage} />
+                  <Route path='/newpwd' component={NewPasswordPage} />
                   <PrivateRoute path='/dashboard' component={Dashboard} />
+                  <PrivateRoute path='/admin' component={AdminPage} />
                 </Switch>
               </div>
             </Fragment>

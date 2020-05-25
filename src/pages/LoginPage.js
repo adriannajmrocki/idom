@@ -71,7 +71,7 @@ import { login } from '../actions/auth';
 class LoginPage extends Component {
   state = {  
     username: '',
-    password: ''
+    password: '',
   }
 
   static propTypes = {
@@ -123,6 +123,9 @@ class LoginPage extends Component {
             </div>
             <p>
               Nie masz jeszcze konta? <Link to="/register">Zarejestruj się</Link>
+            </p>
+            <p>
+              Zapomniałeś hasła? <Link to='/resetpwd'>Zresetuj</Link>
             </p>
           </form>
         </div>
