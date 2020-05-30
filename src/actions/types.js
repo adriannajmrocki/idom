@@ -2,6 +2,7 @@ export const GET_USERS = 'GET_USERS';
 export const DELETE_USER = 'DELETE_USER';
 
 export const GET_SENSORS = 'GET_SENSORS';
+export const DELETE_SENSOR = 'DELETE_SENSOR';
 
 export const GET_ERRORS = 'GET_ERRORS';
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
