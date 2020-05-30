@@ -176,22 +176,22 @@ class RegistrationPage extends Component {
     password1: '',
     password2: '',
 
-    errors: {
-      username: false,
-      email: false,
-      telephone: false,
-      password1: false,
-      password2: false,
-    }
+    // errors: {
+    //   username: false,
+    //   email: false,
+    //   telephone: false,
+    //   password1: false,
+    //   password2: false,
+    // }
   }
 
-  messages = {
-    usernameError: '* Wymagane od 3 do 25 znaków. Login nie może zawierać spacji',
-    emailError: '* Nieprawidłowy format adresu email',
-    telephoneError: '* Wymagany numer kierunkowy',
-    password1Error: '* Wymagane od 8 do 25 znaków',
-    password2Error: '* Podane hasła nie są takie same'
-  }
+  // messages = {
+  //   usernameError: '* Wymagane od 3 do 25 znaków. Login nie może zawierać spacji',
+  //   emailError: '* Nieprawidłowy format adresu email',
+  //   telephoneError: '* Wymagany numer kierunkowy',
+  //   password1Error: '* Wymagane od 8 do 25 znaków',
+  //   password2Error: '* Podane hasła nie są takie same'
+  // }
 
   static propTypes = {
     register: PropTypes.func.isRequired,
@@ -205,83 +205,86 @@ class RegistrationPage extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { username, email, telephone, password1, password2} = this.state;
-    const validation = this.formValidation();
+    // const validation = this.formValidation();
 
-    // if (password1 !== password2) {
-    //   this.props.createMessage({ passwordNotMatch: 'Podane hasła nie są identyczne.' })
-    // } else {
-    //   const newUser = {
-    //     username,
-    //     password1,
-    //     password2,
-    //     email,
-    //     telephone,
-    //   }
-    //   this.props.register(newUser)
-    // }
-
-    if (validation.correct) {
-      const newUser = { username, email, telephone, password1, password2 }
-      this.props.register(newUser);
+    if (password1 !== password2) {
+      this.props.createMessage({ passwordNotMatch: 'Podane hasła nie są identyczne.' })
     } else {
-      this.setState({
-        errors: {
-          username: !validation.username,
-          email: !validation.email,
-          telephone: !validation.telephone,
-          password1: !validation.password1,
-          password2: !validation.password2,
-        }
-      })
+      const newUser = {
+        username,
+        email,
+        telephone,
+        password1,
+        password2,
+      }
+      this.props.register(newUser)
+      this.props.history.push('/login');
+
     }
+
+    // if (validation.correct) {
+    //   const newUser = { username, email, telephone, password1, password2 }
+    //   this.props.register(newUser);
+    // } else {
+    //   this.setState({
+    //     errors: {
+    //       username: !validation.username,
+    //       email: !validation.email,
+    //       telephone: !validation.telephone,
+    //       password1: !validation.password1,
+    //       password2: !validation.password2,
+    //     }
+    //   })
+    // }
   }
 
-  formValidation = () => {
-    let username = false;
-    let email = false;
-    let telephone = false;
-    let password1 = false;
-    let password2 = false;
-    let correct = false;
+  // formValidation = () => {
+  //   let username = false;
+  //   let email = false;
+  //   let telephone = false;
+  //   let password1 = false;
+  //   let password2 = false;
+  //   let correct = false;
 
-    if (this.state.username >= 3 && this.state.username <= 25 && this.state.username.indexOf(' ') === -1) {
-      username = true;
-    }
+  //   if (this.state.username.length >= 3 && this.state.username.length <= 25 && this.state.username.indexOf(' ') === -1) {
+  //     username = true;
+  //   }
 
-    if (this.state.email.length > 0 && this.state.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/) !== null) {
-      email = true;
-    }
+  //   if (this.state.email.length > 0 && this.state.email.match(/^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+/) !== null) {
+  //     email = true;
+  //   }
 
-    if (this.state.telephone.length === 0 || (this.state.telephone.length === 9 && this.state.telephone.match(/^[0-9]+$/) !== null)) {
-      telephone = true;
-    }
+  //   if (this.state.telephone.length === 0 || this.state.telephone.match(/^\+\d{11}$/) !== null) {
+  //     telephone = true;
+  //   }
 
-    if (this.state.password1.length >= 8 && this.state.password1.length <=25) {
-      password1 = true;
-    }
+  //   if (this.state.password1.length >= 8 && this.state.password1.length <=25) {
+  //     password1 = true;
+  //   }
 
-    if (this.state.password1.length >= 8 && this.state.password1.length <=25 && this.state.password2 === this.state.password1) {
-      password2 = true;
-    }
+  //   if (this.state.password1.length >= 8 && this.state.password1.length <=25 && this.state.password2 === this.state.password1) {
+  //     password2 = true;
+  //   }
 
-    if (username && email && telephone && password1 && password2) {
-      correct = true;
-    }
+  //   if (username && email && telephone && password1 && password2) {
+  //     correct = true;
+  //   }
 
-    return ({
-      username,
-      email,
-      telephone,
-      password1,
-      password2,
-      correct,
-    })
-  }
+  //   return ({
+  //     username,
+  //     email,
+  //     telephone,
+  //     password1,
+  //     password2,
+  //     correct,
+  //   })
+  // }
 
   render() { 
-    if (this.props.isAuthenticated) {
-      return <Redirect to="/dashboard" />
-    }
+    // if (this.props.isAuthenticated) {
+    //   setTimeout(alert('Rejestracja przebiegła pomyślnie. Za 3 sekundy nastąpi przekierowanie na stronę logowania.'), 3000);
+    //   return <Redirect to="/login" />
+    // }
 
     return (  
       <div className="col-md-6 m-auto">
@@ -297,7 +300,7 @@ class RegistrationPage extends Component {
                 onChange={this.handleChange}
                 value={this.state.username}
               />
-              {this.state.errors.username && <p>{this.messages.usernameError}</p>}
+              {/* {this.state.errors.username && <p>{this.messages.usernameError}</p>} */}
             </div>
             <div className="form-group">
               <label>Email</label>
@@ -308,7 +311,7 @@ class RegistrationPage extends Component {
                 onChange={this.handleChange}
                 value={this.state.email}
               />
-              {this.state.errors.email && <p>{this.messages.emailError}</p>}
+              {/* {this.state.errors.email && <p>{this.messages.emailError}</p>} */}
             </div>
             <div className="form-group">
               <label>Numer telefonu (opcjonalnie)</label>
@@ -319,7 +322,7 @@ class RegistrationPage extends Component {
                 onChange={this.handleChange}
                 value={this.state.telephone}
               />
-              {this.state.errors.telephone && <p>{this.messages.telephoneError}</p>}
+              {/* {this.state.errors.telephone && <p>{this.messages.telephoneError}</p>} */}
             </div>
             <div className="form-group">
               <label>Hasło</label>
@@ -330,7 +333,7 @@ class RegistrationPage extends Component {
                 onChange={this.handleChange}
                 value={this.state.password1}
               />
-              {this.state.errors.password1 && <p>{this.messages.password1Error}</p>}
+              {/* {this.state.errors.password1 && <p>{this.messages.password1Error}</p>} */}
             </div>
             <div className="form-group">
               <label>Powtórz hasło</label>
@@ -341,7 +344,7 @@ class RegistrationPage extends Component {
                 onChange={this.handleChange}
                 value={this.state.password2}
               />
-              {this.state.errors.password2 && <p>{this.messages.password2Error}</p>}
+              {/* {this.state.errors.password2 && <p>{this.messages.password2Error}</p>} */}
             </div>
             <div className="form-group">
               <button type="submit" className="btn btn-primary">Potwierdź</button>

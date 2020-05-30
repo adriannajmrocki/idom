@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react';
+import SensorsList from '../components/SensorsList';
 
-export default function Dashboard() {
+const Dashboard = () => {
   return (
     <Fragment>
-      DASHBOARD
+      <SensorsList />
     </Fragment>
   )
 }
+
+export default Dashboard;

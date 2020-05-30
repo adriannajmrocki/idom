@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 
 class ResetPasswordPage extends Component {
   state = {  
@@ -9,9 +10,46 @@ class ResetPasswordPage extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  reset = email => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+
+    const body = JSON.stringify({ email })
+
+    axios.post('http://127.0.0.1:8000/password-reset/', body, config)
+    .then(res => {
+      console.log(res);
+      // this.props.history.push('/newpwd');
+    })
+    .catch(err => console.log(err))
+  }
+
   handleSubmit = e => {
     e.preventDefault();
-    console.log('reset ok')
+
+    if (!this.state.email.match(/^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+/)) {
+      alert('Nieprawidłowy format adresu email');
+    } else {
+      this.reset(this.state.email);
+    }
+
+    // const config = {
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   }
+    // }
+
+    // const body = JSON.stringify({ email: this.state.email })
+
+    // axios.post('http://127.0.0.1:8000/password-reset/', body, config)
+    // .then(res => {
+    //   console.log(res);
+    //   this.props.history.push('/newpwd');
+    // })
+    // .catch(err => console.log(err))
   }
 
   render() { 
@@ -20,7 +58,7 @@ class ResetPasswordPage extends Component {
         <div className="col-md-6 m-auto">
           <div className="card card-body mt-5">
             <h2 className="text-center">Reset hasła</h2>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} noValidate>
               <div className="form-group">
                 <label>Email</label>
                 <input

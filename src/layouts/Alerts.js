@@ -50,7 +50,8 @@ export class Alerts extends Component {
     const { error, alert } = this.props;
 
     if (error !== prevProps.error) {
-      alert.error('ERROR');
+      // alert.error('ERROR');
+      if (error.msg.non_field_errors) alert.error('Niepoprawny login lub hasło.')
     }
   }
 
