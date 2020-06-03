@@ -52,6 +52,8 @@ export class Alerts extends Component {
     if (error !== prevProps.error) {
       // alert.error('ERROR');
       if (error.msg.non_field_errors) alert.error('Niepoprawny login lub hasło.')
+      if (error.msg.name) alert.error('Wpisz nazwę czujnika')
+      if (error.msg.category) alert.error('Wybierz kategorię')
     }
   }
 
