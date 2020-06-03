@@ -17,6 +17,8 @@ import Dashboard from '../pages/Dashboard';
 import AdminPage from '../pages/AdminPage';
 import ResetPasswordPage from '../pages/ResetPasswordPage';
 import NewPasswordPage from '../pages/NewPasswordPage';
+import AddSensorPage from '../pages/AddSensorPage';
+import EditSensorPage from '../pages/EditSensorPage';
 import Alerts from "./Alerts";
 import PrivateRoute from '../components/PrivateRoute';
 
@@ -51,9 +53,11 @@ class App extends Component {
                   <Route path='/register' component={RegistrationPage} />
                   <Route path='/login' component={LoginPage} />
                   <Route path='/resetpwd' component={ResetPasswordPage} />
-                  <Route path='/newpwd' component={NewPasswordPage} />
+                  <Route path='/password-reset/:?token=' component={NewPasswordPage} />
                   <PrivateRoute path='/dashboard' component={Dashboard} />
                   <PrivateRoute path='/admin' component={AdminPage} />
+                  <PrivateRoute path='/add-sensor' component={AddSensorPage} />
+                  <PrivateRoute path='/edit-sensor/:id' component={EditSensorPage} />
                 </Switch>
               </div>
             </Fragment>

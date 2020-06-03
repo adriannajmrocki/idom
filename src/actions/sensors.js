@@ -1,5 +1,6 @@
-import { GET_SENSORS, DELETE_SENSOR } from './types';
+import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR } from './types';
 import axios from 'axios';
+import { returnErrors } from './messages';
 
 // GET SENSORS
 // Return list of active sensors
@@ -58,4 +59,86 @@ export const deleteSensor = id => (dispatch, getState) => {
     })
   })
   .catch(err => console.log(err.response))
+}
+
+
+// ADD SENSOR
+// Add a new sensor to the list
+export const addSensor = sensor => (dispatch, getState) => {
+
+  // Get token from state
+  const token = getState().auth.token;
+
+  // Headers
+  const config = {
+    headers: {
+      'Content-Type': "application/json"
+    }
+  }
+
+  // If token exists, add to headers config
+  if (token) {
+    config.headers['Authorization'] = `Token ${token}`
+  }
+
+  // Post request to API
+  axios.post('http://127.0.0.1:8000/sensors/add', sensor, config)
+  .then(res => {
+    console.log(res);
+    if (res.status === 201) {
+      dispatch({
+        type: ADD_SENSOR,
+        payload: res.data
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err.response.status);
+    if (err.response.status === 400 || err.response.status === 409) {
+      dispatch(returnErrors(err.response.data, err.response.status))
+    }
+  })
+}
+
+
+// UPDATE SENSOR
+// Update sensor's data
+export const updateSensor = (id, sensor) => (dispatch, getState) => {
+
+  // Get token from state
+  const token = getState().auth.token;
+
+  // Headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  // Body
+  // const body = JSON.stringify({})
+
+  // If token exists, add to headers config
+  if (token) {
+    config.headers['Authorization'] = `Token ${token}`
+  }
+
+  // Put request to API
+  axios.put(`http://127.0.0.1:8000/sensors/update/${id}`, sensor, config)
+  .then(res => {
+    console.log(res);
+    if (res.status === 200) {
+      alert('Czujnik został zmodyfikowany')
+      dispatch({
+        type: UPDATE_SENSOR,
+        payload: res.data
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err.response);
+    if (err.response.status === 400 || err.response.status === 404) {
+      dispatch(returnErrors(err.response.data, err.response.status))
+    }
+  })
 }
