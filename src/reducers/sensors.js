@@ -24,7 +24,6 @@ export default function(state = initialState, action) {
     case UPDATE_SENSOR:
       return {
         ...state,
-        // sensors: [...state.sensors, action.payload]
         sensors: state.sensors.map(sensor => (sensor.id === action.payload.id ? action.payload : state))
       }
     default:
