@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { updateSensor } from '../actions/sensors';
+import { updateSensor, getSensorData } from '../actions/sensors';
 
 class EditSensorPage extends Component {
-  state = {  
+
+  state = {
     name: '',
     category: ''
   }
 
   static propTypes = {
-    updateSensor: PropTypes.func.isRequired
+    sensorName: PropTypes.string.isRequired,
+    sensorCategory: PropTypes.string.isRequired,
+    updateSensor: PropTypes.func.isRequired,
+    getSensorData: PropTypes.func.isRequired
   }
 
   handleChange = e => {
@@ -23,14 +27,27 @@ class EditSensorPage extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("name: " + this.state.name, "category: " + this.state.category)
 
     const id = this.props.match.params.id;
 
-    const { name, category } = this.state;
-    const sensor = { name, category };
+    let { name, category } = this.state;
+    let sensor = { name, category };
+
+    if (!name) {
+      name = undefined;
+      sensor = { name, category }
+    } else if (!category) {
+      category = undefined;
+      sensor = { name, category }
+    }
 
     this.props.updateSensor(id, sensor);
+  }
+
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    
+    this.props.getSensorData(id)
   }
 
   render() { 
@@ -66,5 +83,11 @@ class EditSensorPage extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  sensorName: state.sensors.sensorName,
+  sensorCategory: state.sensors.sensorCategory,
+})
  
-export default connect(null, { updateSensor })(EditSensorPage);
+export default connect(mapStateToProps, { updateSensor, getSensorData })(EditSensorPage);
+// export default connect(null, { updateSensor, getSensorData })(EditSensorPage);

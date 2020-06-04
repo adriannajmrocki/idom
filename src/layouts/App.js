@@ -54,7 +54,7 @@ class App extends Component {
                   <Route path='/register' component={RegistrationPage} />
                   <Route path='/login' component={LoginPage} />
                   <Route path='/resetpwd' component={ResetPasswordPage} />
-                  <Route path='/password-reset/:?token=' component={NewPasswordPage} />
+                  <Route path='/password-reset/:token' component={NewPasswordPage} />
                   <PrivateRoute path='/dashboard' component={Dashboard} />
                   <PrivateRoute path='/admin' component={AdminPage} />
                   <PrivateRoute path='/add-sensor' component={AddSensorPage} />

@@ -1,7 +1,9 @@
-import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR } from '../actions/types';
+import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA } from '../actions/types';
 
 const initialState = {
-  sensors: []
+  sensors: [],
+  sensorName: '',
+  sensorCategory: ''
 }
 
 export default function(state = initialState, action) {
@@ -9,7 +11,15 @@ export default function(state = initialState, action) {
     case GET_SENSORS:
       return {
         ...state,
-        sensors: action.payload
+        sensors: action.payload,
+      }
+    case GET_SENSOR_DATA:
+      return {
+        ...state,
+        // sensors: action.payload
+        // sensors: state.sensors.map(sensor => (sensor.id === action.payload.id ? action.payload : state)),
+        sensorName: action.payload.name,
+        sensorCategory: action.payload.category
       }
     case DELETE_SENSOR:
       return {

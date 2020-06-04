@@ -1,4 +1,4 @@
-import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR } from './types';
+import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA } from './types';
 import axios from 'axios';
 import { returnErrors } from './messages';
 
@@ -23,6 +23,34 @@ export const getSensors = () => (dispatch, getState) => {
     console.log(res);
     dispatch({
       type: GET_SENSORS,
+      payload: res.data
+    })
+  })
+  .catch(err => console.log(err))
+}
+
+
+// GET SENSOR DATA
+// Return data of sensor
+export const getSensorData = (id) => (dispatch, getState) => {
+
+  // Get token from state
+  const token = getState().auth.token;
+  console.log(token);
+
+  // Headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    }
+  }
+
+  axios.get(`http://127.0.0.1:8000/sensors/detail/${id}`, config)
+  .then(res => {
+    console.log(res);
+    dispatch({
+      type: GET_SENSOR_DATA,
       payload: res.data
     })
   })

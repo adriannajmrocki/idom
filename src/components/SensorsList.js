@@ -31,11 +31,11 @@ class SensorsList extends Component {
           </thead>
           <tbody>
             {this.props.sensors.map(sensor => (
-              <tr key={sensor.name}>
-                {sensor.is_active ? <td>{sensor.name}</td> : false}
-                {sensor.is_active ? <td>{sensor.category}</td> : false}
-                {sensor.is_active ? <td><Link to={`/edit-sensor/${sensor.id}`}><button className="btn btn-primary btn-sm">Edytuj</button></Link></td> : false}
-                {sensor.is_active ? <td><button onClick={this.props.deleteSensor.bind(this, sensor.id)} className="btn btn-danger btn-sm">Usuń</button></td> : false}
+              <tr key={sensor.id}>
+                <td>{sensor.name}</td>
+                <td>{sensor.category}</td>
+                <td><Link to={`/edit-sensor/${sensor.id}`}><button className="btn btn-primary btn-sm">Edytuj</button></Link></td>
+                <td><button onClick={this.props.deleteSensor.bind(this, sensor.id)} className="btn btn-danger btn-sm">Usuń</button></td>
               </tr>
             ))}
           </tbody>
