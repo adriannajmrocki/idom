@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { updateUser } from '../actions/users';
+import axios from 'axios';
 
 class EditUserPage extends Component {
+
   state = {  
     email: '',
     telephone: '',
     app_notifications: '',
     sms_notifications: '',
+  }
+
+  static propTypes = {
+    updateUser: PropTypes.func.isRequired,
   }
 
   handleChange = e => {
@@ -25,6 +33,33 @@ class EditUserPage extends Component {
     e.preventDefault();
     console.log('EDIT USER SUBMIT');
     console.log(`EMAIL: ${this.state.email}, TELEPHONE: ${this.state.telephone}, APP: ${this.state.app_notifications}, SMS: ${this.state.sms_notifications}`)
+
+    const id = this.props.match.params.id;
+
+    let { email, telephone, app_notifications, sms_notifications } = this.state;
+    let userData = { email, telephone, app_notifications, sms_notifications };
+
+    if (!email) {
+      email = undefined;
+      userData = { email, telephone, app_notifications, sms_notifications };
+    }
+
+    if (!telephone) {
+      telephone = undefined;
+      userData = { email, telephone, app_notifications, sms_notifications };
+    }
+
+    if (!app_notifications) {
+      app_notifications = undefined;
+      userData = { email, telephone, app_notifications, sms_notifications };
+    }
+
+    if (!sms_notifications) {
+      sms_notifications = undefined;
+      userData = { email, telephone, app_notifications, sms_notifications };
+    }
+
+    this.props.updateUser(id, userData);
   }
 
   render() { 
@@ -79,4 +114,4 @@ class EditUserPage extends Component {
   }
 }
  
-export default EditUserPage;
+export default connect(null, { updateUser })(EditUserPage);
