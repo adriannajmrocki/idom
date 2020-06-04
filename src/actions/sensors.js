@@ -143,9 +143,6 @@ export const updateSensor = (id, sensor) => (dispatch, getState) => {
     }
   }
 
-  // Body
-  // const body = JSON.stringify({})
-
   // If token exists, add to headers config
   if (token) {
     config.headers['Authorization'] = `Token ${token}`
