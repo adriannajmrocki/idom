@@ -115,6 +115,7 @@ export const addSensor = sensor => (dispatch, getState) => {
   .then(res => {
     console.log(res);
     if (res.status === 201) {
+      dispatch(createMessage({ sensorAdded: 'Czujnik został dodany' }))
       dispatch({
         type: ADD_SENSOR,
         payload: res.data

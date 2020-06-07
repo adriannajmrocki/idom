@@ -33,6 +33,10 @@ class AddSensorPage extends Component {
     const sensor = { name, category };
 
     this.props.addSensor(sensor);
+    this.setState({
+      name: '',
+      category: ''
+    })
   }
 
   render() { 

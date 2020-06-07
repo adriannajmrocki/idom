@@ -60,6 +60,7 @@ export class Alerts extends Component {
 
     if (message !== prevProps.message) {
       if (message.sensorDeleted) alert.success(message.sensorDeleted);
+      if (message.sensorAdded) alert.success(message.sensorAdded);
     }
   }
 
