@@ -1,6 +1,6 @@
 import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA } from './types';
 import axios from 'axios';
-import { returnErrors } from './messages';
+import { createMessage, returnErrors } from './messages';
 
 // GET SENSORS
 // Return list of active sensors
@@ -81,6 +81,7 @@ export const deleteSensor = id => (dispatch, getState) => {
   axios.delete(`http://127.0.0.1:8000/sensors/delete/${id}`, config)
   .then(res => {
     console.log(res);
+    dispatch(createMessage({ sensorDeleted: 'Czujnik został usunięty' }))
     dispatch({
       type: DELETE_SENSOR,
       payload: id
