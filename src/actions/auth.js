@@ -122,7 +122,8 @@ export const logout = () => (dispatch, getState) => {
   // Headers
   const config = {
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
     }
   }
 
