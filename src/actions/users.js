@@ -3,8 +3,20 @@ import axios from 'axios';
 import { returnErrors } from './messages';
 
 // GET USERS
-export const getUsers = () => dispatch => {
-  axios.get('http://127.0.0.1:8000/users/list')
+export const getUsers = () => (dispatch, getState) => {
+    // Get token from state
+    const token = getState().auth.token;
+    console.log(token);
+  
+    // Headers
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`
+      }
+    }
+
+  axios.get('http://127.0.0.1:8000/users/list', config)
   .then(res => {
     console.log(res);
     dispatch({

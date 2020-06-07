@@ -141,7 +141,7 @@ export const updateSensor = (id, sensor) => (dispatch, getState) => {
     headers: {
       'Content-Type': 'application/json'
     }
-  }
+  } 
 
   // If token exists, add to headers config
   if (token) {
