@@ -60,6 +60,12 @@ class EditUserPage extends Component {
     }
 
     this.props.updateUser(id, userData);
+    this.setState({
+      email: '',
+      telephone: '',
+      app_notifications: '',
+      sms_notifications: '',
+    })
   }
 
   render() { 
