@@ -42,6 +42,10 @@ class EditSensorPage extends Component {
     }
 
     this.props.updateSensor(id, sensor);
+    this.setState({
+      name: '',
+      category: ''
+    })
   }
 
   componentDidMount() {

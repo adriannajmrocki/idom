@@ -155,7 +155,7 @@ export const updateSensor = (id, sensor) => (dispatch, getState) => {
   .then(res => {
     console.log(res);
     if (res.status === 200) {
-      alert('Czujnik został zmodyfikowany')
+      dispatch(createMessage({ sensorUpdated: 'Czujnik został zmodyfikowany' }))
       dispatch({
         type: UPDATE_SENSOR,
         payload: res.data
