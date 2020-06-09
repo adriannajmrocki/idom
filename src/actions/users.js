@@ -1,6 +1,6 @@
 import { GET_USERS, DELETE_USER, UPDATE_USER } from './types';
 import axios from 'axios';
-import { returnErrors } from './messages';
+import { createMessage, returnErrors } from './messages';
 
 // GET USERS
 export const getUsers = () => (dispatch, getState) => {
@@ -52,19 +52,19 @@ export const deleteUser = id => (dispatch, getState) => {
   // Headers
   const config = {
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Token ${token}`
+      'Content-Type': 'application/json'
     }
   }
 
   // If token, add to headers config
-  // if (token) {
-  //   config.headers['Authorization'] = `Token ${token}`;
-  // }
+  if (token) {
+    config.headers['Authorization'] = `Token ${token}`;
+  }
 
   axios.delete(`http://127.0.0.1:8000/users/delete/${id}`, config)
   .then(res => {
     console.log(res);
+    dispatch(createMessage({ userDeleted: 'Użytkownik został usunięty' }))
     dispatch({
       type: DELETE_USER,
       payload: id
