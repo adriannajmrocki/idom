@@ -7,7 +7,9 @@ class EditSensorPage extends Component {
 
   state = {
     name: '',
-    category: ''
+    category: '',
+    frequencyUnit: '',
+    frequencyValue: ''
   }
 
   static propTypes = {
@@ -18,15 +20,19 @@ class EditSensorPage extends Component {
   }
 
   handleChange = e => {
-    this.setState({ name: e.target.value })
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   handleSelect = e => {
-    this.setState({ category: e.target.value })
+    this.setState({ 
+      category: e.target.value,
+      frequencyUnit: e.target.value
+    })
   }
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.state.frequencyValue, this.state.frequencyUnit);
 
     const id = this.props.match.params.id;
 
@@ -78,6 +84,26 @@ class EditSensorPage extends Component {
               <option value="humidity">Czujnik wilgotności</option>
             </select>
           </div>
+          <div className="form-group">
+              <label>Częstotliwość pobierania danych</label>
+              <select className="form-control" onChange={this.handleSelect} value={this.state.frequencyUnit}>
+                <option></option>
+                <option value="seconds">Sekundy</option>
+                <option value="minutes">Minuty</option>
+                <option value="hours">Godziny</option>
+                <option value="days">Dni</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <input
+                type="number"
+                className="form-control"
+                name="frequencyValue"
+                onChange={this.handleChange}
+                value={this.state.frequencyValue}
+                placeholder="Wartość..."
+              />
+            </div>
           <div className="form-group">
             <button className="btn btn-primary">Potwierdź</button>
           </div>
