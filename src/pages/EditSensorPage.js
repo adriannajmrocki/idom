@@ -3,13 +3,30 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateSensor, getSensorData } from '../actions/sensors';
 
+// const units = {
+//   seconds: {
+//     name: "seconds",
+//     multiplier: 1,
+//     minValue: "30",
+//     maxValue: "21474836"
+//   },
+//   minutes: {
+//     name: "minutes",
+//     multiplier: 60,
+//     minValue: "1",
+//     maxValue: "357913"
+//   },
+//   hours: { name: "hours", multiplier: 3600, minValue: "1", maxValue: "5965" },
+//   days: { name: "days", multiplier: 86400, minValue: "1", maxValue: "248" }
+// };
+
 class EditSensorPage extends Component {
 
   state = {
     name: '',
     category: '',
     frequencyUnit: '',
-    frequencyValue: ''
+    frequency: ''
   }
 
   static propTypes = {
@@ -23,35 +40,124 @@ class EditSensorPage extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleSelect = e => {
-    this.setState({ 
-      category: e.target.value,
-      frequencyUnit: e.target.value
-    })
+  handleCategorySelect = e => {
+    this.setState({ category: e.target.value })
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log(this.state.frequencyValue, this.state.frequencyUnit);
+  handleFrequencyUnitSelect = e => {
+    this.setState({ frequencyUnit: e.target.value })
+  }
 
-    const id = this.props.match.params.id;
+  callback = () => {
+    const id = this.props.match.params.id
+    let { name, category, frequency, frequencyUnit } = this.state;
 
-    let { name, category } = this.state;
-    let sensor = { name, category };
+    let sensor = {};
+    sensor = {
+      name: name,
+      category: category,
+      frequency: frequency
+    };
 
     if (!name) {
       name = undefined;
-      sensor = { name, category }
-    } else if (!category) {
-      category = undefined;
-      sensor = { name, category }
+      sensor = { name, category, frequency }
     }
 
+    if (!category) {
+      category = undefined;
+      sensor = { name, category, frequency }
+    }
+
+    if (!frequency) {
+      frequency = undefined;
+      sensor = { name, category, frequency }
+    }
+
+    console.log(sensor);
     this.props.updateSensor(id, sensor);
     this.setState({
-      name: '',
-      category: ''
-    })
+      name: "",
+      category: "",
+      frequencyUnit: "",
+      frequency: ""
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    // const id = this.props.match.params.id;
+    let { name, category, frequency, frequencyUnit } = this.state;
+
+    // let sensor = { 
+    //   name, 
+    //   category, 
+    //   frequency: frequency * frequencyUnit.multiplier
+    // };
+
+    // if (!name) {
+    //   name = undefined;
+    //   sensor = { name, category, frequency }
+    // } else if (!category) {
+    //   category = undefined;
+    //   sensor = { name, category, frequency }
+    // } else if (!frequency) {
+    //   frequency = undefined;
+    //   sensor = { name, category, frequency }
+    // }
+
+    // this.props.updateSensor(id, sensor)
+
+    // this.setState({
+    //   name: '',
+    //   category: '',
+    //   frequency: '',
+    //   frequencyUnit: {}
+    // })
+
+    // Frequency validation
+    if (frequencyUnit === 'seconds') {
+      this.setState({
+        minValue: '30',
+        maxValue: '21474836'
+      },
+      () => {
+        this.callback();
+      })
+    }
+
+    if (frequencyUnit === 'minutes') {
+      this.setState({
+        minValue: '1',
+        maxValue: '357913',
+        frequency: frequency * 60
+      },
+      () => {
+        this.callback();
+      })
+    }
+
+    if (frequencyUnit === 'hours') {
+      this.setState({
+        minValue: '1',
+        maxValue: '5965',
+        frequency: frequency * 3600
+      },
+      () => {
+        this.callback();
+      })
+    }
+
+    if (frequencyUnit === 'days') {
+      this.setState({
+        minValue: '1',
+        maxValue: '248',
+        frequency: frequency * 86400
+      },
+      () => {
+        this.callback();
+      })
+    }
   }
 
   componentDidMount() {
@@ -78,7 +184,7 @@ class EditSensorPage extends Component {
           </div>
           <div className="form-group">
             <label>Kategoria</label>
-            <select className="form-control" onChange={this.handleSelect} value={this.state.category}>
+            <select className="form-control" onChange={this.handleCategorySelect} value={this.state.category}>
               <option></option>
               <option value="temperature">Czujnik temperatury</option>
               <option value="humidity">Czujnik wilgotności</option>
@@ -86,7 +192,7 @@ class EditSensorPage extends Component {
           </div>
           <div className="form-group">
               <label>Częstotliwość pobierania danych</label>
-              <select className="form-control" onChange={this.handleSelect} value={this.state.frequencyUnit}>
+              <select className="form-control" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
                 <option></option>
                 <option value="seconds">Sekundy</option>
                 <option value="minutes">Minuty</option>
@@ -98,9 +204,9 @@ class EditSensorPage extends Component {
               <input
                 type="number"
                 className="form-control"
-                name="frequencyValue"
+                name="frequency"
                 onChange={this.handleChange}
-                value={this.state.frequencyValue}
+                value={this.state.frequency}
                 placeholder="Wartość..."
               />
             </div>

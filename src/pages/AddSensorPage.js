@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addSensor } from '../actions/sensors';
+import { createMessage } from '../actions/messages';
 
 class AddSensorPage extends Component {
   state = {  
@@ -51,10 +52,10 @@ class AddSensorPage extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { name, category, frequency, frequencyUnit } = this.state;
+    const { frequency, frequencyUnit } = this.state;
 
     // Frequency validation
-    if (frequencyUnit === 'seconds') {
+    if (frequencyUnit === 'seconds' && frequency >= 30) {
       this.setState({
         minValue: '30',
         maxValue: '21474836'
@@ -62,6 +63,9 @@ class AddSensorPage extends Component {
       () => {
         this.callback();
       })
+    } else {
+      // createMessage({ frequencyError: 'Minimalna częstotliwość to 30 sekund' });
+      alert('Minimalna częstotliwość to 30 sekund');
     }
 
     if (frequencyUnit === 'minutes') {
@@ -154,4 +158,4 @@ class AddSensorPage extends Component {
   }
 }
  
-export default connect(null, { addSensor })(AddSensorPage);
+export default connect(null, { createMessage, addSensor })(AddSensorPage);
