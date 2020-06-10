@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateUser } from '../actions/users';
+import { createMessage } from '../actions/messages';
 import axios from 'axios';
 
 class EditUserPage extends Component {
@@ -29,7 +30,7 @@ class EditUserPage extends Component {
     this.setState({ sms_notifications: e.target.value })
   }
 
-  handleSubmit = e => {
+  handleSubmit = (e, dispatch) => {
     e.preventDefault();
     console.log('EDIT USER SUBMIT');
     console.log(`EMAIL: ${this.state.email}, TELEPHONE: ${this.state.telephone}, APP: ${this.state.app_notifications}, SMS: ${this.state.sms_notifications}`)
@@ -59,7 +60,12 @@ class EditUserPage extends Component {
       userData = { email, telephone, app_notifications, sms_notifications };
     }
 
-    this.props.updateUser(id, userData);
+    if (email === undefined && telephone === undefined && app_notifications === undefined && sms_notifications === undefined) {
+      createMessage({ dataNotChanged: 'Żadne dane nie zostały zmienione' });
+    } else {
+      this.props.updateUser(id, userData);
+    }
+
     this.setState({
       email: '',
       telephone: '',
@@ -120,4 +126,4 @@ class EditUserPage extends Component {
   }
 }
  
-export default connect(null, { updateUser })(EditUserPage);
+export default connect(null, { updateUser, createMessage })(EditUserPage);

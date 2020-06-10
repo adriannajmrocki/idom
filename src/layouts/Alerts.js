@@ -62,6 +62,11 @@ export class Alerts extends Component {
       if (message.sensorDeleted) alert.success(message.sensorDeleted);
       if (message.sensorAdded) alert.success(message.sensorAdded);
       if (message.sensorUpdated) alert.success(message.sensorUpdated);
+
+      if (message.userDeleted) alert.success(message.userDeleted);
+      if (message.dataNotChanged) alert.info(message.dataNotChanged);
+
+      if (message.frequencyError) alert.error(message.frequencyError);
     }
   }
 
