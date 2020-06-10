@@ -8,7 +8,9 @@ class AddSensorPage extends Component {
     name: '',
     category: '',
     frequencyUnit: '',
-    frequencyValue: ''
+    frequency: '',
+    minValue: '',
+    maxValue: ''
   }
 
   static propTypes = {
@@ -21,26 +23,79 @@ class AddSensorPage extends Component {
     })
   }
 
-  handleSelect = e => {
-    this.setState({
-      category: e.target.value,
-      frequencyUnit: e.target.value
-    })
+  handleCategorySelect = e => {
+    this.setState({ category: e.target.value })
   }
+
+  handleFrequencyUnitSelect = e => {
+    this.setState({ frequencyUnit: e.target.value })
+  }
+
+  callback = () => {
+    let sensor = {};
+    sensor = {
+      name: this.state.name,
+      category: this.state.category,
+      frequency: this.state.frequency
+    };
+    console.log(sensor);
+    this.props.addSensor(sensor);
+    this.setState({
+      name: "",
+      category: "",
+      frequencyUnit: "",
+      frequency: ""
+    });
+  };
+
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("name: " + this.state.name, "category: " + this.state.category)
-    console.log(this.state.frequencyValue, this.state.frequencyUnit);
+    const { name, category, frequency, frequencyUnit } = this.state;
 
-    const { name, category } = this.state;
-    const sensor = { name, category };
+    // Frequency validation
+    if (frequencyUnit === 'seconds') {
+      this.setState({
+        minValue: '30',
+        maxValue: '21474836'
+      },
+      () => {
+        this.callback();
+      })
+    }
 
-    this.props.addSensor(sensor);
-    this.setState({
-      name: '',
-      category: ''
-    })
+    if (frequencyUnit === 'minutes') {
+      this.setState({
+        minValue: '1',
+        maxValue: '357913',
+        frequency: frequency * 60
+      },
+      () => {
+        this.callback();
+      })
+    }
+
+    if (frequencyUnit === 'hours') {
+      this.setState({
+        minValue: '1',
+        maxValue: '5965',
+        frequency: frequency * 3600
+      },
+      () => {
+        this.callback();
+      })
+    }
+
+    if (frequencyUnit === 'days') {
+      this.setState({
+        minValue: '1',
+        maxValue: '248',
+        frequency: frequency * 86400
+      },
+      () => {
+        this.callback();
+      })
+    }
   }
 
   render() { 
@@ -61,7 +116,7 @@ class AddSensorPage extends Component {
             </div>
             <div className="form-group">
               <label>Kategoria</label>
-              <select className="form-control" onChange={this.handleSelect} value={this.state.category}>
+              <select className="form-control" onChange={this.handleCategorySelect} value={this.state.category}>
                 <option></option>
                 <option value="temperature">Czujnik temperatury</option>
                 <option value="humidity">Czujnik wilgotności</option>
@@ -69,7 +124,7 @@ class AddSensorPage extends Component {
             </div>
             <div className="form-group">
               <label>Częstotliwość pobierania danych</label>
-              <select className="form-control" onChange={this.handleSelect} value={this.state.frequencyUnit}>
+              <select className="form-control" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
                 <option></option>
                 <option value="seconds">Sekundy</option>
                 <option value="minutes">Minuty</option>
@@ -81,10 +136,12 @@ class AddSensorPage extends Component {
               <input
                 type="number"
                 className="form-control"
-                name="frequencyValue"
+                name="frequency"
                 onChange={this.handleChange}
-                value={this.state.frequencyValue}
+                value={this.state.frequency}
                 placeholder="Wartość..."
+                min={this.state.minValue}
+                max={this.state.maxValue}
               />
             </div>
             <div className="form-group">
