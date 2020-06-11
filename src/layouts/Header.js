@@ -14,6 +14,7 @@ export class Header extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
 
+    // If user is authenticated returns authLinks, else returns guestLinks
     const authLinks = (
       <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
         <span className="navbar-text mr-3">
@@ -28,7 +29,7 @@ export class Header extends Component {
           <Link to='/admin' className="nav-link">Admin</Link>
         </li>
         <li className="nav-item">
-          <button onClick={this.props.logout} className="nav-link btn btn-info btn-sm text-light">Wyloguj</button>
+          <button onClick={this.props.logout} className="btn btn-outline-primary btn-sm">Wyloguj</button>
         </li>
       </ul>
     );
@@ -45,16 +46,17 @@ export class Header extends Component {
     )
 
     return (
+      // Render navbar
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container">
+          <h1 className="navbar-brand">IDOM</h1>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
+
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            {/* <a className="navbar-brand" href="/">IDOM</a> */}
-            <h1 className="navbar-brand">IDOM</h1>
+            { isAuthenticated ? authLinks : guestLinks }
           </div>
-          { isAuthenticated ? authLinks : guestLinks }
         </div>
       </nav>
     )
