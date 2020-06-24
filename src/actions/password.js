@@ -27,7 +27,7 @@ export const resetPassword = (password, token) => (dispatch) => {
   const body = JSON.stringify({ password, token })
 
   // Post request to API
-  axios.post('api/password-reset/confirm/', body, config)
+  axios.post('http://127.0.0.1:8000/password-reset/confirm/', body, config)
   .then(res => {
     console.log(res);
     // dispatch(createMessage({ sensorAdded: 'Czujnik został dodany' }))

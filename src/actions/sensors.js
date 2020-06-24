@@ -18,7 +18,7 @@ export const getSensors = () => (dispatch, getState) => {
     }
   }
 
-  axios.get('api/sensors/list', config)
+  axios.get('http://127.0.0.1:8000/sensors/list', config)
   .then(res => {
     console.log(res);
     dispatch({
@@ -46,7 +46,7 @@ export const getSensorData = (id) => (dispatch, getState) => {
     }
   }
 
-  axios.get(`api/sensors/detail/${id}`, config)
+  axios.get(`http://127.0.0.1:8000/sensors/detail/${id}`, config)
   .then(res => {
     console.log(res);
     dispatch({
@@ -78,7 +78,7 @@ export const deleteSensor = id => (dispatch, getState) => {
   }
 
   // Delete request to API
-  axios.delete(`api/sensors/delete/${id}`, config)
+  axios.delete(`http://127.0.0.1:8000/sensors/delete/${id}`, config)
   .then(res => {
     console.log(res);
     dispatch(createMessage({ sensorDeleted: 'Czujnik został usunięty' }))
@@ -111,7 +111,7 @@ export const addSensor = sensor => (dispatch, getState) => {
   }
 
   // Post request to API
-  axios.post('api/sensors/add', sensor, config)
+  axios.post('http://127.0.0.1:8000/sensors/add', sensor, config)
   .then(res => {
     console.log(res);
     if (res.status === 201) {
@@ -151,7 +151,7 @@ export const updateSensor = (id, sensor) => (dispatch, getState) => {
   }
 
   // Put request to API
-  axios.put(`api/sensors/update/${id}`, sensor, config)
+  axios.put(`http://127.0.0.1:8000/sensors/update/${id}`, sensor, config)
   .then(res => {
     console.log(res);
     if (res.status === 200) {

@@ -74,8 +74,10 @@ export class Alerts extends Component {
       if (message.emailLengthError) alert.error(message.emailLengthError);
       if (message.emailFormatError) alert.error(message.emailFormatError);
       if (message.telephoneFormatError) alert.error(message.telephoneFormatError);
-      if (message.passwordLengthError) alert.error(message.password1LengthError);
+      if (message.passwordLengthError) alert.error(message.passwordLengthError);
       if (message.passwordsNotMatch) alert.error(message.passwordsNotMatch);
+      if (message.registerSuccess) alert.success(message.registerSuccess);
+      if (message.userExists) alert.error(message.userExists);
     }
   }
 

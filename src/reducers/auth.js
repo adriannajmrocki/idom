@@ -4,7 +4,8 @@ const initialState = {
   token: localStorage.getItem('token'), // TU BYŁ KOMENT
   isAuthenticated: null,
   isLoading: false,
-  user: null
+  user: null,
+  isRegistered: false
 }
 
 export default function(state = initialState, action) {
@@ -29,6 +30,7 @@ export default function(state = initialState, action) {
         user: null,
         isAuthenticated: false,
         isLoading: false,
+        isRegistered: true
       }
     case LOGIN_SUCCESS:
     // case REGISTER_SUCCESS:

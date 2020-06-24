@@ -16,7 +16,7 @@ export const getUsers = () => (dispatch, getState) => {
       }
     }
 
-  axios.get('api/users/list', config)
+  axios.get('http://127.0.0.1:8000/users/list', config)
   .then(res => {
     console.log(res);
     dispatch({
@@ -61,7 +61,7 @@ export const deleteUser = id => (dispatch, getState) => {
     config.headers['Authorization'] = `Token ${token}`;
   }
 
-  axios.delete(`api/users/delete/${id}`, config)
+  axios.delete(`http://127.0.0.1:8000/users/delete/${id}`, config)
   .then(res => {
     console.log(res);
     dispatch(createMessage({ userDeleted: 'Użytkownik został usunięty' }))
@@ -94,7 +94,7 @@ export const updateUser = (id, userData) => (dispatch, getState) => {
   }
 
   // Put request to API
-  axios.put(`api/users/update/${id}`, userData, config)
+  axios.put(`http://127.0.0.1:8000/users/update/${id}`, userData, config)
   .then(res => {
     console.log(res);
     if (res.status === 200) {
