@@ -5,7 +5,7 @@ import { USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOU
 import auth from '../reducers/auth';
 
 
-// CHECK TOKEN AND LOAD USER
+// CHECK TOKEN & LOAD USER
 // export const loadUser = () => (dispatch, getState) => {
 
 //   // User Loading
@@ -19,13 +19,12 @@ import auth from '../reducers/auth';
 //     headers: {
 //       'Content-Type': 'application/json'
 //     },
-//     // mode: 'no-cors'
 //   }
 
 //   // If token, add to headers config
-//   // if (token) {
-//     // config.headers['token'] = token;
-//   // }
+//   if (token) {
+//     config.headers['Authorization'] = `Token ${token}`;
+//   }
 
 //   axios.get('http://127.0.0.1:8000/register/', config)
 //     .then(res => {
