@@ -205,27 +205,30 @@ class RegistrationPage extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { username, email, telephone, password1, password2} = this.state;
-    // const validation = this.formValidation();
+    const validation = this.formValidation();
 
-    if (password1 !== password2) {
-      this.props.createMessage({ passwordNotMatch: 'Podane hasła nie są identyczne.' })
-    } else {
-      const newUser = {
-        username,
-        email,
-        telephone,
-        password1,
-        password2,
-      }
-      this.props.register(newUser)
-      this.props.history.push('/login');
-
-    }
-
-    // if (validation.correct) {
-    //   const newUser = { username, email, telephone, password1, password2 }
-    //   this.props.register(newUser);
+    // if (username.length < 3 || username.length > 25) {
+    //   this.props.createMessage({ usernameLengthError: 'Nazwa użytkownika musi zawierać od 3 do 25 znaków' })
+    // } 
+    // else if (password1 !== password2) {
+    //   this.props.createMessage({ passwordNotMatch: 'Podane hasła nie są identyczne' })
     // } else {
+    //   const newUser = {
+    //     username,
+    //     email,
+    //     telephone,
+    //     password1,
+    //     password2,
+    //   }
+    //   this.props.register(newUser)
+    //   this.props.history.push('/login');
+    // }
+
+    if (validation.correct) {
+      const newUser = { username, email, telephone, password1, password2 }
+      this.props.register(newUser);
+    } 
+    // else {
     //   this.setState({
     //     errors: {
     //       username: !validation.username,
@@ -238,47 +241,65 @@ class RegistrationPage extends Component {
     // }
   }
 
-  // formValidation = () => {
-  //   let username = false;
-  //   let email = false;
-  //   let telephone = false;
-  //   let password1 = false;
-  //   let password2 = false;
-  //   let correct = false;
+  formValidation = () => {
+    let username = false;
+    let email = false;
+    let telephone = false;
+    // let password1 = false;
+    // let password2 = false;
+    let correct = false;
 
-  //   if (this.state.username.length >= 3 && this.state.username.length <= 25 && this.state.username.indexOf(' ') === -1) {
-  //     username = true;
-  //   }
+    if (this.state.username.length < 3 || this.state.username.length > 25) {
+      this.props.createMessage({ usernameLengthError: 'Nazwa użytkownika musi zawierać od 3 do 25 znaków' })
+    } else if (this.state.username.indexOf(' ') !== -1) {
+      this.props.createMessage({ usernameSpaceError: 'Nazwa użytkownika nie może zawierać spacji' })
+    } else {
+      username = true;
+    }
 
-  //   if (this.state.email.length > 0 && this.state.email.match(/^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+/) !== null) {
-  //     email = true;
-  //   }
+    if (!this.state.email.length) {
+      this.props.createMessage({ emailLengthError: 'Email jest wymagany' })
+    } else if (!this.state.email.match(/^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+/)) {
+      this.props.createMessage({ emailFormatError: 'Nieprawidłowy format adresu email' })
+    } else {
+      email = true;
+    }
 
-  //   if (this.state.telephone.length === 0 || this.state.telephone.match(/^\+\d{11}$/) !== null) {
-  //     telephone = true;
-  //   }
+    if (this.state.telephone.length === 0) {
+      telephone = true;
+    } else if (!this.state.telephone.match(/^\+\d{11}$/)) {
+      this.props.createMessage({ telephoneFormatError: 'Nieprawidłowy format numeru telefonu' })
+    } else {
+      telephone = true;
+    }
 
-  //   if (this.state.password1.length >= 8 && this.state.password1.length <=25) {
-  //     password1 = true;
-  //   }
+    // if (this.state.password1.length < 8 || this.state.password1.length > 25) {
+    //   this.props.createMessage({ passwordLengthError: 'Hasło musi zawierać od 8 do 25 znaków' })
+    // } else {
+    //   password1 = true;
+    // }
 
-  //   if (this.state.password1.length >= 8 && this.state.password1.length <=25 && this.state.password2 === this.state.password1) {
-  //     password2 = true;
-  //   }
+    // if (this.state.password2.length < 8 || this.state.password1.length > 25) {
+    //   this.props.createMessage({ passwordLengthError: 'Hasło musi zawierać od 8 do 25 znaków' })
+    // } else if (this.state.password2 !== this.state.password1) {
+    //   this.props.createMessage({ passwordsNotMatch: 'Podane hasła nie są identyczne' })
+    // } else {
+    //   password2 = true;
+    // }
 
-  //   if (username && email && telephone && password1 && password2) {
-  //     correct = true;
-  //   }
+    if (username && email && telephone) {
+      correct = true;
+    }
 
-  //   return ({
-  //     username,
-  //     email,
-  //     telephone,
-  //     password1,
-  //     password2,
-  //     correct,
-  //   })
-  // }
+    return ({
+      username,
+      email,
+      telephone,
+      // password1,
+      // password2,
+      correct
+    })
+  }
 
   render() { 
     // if (this.props.isAuthenticated) {

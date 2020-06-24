@@ -67,6 +67,15 @@ export class Alerts extends Component {
       if (message.dataNotChanged) alert.info(message.dataNotChanged);
 
       if (message.frequencyError) alert.error(message.frequencyError);
+
+      // Register errors
+      if (message.usernameLengthError) alert.error(message.usernameLengthError);
+      if (message.usernameSpaceError) alert.error(message.usernameSpaceError);
+      if (message.emailLengthError) alert.error(message.emailLengthError);
+      if (message.emailFormatError) alert.error(message.emailFormatError);
+      if (message.telephoneFormatError) alert.error(message.telephoneFormatError);
+      if (message.passwordLengthError) alert.error(message.password1LengthError);
+      if (message.passwordsNotMatch) alert.error(message.passwordsNotMatch);
     }
   }
 
