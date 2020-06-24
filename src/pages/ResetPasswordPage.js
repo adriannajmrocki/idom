@@ -35,21 +35,6 @@ class ResetPasswordPage extends Component {
     } else {
       this.reset(this.state.email);
     }
-
-    // const config = {
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   }
-    // }
-
-    // const body = JSON.stringify({ email: this.state.email })
-
-    // axios.post('http://127.0.0.1:8000/password-reset/', body, config)
-    // .then(res => {
-    //   console.log(res);
-    //   this.props.history.push('/newpwd');
-    // })
-    // .catch(err => console.log(err))
   }
 
   render() { 
