@@ -54,7 +54,7 @@ export const login = (username, password) => dispatch => {
   // Request Body
   const body = JSON.stringify({ username, password });
 
-  axios.post('http://127.0.0.1:8000/api-token-auth/', body, config)
+  axios.post('api/api-token-auth/', body, config)
   .then(res => {
     console.log(res.data);
     if (res.status === 200) {
@@ -87,7 +87,7 @@ export const register = ({ username, email, telephone, password1, password2 }) =
 
   const body = JSON.stringify({ username, email, telephone, password1, password2 })
 
-  axios.post('http://127.0.0.1:8000/users/add', body, config)
+  axios.post('api/users/add', body, config)
   .then(res => {
     console.log(res.status)
     if (res.status === 201) {
@@ -126,7 +126,7 @@ export const logout = () => (dispatch, getState) => {
     }
   }
 
-  axios.post(`http://127.0.0.1:8000/api-logout/${token}`, null, config)
+  axios.post(`api/api-logout/${token}`, null, config)
   .then(res => {
     console.log(res);
     dispatch({
