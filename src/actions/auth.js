@@ -67,7 +67,7 @@ export const login = (username, password) => dispatch => {
   .catch(err => {
     console.log(err.response.data)
     if (err.response.status === 400) {
-      dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch(createMessage({ loginError: 'Nieprawidłowy login lub hasło. Spróbuj ponownie' }));
       dispatch({
         type: LOGIN_FAIL
       })

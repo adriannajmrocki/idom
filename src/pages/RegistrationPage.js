@@ -92,11 +92,6 @@ class RegistrationPage extends Component {
   }
 
   render() { 
-    // if (this.props.isAuthenticated) {
-    //   setTimeout(alert('Rejestracja przebiegła pomyślnie. Za 3 sekundy nastąpi przekierowanie na stronę logowania.'), 3000);
-    //   return <Redirect to="/login" />
-    // }
-
     if (this.props.isRegistered) {
       return <Redirect to='/login' />
     }

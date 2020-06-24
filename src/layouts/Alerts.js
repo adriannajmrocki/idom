@@ -52,7 +52,6 @@ export class Alerts extends Component {
     const { error, alert, message } = this.props;
 
     if (error !== prevProps.error) {
-      if (error.msg.non_field_errors) alert.error('Niepoprawny login lub hasło.');
       if (error.msg.name.join() === 'This field may not be blank.') alert.error('Wpisz nazwę czujnika');
       if (error.msg.name.join() === 'Sensor with provided name already exists') alert.error('Czujnik o podanej nazwie juz istnieje');
       if (error.msg.category) alert.error('Wybierz kategorię');
@@ -78,6 +77,9 @@ export class Alerts extends Component {
       if (message.passwordsNotMatch) alert.error(message.passwordsNotMatch);
       if (message.registerSuccess) alert.success(message.registerSuccess);
       if (message.userExists) alert.error(message.userExists);
+      
+      // Login errors
+      if (message.loginError) alert.error(message.loginError);
     }
   }
 

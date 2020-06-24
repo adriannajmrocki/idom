@@ -67,6 +67,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../actions/auth';
+import { createMessage } from '../actions/messages';
+import Alerts from '../layouts/Alerts';
 
 class LoginPage extends Component {
   state = {  
@@ -79,13 +81,13 @@ class LoginPage extends Component {
     isAuthenticated: PropTypes.bool
   }
 
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.login(this.state.username, this.state.password);
-  }
-
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
   }
 
   render() { 
