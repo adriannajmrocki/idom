@@ -23,10 +23,10 @@ export class Header extends Component {
           </strong>
         </span>
         <li className="nav-item">
-          <Link to='/dashboard' className="nav-link">Dashboard</Link>
+          <Link to='/dashboard' className="nav-link">Czujniki</Link>
         </li>
         <li className="nav-item">
-          <Link to='/admin' className="nav-link">Admin</Link>
+          <Link to='/admin' className="nav-link">Użytkownicy</Link>
         </li>
         <li className="nav-item">
           <button onClick={this.props.logout} className="btn btn-outline-primary btn-sm">Wyloguj</button>
