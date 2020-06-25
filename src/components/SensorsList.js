@@ -34,7 +34,7 @@ class SensorsList extends Component {
             {this.props.sensors.map(sensor => (
               <tr key={sensor.id}>
                 <td>{sensor.name}</td>
-                <td>{sensor.category}</td>
+                <td>{sensor.category === 'temperature' ? 'Temperatura' : 'Wilgotność'}</td>
                 <td>{sensor.last_data}</td>
                 <td><Link to={`/edit-sensor/${sensor.id}`}><button className="btn btn-primary btn-sm">Edytuj</button></Link></td>
                 <td><button onClick={this.props.deleteSensor.bind(this, sensor.id)} className="btn btn-danger btn-sm">Usuń</button></td>
