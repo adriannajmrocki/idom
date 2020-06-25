@@ -124,8 +124,8 @@ export const addSensor = sensor => (dispatch, getState) => {
   })
   .catch(err => {
     console.log(err.response.status);
-    if (err.response.status === 400 || err.response.status === 409) {
-      dispatch(returnErrors(err.response.data, err.response.status))
+    if (err.response.status === 400) {
+      dispatch(createMessage({ sensorExists: 'Czujnik o podanej nazwie już istnieje' }))
     }
   })
 }
