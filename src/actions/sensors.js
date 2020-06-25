@@ -165,7 +165,7 @@ export const updateSensor = (id, sensor) => (dispatch, getState) => {
   .catch(err => {
     console.log(err.response);
     if (err.response.status === 400 || err.response.status === 404) {
-      dispatch(returnErrors(err.response.data, err.response.status))
+      dispatch(createMessage({ sensorExists: 'Taki czujnik juz istnieje' }))
     }
   })
 }
