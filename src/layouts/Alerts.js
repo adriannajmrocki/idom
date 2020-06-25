@@ -1,41 +1,3 @@
-// import React, { Component, Fragment } from 'react';
-// import { withAlert } from 'react-alert';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
-
-// export class Alerts extends Component {
-//   static propTypes = {
-//     error: PropTypes.object.isRequired,
-//     message: PropTypes.object.isRequired
-//   }
-
-//   componentDidUpdate(prevProps) {
-//     const { error, alert, message } = this.props;
-
-//     if (error !== prevProps.error) {
-//       if (error.msg.non_field_errors) alert.error(error.msg.non_field_errors.join());
-//       if (error.msg.username) alert.error(error.msg.username.join());
-//     }
-
-//     if (message !== prevProps.message) {
-//       if (message.passwordNotMatch) alert.error(message.passwordNotMatch);
-//     }
-//   }
-
-//   render() { 
-//     return (  
-//       <Fragment />
-//     );
-//   }
-// }
-
-// const mapStateToProps = state => ({
-//   error: state.errors,
-//   message: state.messages
-// });
- 
-// export default connect(mapStateToProps)(withAlert()(Alerts));
-
 import React, { Component, Fragment } from 'react';
 import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
@@ -83,8 +45,6 @@ export class Alerts extends Component {
       if (message.userUpdateError) alert.error(message.userUpdateError);
       if (message.userUpdateDataError) alert.error(message.userUpdateDataError);
 
-      // if (message.frequencyError) alert.error(message.frequencyError);
-
       // Register alerts
       if (message.usernameLengthError) alert.error(message.usernameLengthError);
       if (message.usernameSpaceError) alert.error(message.usernameSpaceError);
@@ -98,6 +58,10 @@ export class Alerts extends Component {
       
       // Login alerts
       if (message.loginError) alert.error(message.loginError);
+
+      // Password reset alerts
+      if (message.resetPasswordEmailSuccess) alert.success(message.resetPasswordEmailSuccess);
+      if (message.resetPasswordEmailError) alert.error(message.resetPasswordEmailError);
     }
   }
 
