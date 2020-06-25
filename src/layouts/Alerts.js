@@ -79,8 +79,11 @@ export class Alerts extends Component {
       // Users alerts
       if (message.userDeleted) alert.success(message.userDeleted);
       if (message.dataNotChanged) alert.info(message.dataNotChanged);
+      if (message.userUpdated) alert.success(message.userUpdated);
+      if (message.userUpdateError) alert.error(message.userUpdateError);
+      if (message.userUpdateDataError) alert.error(message.userUpdateDataError);
 
-      if (message.frequencyError) alert.error(message.frequencyError);
+      // if (message.frequencyError) alert.error(message.frequencyError);
 
       // Register alerts
       if (message.usernameLengthError) alert.error(message.usernameLengthError);

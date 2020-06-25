@@ -98,7 +98,7 @@ export const updateUser = (id, userData) => (dispatch, getState) => {
   .then(res => {
     console.log(res);
     if (res.status === 200) {
-      alert('Dane uytkownika zostały zmodyfikowane')
+      dispatch(createMessage({ userUpdated: 'Dane użytkownika zostały zmodyfikowane' }))
       dispatch({
         type: UPDATE_USER,
         payload: res.data
@@ -107,8 +107,8 @@ export const updateUser = (id, userData) => (dispatch, getState) => {
   })
   .catch(err => {
     console.log(err.response);
-    if (err.response.status === 400 || err.response.status === 404) {
-      dispatch(returnErrors(err.response.data, err.response.status))
+    if (err.response.status === 400) {
+      dispatch(createMessage({ userUpdateDataError: 'Taki użytkownik już istnieje lub dane zostały wprowadzone nieprawidłowo' }))
     }
   })
 }

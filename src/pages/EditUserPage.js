@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateUser } from '../actions/users';
 import { createMessage } from '../actions/messages';
+import Alerts from '../layouts/Alerts';
 import axios from 'axios';
 
 class EditUserPage extends Component {
@@ -61,7 +62,7 @@ class EditUserPage extends Component {
     }
 
     if (email === undefined && telephone === undefined && app_notifications === undefined && sms_notifications === undefined) {
-      createMessage({ dataNotChanged: 'Żadne dane nie zostały zmienione' });
+      this.props.createMessage({ dataNotChanged: 'Żadne dane nie zostały zmienione' });
     } else {
       this.props.updateUser(id, userData);
     }
