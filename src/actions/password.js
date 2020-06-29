@@ -1,45 +1,36 @@
 import { RESET_PASSWORD } from './types';
 import axios from 'axios';
+import { createMessage } from './messages';
 
 // RESET PASSWORD
 // Set a new password
-export const resetPassword = (password, token) => (dispatch) => {
-
-  // Get token from state
-  // const token = getState().auth.token;
-  // console.log(token);
-  // const token = this.props.match.params.token;
-  // console.log(token);
+export const resetPassword = (payload) => (dispatch) => {
 
   // Headers
   const config = {
     headers: {
       'Content-Type': "application/json",
-      // token
     },
   }
-
-  // If token exists, add to headers config
-  // if (token) {
-  //   config.headers = token
-  // }
-
-  const body = JSON.stringify({ password, token })
+ 
+  const body = JSON.stringify(payload)
 
   // Post request to API
-  axios.post('http://127.0.0.1:8000/password-reset/confirm/', body, config)
+  axios.post('api/password-reset/confirm/', body, config)
   .then(res => {
     console.log(res);
-    // dispatch(createMessage({ sensorAdded: 'Czujnik został dodany' }))
-     dispatch({
-      type: RESET_PASSWORD,
-      payload: res.data
-    })
+    if (res.status === 200) {
+      dispatch(createMessage({ resetPasswordSuccess: 'Hasło zostało zmienione' }))
+       dispatch({
+        type: RESET_PASSWORD,
+        payload: res.data
+      })
+    }
   })
   .catch(err => {
     console.log(err.response);
-    // if (err.response.status === 400 || err.response.status === 409) {
-    //   dispatch(returnErrors(err.response.data, err.response.status))
-    // }
+    if (err.response.status === 400) {
+      dispatch(createMessage({ resetPasswordError: 'Hasło nie zawiera od 8 do 25 znaków lub jest zbyt łatwe' }))
+    }
   })
 }

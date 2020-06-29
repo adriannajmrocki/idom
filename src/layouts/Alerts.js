@@ -62,6 +62,8 @@ export class Alerts extends Component {
       // Password reset alerts
       if (message.resetPasswordEmailSuccess) alert.success(message.resetPasswordEmailSuccess);
       if (message.resetPasswordEmailError) alert.error(message.resetPasswordEmailError);
+      if (message.resetPasswordSuccess) alert.success(message.resetPasswordSuccess);
+      if (message.resetPasswordError) alert.error(message.resetPasswordError);
     }
   }
 

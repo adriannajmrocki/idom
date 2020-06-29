@@ -22,7 +22,7 @@ class ResetPasswordPage extends Component {
 
     const body = JSON.stringify({ email })
 
-    axios.post('http://127.0.0.1:8000/password-reset/', body, config)
+    axios.post('api/password-reset/', body, config)
     .then(res => {
       console.log(res);
       if (res.status === 200) {

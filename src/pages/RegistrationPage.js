@@ -122,7 +122,7 @@ class RegistrationPage extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Numer telefonu (opcjonalnie)</label>
+              <label>Numer telefonu z kierunkowym (opcjonalnie)</label>
               <input
                 type="text"
                 className="form-control"

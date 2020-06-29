@@ -4,12 +4,12 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { resetPassword } from '../actions/password';
+import { createMessage } from '../actions/messages';
+import Alerts from '../layouts/Alerts';
 
 class NewPasswordView extends Component {
   state = {  
     password: '',
-    // password2: '',
-    // token: ''
   }
 
   static propTypes = {
@@ -21,48 +21,17 @@ class NewPasswordView extends Component {
     console.log(this.state);
   }
 
-  // resetPassword = (password, token) => {
-
-  //   // Headers
-  //   const config = {
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   }
-
-  //   if (token) {
-  //     config.headers = token
-  //   }
-
-  //   // Body
-  //   const body = JSON.stringify({ password })
-
-  //   // Post request to API
-  //   axios.post('http:127.0.0.1:8000/password-reset/confirm', body, config)
-  //   .then(res => {
-  //     console.log(res);
-  //   })
-  //   .catch(err => console.log(err.response))
-  // }
-
   handleSubmit = e => {
     e.preventDefault();
-    console.log("OK NEW PASSWORD")
 
     const { password } = this.state;
     const token = this.props.match.params.token;
-    console.log('token: ' + token);
-
-    this.props.resetPassword(password, token)
-    console.log(password, token);
-
-    // if (!(this.state.password1 === this.state.password2)) {
-    //   alert('Podane hasła różnią się od siebie')
-    // } else {
-    //   this.resetPassword(this.state.password, this.state.token);
-    // }
-
-    // this.resetPassword(password, token)
+   
+    // if (password.length < 8 || password.length > 25) {
+    //   this.props.createMessage({ passwordLengthError: 'Hasło musi zawierać od 8 do 25 znaków' })
+    // } else this.props.resetPassword({password, token})
+    this.props.resetPassword({ password, token })
+    this.setState({ password: '' })
   }
 
   render() { 
