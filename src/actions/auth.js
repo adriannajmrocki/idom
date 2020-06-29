@@ -56,7 +56,7 @@ export const login = (username, password) => dispatch => {
 
   axios.post('http://127.0.0.1:8000/api-token-auth/', body, config)
   .then(res => {
-    console.log(res.data);
+    console.log(res);
     if (res.status === 200) {
       dispatch({
         type: LOGIN_SUCCESS,

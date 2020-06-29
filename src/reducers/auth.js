@@ -2,9 +2,9 @@ import { USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOU
 
 const initialState = {
   token: localStorage.getItem('token'), // TU BYŁ KOMENT
-  isAuthenticated: null,
+  isAuthenticated: localStorage.getItem('token') ? true : false,
   isLoading: false,
-  user: null,
+  // user: null,
   isRegistered: false
 }
 
