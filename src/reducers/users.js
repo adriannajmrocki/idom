@@ -1,7 +1,11 @@
-import { GET_USERS, DELETE_USER, UPDATE_USER } from '../actions/types';
+import { GET_USERS, DELETE_USER, UPDATE_USER, GET_USER_DATA } from '../actions/types';
 
 const initialState = {
-  users: []
+  users: [],
+  email: '',
+  telephone: '',
+  appNotifications: '',
+  smsNotifications: ''
 }
 
 export default function(state = initialState, action) {
@@ -10,6 +14,14 @@ export default function(state = initialState, action) {
       return {
         ...state,
         users: action.payload
+      }
+    case GET_USER_DATA:
+      return {
+        ...state,
+        email: action.payload.email,
+        telephone: action.payload.telephone,
+        appNotifications: '' + action.payload.app_notifications,
+        smsNotifications: '' + action.payload.sms_notifications
       }
     case DELETE_USER:
       return {

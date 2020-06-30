@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { updateUser } from '../actions/users';
+import { updateUser, getUserData } from '../actions/users';
 import { createMessage } from '../actions/messages';
 import Alerts from '../layouts/Alerts';
 import axios from 'axios';
@@ -17,6 +17,10 @@ class EditUserPage extends Component {
 
   static propTypes = {
     updateUser: PropTypes.func.isRequired,
+    email: PropTypes.string.isRequired,
+    telephone: PropTypes.string,
+    appNotifications: PropTypes.string.isRequired,
+    smsNotifications: PropTypes.string.isRequired,
   }
 
   handleChange = e => {
@@ -75,6 +79,12 @@ class EditUserPage extends Component {
     })
   }
 
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    
+    this.props.getUserData(id);
+  }
+
   render() { 
     return (  
       <div className="col-md-6 m-auto">
@@ -89,22 +99,24 @@ class EditUserPage extends Component {
               name="email"
               onChange={this.handleChange}
               value={this.state.email}
+              placeholder={this.props.email}
             />
           </div>
           <div className="form-group">
-            <label>Numer telefonu</label>
+            <label>Numer telefonu z kierunkowym (opcjonalnie)</label>
             <input
               type="text"
               className="form-control"
               name="telephone"
               onChange={this.handleChange}
               value={this.state.telephone}
+              placeholder={this.props.telephone}
             />
           </div>
           <div className="form-group">
             <label>Powiadomienia w aplikacji</label>
             <select className="form-control" onChange={this.handleAppSelect} value={this.state.app_notifications}>
-              <option></option>
+              <option value="" disabled selected>{this.props.appNotifications === 'true' ? 'TAK' : 'NIE'}</option>
               <option value="true">TAK</option>
               <option value="false">NIE</option>
             </select>
@@ -112,7 +124,7 @@ class EditUserPage extends Component {
           <div className="form-group">
             <label>Powiadomienia SMS</label>
             <select className="form-control" onChange={this.handleSmsSelect} value={this.state.sms_notifications}>
-              <option></option>
+              <option value="" disabled selected>{this.props.smsNotifications === 'true' ? 'TAK' : 'NIE'}</option>
               <option value="true">TAK</option>
               <option value="false">NIE</option>
             </select>
@@ -126,5 +138,12 @@ class EditUserPage extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  email: state.users.email,
+  telephone: state.users.telephone,
+  appNotifications: state.users.appNotifications,
+  smsNotifications: state.users.smsNotifications,
+})
  
-export default connect(null, { updateUser, createMessage })(EditUserPage);
+export default connect(mapStateToProps, { updateUser, createMessage, getUserData })(EditUserPage);

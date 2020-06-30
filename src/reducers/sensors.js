@@ -1,9 +1,11 @@
 import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA } from '../actions/types';
+import { Redirect } from 'react-router-dom';
 
 const initialState = {
   sensors: [],
   sensorName: '',
-  sensorCategory: ''
+  sensorCategory: '',
+  sensorFrequency: ''
 }
 
 export default function(state = initialState, action) {
@@ -19,7 +21,8 @@ export default function(state = initialState, action) {
         // sensors: action.payload
         // sensors: state.sensors.map(sensor => (sensor.id === action.payload.id ? action.payload : state)),
         sensorName: action.payload.name,
-        sensorCategory: action.payload.category
+        sensorCategory: action.payload.category,
+        sensorFrequency: action.payload.frequency
       }
     case DELETE_SENSOR:
       return {

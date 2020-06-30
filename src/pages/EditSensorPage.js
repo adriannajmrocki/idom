@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { updateSensor, getSensorData } from '../actions/sensors';
 import { createMessage } from '../actions/messages';
 import Alerts from '../layouts/Alerts';
+import { Redirect } from 'react-router-dom';
 
 class EditSensorPage extends Component {
 
@@ -17,6 +18,7 @@ class EditSensorPage extends Component {
   static propTypes = {
     sensorName: PropTypes.string.isRequired,
     sensorCategory: PropTypes.string.isRequired,
+    sensorFrequency: PropTypes.string.isRequired,
     updateSensor: PropTypes.func.isRequired,
     getSensorData: PropTypes.func.isRequired
   }
@@ -134,12 +136,13 @@ class EditSensorPage extends Component {
               name="name"
               onChange={this.handleChange}
               value={this.state.name}
+              placeholder={this.props.sensorName}
             />
           </div>
           <div className="form-group">
             <label>Kategoria</label>
             <select className="form-control" onChange={this.handleCategorySelect} value={this.state.category}>
-              <option></option>
+              <option value="" disabled selected>{this.props.sensorCategory === 'temperature' ? 'Czujnik temperatury' : 'Czujnik wilgotności'}</option>
               <option value="temperature">Czujnik temperatury</option>
               <option value="humidity">Czujnik wilgotności</option>
             </select>
@@ -147,7 +150,7 @@ class EditSensorPage extends Component {
           <div className="form-group">
               <label>Częstotliwość pobierania danych</label>
               <select className="form-control" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
-                <option></option>
+                <option value="" disabled selected>Sekundy</option>
                 <option value="seconds">Sekundy</option>
                 <option value="minutes">Minuty</option>
                 <option value="hours">Godziny</option>
@@ -161,7 +164,7 @@ class EditSensorPage extends Component {
                 name="frequency"
                 onChange={this.handleChange}
                 value={this.state.frequency}
-                placeholder="Wartość..."
+                placeholder={this.props.sensorFrequency}
               />
             </div>
           <div className="form-group">
@@ -177,7 +180,7 @@ class EditSensorPage extends Component {
 const mapStateToProps = state => ({
   sensorName: state.sensors.sensorName,
   sensorCategory: state.sensors.sensorCategory,
+  sensorFrequency: state.sensors.sensorFrequency
 })
  
 export default connect(mapStateToProps, { updateSensor, createMessage, getSensorData })(EditSensorPage);
-// export default connect(null, { updateSensor, getSensorData })(EditSensorPage);

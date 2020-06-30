@@ -1,4 +1,4 @@
-import { GET_USERS, DELETE_USER, UPDATE_USER } from './types';
+import { GET_USERS, DELETE_USER, UPDATE_USER, GET_USER_DATA } from './types';
 import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
 
@@ -40,6 +40,35 @@ export const getUsers = () => (dispatch, getState) => {
 //   })
 //   .catch(err => console.log(err));
 // }
+
+// GET USER DATA
+// Return data of user
+export const getUserData = (id) => (dispatch, getState) => {
+
+  // Get token from state
+  const token = getState().auth.token;
+  console.log(token);
+
+  // Headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    }
+  }
+
+  axios.get(`api/users/detail_id/${id}`, config)
+  .then(res => {
+    console.log(res);
+    if (res.status === 200) {
+      dispatch({
+        type: GET_USER_DATA,
+        payload: res.data
+      })
+    }
+  })
+  .catch(err => console.log(err))
+}
 
 
 // DELETE USER

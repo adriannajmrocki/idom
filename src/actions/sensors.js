@@ -1,6 +1,8 @@
 import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA } from './types';
 import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
+import { Redirect } from 'react-router-dom';
+import React from 'react';
 
 // GET SENSORS
 // Return list of active sensors
@@ -49,10 +51,12 @@ export const getSensorData = (id) => (dispatch, getState) => {
   axios.get(`api/sensors/detail/${id}`, config)
   .then(res => {
     console.log(res);
-    dispatch({
-      type: GET_SENSOR_DATA,
-      payload: res.data
-    })
+    if (res.status === 200) {
+      dispatch({
+        type: GET_SENSOR_DATA,
+        payload: res.data
+      })
+    }
   })
   .catch(err => console.log(err))
 }

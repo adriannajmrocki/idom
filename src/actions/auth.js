@@ -53,6 +53,10 @@ export const login = (username, password) => dispatch => {
     }
   }
 
+  const host = 'https://tauriform-wren-7690.dataplicity.io/';
+  axios.defaults.baseURL = host;
+  axios.defaults.port = 8001;
+
   // Request Body
   const body = JSON.stringify({ username, password });
 

@@ -12,6 +12,10 @@ export const resetPassword = (payload) => (dispatch) => {
       'Content-Type': "application/json",
     },
   }
+
+  const host = 'https://tauriform-wren-7690.dataplicity.io/';
+  axios.defaults.baseURL = host;
+  axios.defaults.port = 8001;
  
   const body = JSON.stringify(payload)
 

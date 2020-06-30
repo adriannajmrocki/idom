@@ -19,29 +19,31 @@ class SensorsList extends Component {
   render() { 
     return (  
       <Fragment>
-        <h2 style={{ marginTop: "40px" }}>Czujniki</h2>
-        <Link to='add-sensor'><button type="button" className="btn btn-primary btn-lg btn-block">Dodaj czujnik</button></Link>
-        <table style={{marginTop: "30px"}} className="table table-striped">
-          <thead>
-            <tr>
-              <th>Nazwa czujnika</th>
-              <th>Kategoria</th>
-              <th>Najnowsza wartość</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.sensors.map(sensor => (
-              <tr key={sensor.id}>
-                <td>{sensor.name}</td>
-                <td>{sensor.category === 'temperature' ? 'Temperatura' : 'Wilgotność'}</td>
-                <td>{sensor.category === 'temperature' ? `${sensor.last_data} °C` : `${sensor.last_data} %`}</td>
-                <td><Link to={`/edit-sensor/${sensor.id}`}><button className="btn btn-primary btn-sm">Edytuj</button></Link></td>
-                <td><button onClick={this.props.deleteSensor.bind(this, sensor.id)} className="btn btn-danger btn-sm">Usuń</button></td>
+        <div className="comntainer">
+          <h2 style={{ marginTop: "40px" }}>Czujniki</h2>
+          <Link to='add-sensor'><button type="button" className="btn btn-primary btn-lg btn-block">Dodaj czujnik</button></Link>
+          <table style={{marginTop: "30px"}} className="table table-striped">
+            <thead>
+              <tr>
+                <th>Nazwa czujnika</th>
+                <th>Kategoria</th>
+                <th>Najnowsza wartość</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {this.props.sensors.map(sensor => (
+                <tr key={sensor.id}>
+                  <td>{sensor.name}</td>
+                  <td>{sensor.category === 'temperature' ? 'Temperatura' : 'Wilgotność'}</td>
+                  <td>{sensor.category === 'temperature' ? `${sensor.last_data} °C` : `${sensor.last_data} %`}</td>
+                  <td><Link to={`/edit-sensor/${sensor.id}`}><button className="btn btn-primary btn-sm">Edytuj</button></Link></td>
+                  <td><button onClick={this.props.deleteSensor.bind(this, sensor.id)} className="btn btn-danger btn-sm">Usuń</button></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </Fragment>
     );
   }
