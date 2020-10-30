@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { createMessage, returnErrors } from './messages';
 
+import { createMessage, returnErrors } from './messages';
 import { USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL } from './types';
 import auth from '../reducers/auth';
+import { baseURL } from '../utils/url';
 
 
 // CHECK TOKEN & LOAD USER
@@ -44,7 +45,6 @@ import auth from '../reducers/auth';
 
 // http://127.0.0.1:8000
 
-
 // LOGIN USER
 export const login = (username, password) => dispatch => {
   const config = {
@@ -53,14 +53,14 @@ export const login = (username, password) => dispatch => {
     }
   }
 
-  const host = 'https://tauriform-wren-7690.dataplicity.io/';
-  axios.defaults.baseURL = host;
-  axios.defaults.port = 8001;
+  // const host = 'https://tauriform-wren-7690.dataplicity.io/';
+  // axios.defaults.baseURL = host;
+  // axios.defaults.port = 8001;
 
   // Request Body
   const body = JSON.stringify({ username, password });
 
-  axios.post('api/api-token-auth/', body, config)
+  axios.post(`${baseURL}/api-token-auth/`, body, config)
   .then(res => {
     console.log(res);
     if (res.status === 200) {
@@ -93,7 +93,7 @@ export const register = ({ username, email, telephone, password1, password2 }) =
 
   const body = JSON.stringify({ username, email, telephone, password1, password2 })
 
-  axios.post('api/users/add', body, config)
+  axios.post(`${baseURL}/users/add`, body, config)
   .then(res => {
     console.log(res.status)
     if (res.status === 201) {
@@ -129,7 +129,7 @@ export const logout = () => (dispatch, getState) => {
     }
   }
 
-  axios.post(`api/api-logout/${token}`, null, config)
+  axios.post(`${baseURL}/api-logout/${token}`, null, config)
   .then(res => {
     console.log(res);
     dispatch({

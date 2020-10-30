@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { register } from '../actions/auth';
-import { createMessage } from '../actions/messages';
-import Alerts from '../layouts/Alerts';
+import { register } from '../../actions/auth';
+import { createMessage } from '../../actions/messages';
+import Alerts from '../Alerts/Alerts';
 
-class RegistrationPage extends Component {
+class Register extends Component {
   state = {  
     username: '',
     email: '',
@@ -169,4 +169,4 @@ const mapStateToProps = state => ({
   isRegistered: state.auth.isRegistered
 })
  
-export default connect(mapStateToProps, { register, createMessage })(RegistrationPage);
+export default connect(mapStateToProps, { register, createMessage })(Register);

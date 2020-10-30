@@ -1,74 +1,10 @@
-// import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-// import '../styles/LoginPage.css';
-
-// class LoginPage extends Component {
-//   state = {
-//     username: "",
-//     password: "",
-//   }
-
-//   handleChange = e => {
-//     const name = e.target.name;
-//     const value = e.target.value;
-
-//     this.setState({
-//       [name]: value,
-//     })
-//   }
-
-//   handleSubmit = e => {
-//     e.preventDefault();
-
-//     if (this.state.username === "idom" && this.state.password === "idom") {
-//       alert("OK");
-//     } else {
-//       alert("ERROR");
-//     }
-
-//     this.setState({
-//       username: "",
-//       password: "",
-//     })
-//   }
-
-//   render() {
-//     const { username, password } = this.state;
-
-//     return (  
-//       <div id="container-login">
-//         <div id="content-login">
-//           <h1>LOGOWANIE</h1>
-//           <div className="bottom-line"></div>
-//           <form action="" onSubmit={this.handleSubmit}>
-//             <div className="form-group">
-//               <label htmlFor="username">Login</label>
-//               <input type="text" name="username" id="username" value={username} onChange={this.handleChange} />
-//             </div>
-
-//             <div className="form-group">
-//               <label htmlFor="password">Hasło</label>
-//               <input type="password" name="password" id="password" value={password} onChange={this.handleChange} />
-//             </div>
-
-//             <button>Zaloguj</button>
-//             <p>Zapomniałeś/aś hasła? <Link to="/">Zresetuj</Link></p>
-//           </form>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
- 
-// export default LoginPage;
-
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { login } from '../actions/auth';
-import { createMessage } from '../actions/messages';
-import Alerts from '../layouts/Alerts';
+import { login } from '../../actions/auth';
+import { createMessage } from '../../actions/messages';
+import Alerts from '../Alerts/Alerts';
 
 class LoginPage extends Component {
   state = {  

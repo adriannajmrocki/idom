@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { updateUser, getUserData } from '../actions/users';
-import { createMessage } from '../actions/messages';
-import Alerts from '../layouts/Alerts';
+import { updateUser, getUserData } from '../../actions/users';
+import { createMessage } from '../../actions/messages';
+import Alerts from '../Alerts/Alerts';
 import axios from 'axios';
 
-class EditUserPage extends Component {
+class EditUser extends Component {
 
   state = {  
     email: '',
@@ -146,4 +146,4 @@ const mapStateToProps = state => ({
   smsNotifications: state.users.smsNotifications,
 })
  
-export default connect(mapStateToProps, { updateUser, createMessage, getUserData })(EditUserPage);
+export default connect(mapStateToProps, { updateUser, createMessage, getUserData })(EditUser);

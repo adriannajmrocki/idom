@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { updateSensor, getSensorData } from '../actions/sensors';
-import { createMessage } from '../actions/messages';
-import Alerts from '../layouts/Alerts';
+import { updateSensor, getSensorData } from '../../actions/sensors';
+import { createMessage } from '../../actions/messages';
+import Alerts from '../Alerts/Alerts';
 import { Redirect } from 'react-router-dom';
 
-class EditSensorPage extends Component {
+class EditSensor extends Component {
 
   state = {
     name: '',
@@ -183,4 +183,4 @@ const mapStateToProps = state => ({
   sensorFrequency: state.sensors.sensorFrequency
 })
  
-export default connect(mapStateToProps, { updateSensor, createMessage, getSensorData })(EditSensorPage);
+export default connect(mapStateToProps, { updateSensor, createMessage, getSensorData })(EditSensor);

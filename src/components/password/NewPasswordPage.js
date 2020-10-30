@@ -3,9 +3,9 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { resetPassword } from '../actions/password';
-import { createMessage } from '../actions/messages';
-import Alerts from '../layouts/Alerts';
+import { resetPassword } from '../../actions/password';
+import { createMessage } from '../../actions/messages';
+import Alerts from '../Alerts/Alerts';
 
 class NewPasswordView extends Component {
   state = {  

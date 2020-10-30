@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import UsersList from '../components/UsersList';
+import UsersList from './UsersList';
 
 const AdminPage = () => {
   return (  

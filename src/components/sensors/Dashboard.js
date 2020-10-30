@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import SensorsList from '../components/SensorsList';
+import SensorsList from './SensorsList';
 
 const Dashboard = () => {
   return (

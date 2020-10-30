@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addSensor } from '../actions/sensors';
-import { createMessage } from '../actions/messages';
-import Alerts from '../layouts/Alerts';
+import { addSensor } from '../../actions/sensors';
+import { createMessage } from '../../actions/messages';
+import Alerts from '../Alerts/Alerts';
 
-class AddSensorPage extends Component {
+class AddSensor extends Component {
   state = {  
     name: '',
     category: '',
@@ -164,6 +164,8 @@ class AddSensorPage extends Component {
                 <option></option>
                 <option value="temperature">Czujnik temperatury</option>
                 <option value="humidity">Czujnik wilgotności</option>
+                <option value="water">Czujnik temperatury wody</option>
+                <option value="smoke">Czujnik dymu</option>
               </select>
             </div>
             <div className="form-group">
@@ -196,4 +198,4 @@ class AddSensorPage extends Component {
   }
 }
  
-export default connect(null, { createMessage, addSensor })(AddSensorPage);
+export default connect(null, { createMessage, addSensor })(AddSensor);

@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { createMessage } from '../actions/messages';
-import Alerts from '../layouts/Alerts';
+import { createMessage } from '../../actions/messages';
+import Alerts from '../Alerts/Alerts';
 
 class ResetPasswordPage extends Component {
   state = {  
@@ -43,6 +43,7 @@ class ResetPasswordPage extends Component {
       this.props.createMessage({ emailFormatError: 'Nieprawidłowy format adresu email' });
     } else {
       this.reset(this.state.email);
+      this.setState({ email: '' })
     }
   }
 

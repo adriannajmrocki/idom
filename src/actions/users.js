@@ -1,6 +1,8 @@
-import { GET_USERS, DELETE_USER, UPDATE_USER, GET_USER_DATA } from './types';
 import axios from 'axios';
-import { createMessage, returnErrors } from './messages';
+
+import { GET_USERS, DELETE_USER, UPDATE_USER, GET_USER_DATA } from './types';
+import { createMessage } from './messages';
+import { baseURL } from '../utils/url';
 
 // GET USERS
 export const getUsers = () => (dispatch, getState) => {
@@ -16,7 +18,7 @@ export const getUsers = () => (dispatch, getState) => {
       }
     }
 
-  axios.get('api/users/list', config)
+  axios.get(`${baseURL}/users/list`, config)
   .then(res => {
     console.log(res);
     dispatch({
@@ -57,7 +59,7 @@ export const getUserData = (id) => (dispatch, getState) => {
     }
   }
 
-  axios.get(`api/users/detail_id/${id}`, config)
+  axios.get(`${baseURL}/users/detail_id/${id}`, config)
   .then(res => {
     console.log(res);
     if (res.status === 200) {
@@ -90,7 +92,7 @@ export const deleteUser = id => (dispatch, getState) => {
     config.headers['Authorization'] = `Token ${token}`;
   }
 
-  axios.delete(`api/users/delete/${id}`, config)
+  axios.delete(`${baseURL}/users/delete/${id}`, config)
   .then(res => {
     console.log(res);
     dispatch(createMessage({ userDeleted: 'Użytkownik został usunięty' }))
@@ -123,7 +125,7 @@ export const updateUser = (id, userData) => (dispatch, getState) => {
   }
 
   // Put request to API
-  axios.put(`api/users/update/${id}`, userData, config)
+  axios.put(`${baseURL}/users/update/${id}`, userData, config)
   .then(res => {
     console.log(res);
     if (res.status === 200) {

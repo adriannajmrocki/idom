@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-const HomePage = () => {
+const Home = () => {
   return (  
     <Fragment>
       <div className="jumbotron" style={{ backgroundColor: "#fff" }}>
@@ -17,4 +17,4 @@ const HomePage = () => {
   );
 }
  
-export default HomePage;
+export default Home;
