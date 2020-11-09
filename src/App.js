@@ -20,6 +20,8 @@ import NewPasswordView from './components/password/NewPasswordPage';
 import AddSensor from './components/sensors/AddSensor';
 import EditSensor from './components/sensors/EditSensor';
 import EditUser from './components/users/EditUser';
+import Cameras from './components/Cameras/Cameras';
+
 import Alerts from "./components/Alerts/Alerts";
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
@@ -60,6 +62,7 @@ class App extends Component {
                   <PrivateRoute path='/add-sensor' component={AddSensor} />
                   <PrivateRoute path='/edit-sensor/:id' component={EditSensor} />
                   <PrivateRoute path='/edit-user/:id' component={EditUser} />
+                  <PrivateRoute path='/cameras' component={Cameras} />
                 </Switch>
               </div>
             </Fragment>
