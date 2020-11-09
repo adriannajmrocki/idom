@@ -1,0 +1,36 @@
+.name {
+  flex: 2;
+}
+
+.data {
+  flex: 1;
+}
+
+.edit {
+  flex: 1;
+}
+
+.delete {
+  flex: 1;
+}
+
+.add-margin {
+  margin-top: 40px;
+}
+
+/* Icons */
+.fa-thermometer-half {
+  color: #987316;
+}
+
+.fa-tint {
+  color: #987316;
+}
+
+.fa-trash-alt {
+  cursor: pointer;
+}
+
+.fa-edit {
+  color: #987316;
+}

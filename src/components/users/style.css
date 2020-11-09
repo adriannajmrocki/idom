@@ -1,0 +1,24 @@
+.fa-user {
+  color: #987316;
+}
+
+h2 {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+
+.username {
+  flex: 1;
+}
+
+.email {
+  flex: 2;
+}
+
+.telephone {
+  flex: 2;
+}
+
+.icon {
+  flex: 1;
+}

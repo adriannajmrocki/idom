@@ -139,6 +139,7 @@ class EditSensor extends Component {
               placeholder={this.props.sensorName}
             />
           </div>
+
           <div className="form-group">
             <label>Kategoria</label>
             <select className="form-control" onChange={this.handleCategorySelect} value={this.state.category}>
@@ -147,6 +148,7 @@ class EditSensor extends Component {
               <option value="humidity">Czujnik wilgotności</option>
             </select>
           </div>
+
           <div className="form-group">
               <label>Częstotliwość pobierania danych</label>
               <select className="form-control" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
@@ -157,9 +159,10 @@ class EditSensor extends Component {
                 <option value="days">Dni</option>
               </select>
             </div>
+
             <div className="form-group">
               <input
-                type="number"
+                type="string"
                 className="form-control"
                 name="frequency"
                 onChange={this.handleChange}
@@ -167,6 +170,7 @@ class EditSensor extends Component {
                 placeholder={this.props.sensorFrequency}
               />
             </div>
+
           <div className="form-group">
             <button className="btn btn-primary">Potwierdź</button>
           </div>
