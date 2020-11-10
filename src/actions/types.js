@@ -26,3 +26,6 @@ export const RESET_PASSWORD = 'RESET_PASSWORD';
 
 export const GET_CAMERAS = 'GET_CAMERAS';
 export const ADD_CAMERA = 'ADD_CAMERA';
+export const DELETE_CAMERA = 'DELETE_CAMERA';
+export const UPDATE_CAMERA = 'UPDATE_CAMERA';
+export const GET_CAMERA_DATA = 'GET_CAMERA_DATA';

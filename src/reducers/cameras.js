@@ -1,7 +1,8 @@
-import { GET_CAMERAS, ADD_CAMERA } from '../actions/types';
+import { GET_CAMERAS, ADD_CAMERA, DELETE_CAMERA, UPDATE_CAMERA, GET_CAMERA_DATA } from '../actions/types';
 
 const initialState = {
-  cameras: []
+  cameras: [],
+  cameraName: ''
 }
 
 export default function(state = initialState, action) {
@@ -15,6 +16,21 @@ export default function(state = initialState, action) {
       return {
         ...state,
         cameras: [...state.cameras, action.payload]
+      }
+    case DELETE_CAMERA:
+      return {
+        ...state,
+        cameras: state.cameras.filter(camera => camera.id !== action.payload)
+      }
+    case UPDATE_CAMERA:
+      return {
+        ...state,
+        cameras: state.cameras.map(camera => (camera.id === action.payload.id ? action.payload : state))
+      }
+    case GET_CAMERA_DATA:
+      return {
+        ...state,
+        cameraName: action.payload.name,
       }
     default:
       return state;

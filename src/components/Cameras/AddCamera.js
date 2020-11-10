@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 
 import { addCamera } from '../../actions/cameras';
 
-import { createMessage } from '../../actions/messages';
 import Alerts from '../Alerts/Alerts';
-import e from 'cors';
 
 class AddCamera extends Component {
 
@@ -29,8 +27,8 @@ class AddCamera extends Component {
 
     const { name } = this.state;
     const newCamera = { name };
-    
-    this.props.addCamera(newCamera);
+
+    this.props.updateCamera(newCamera);
     this.setState({ name: '' });
   }
 

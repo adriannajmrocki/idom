@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getCameras } from '../../actions/cameras';
+import { getCameras, deleteCamera } from '../../actions/cameras';
 
 import '../../styles/utilStyles.css'
 import './style.css';
@@ -12,7 +12,8 @@ class Cameras extends Component {
 
   static propTypes = {
     cameras: PropTypes.array.isRequired,
-    getCameras: PropTypes.func.isRequired
+    getCameras: PropTypes.func.isRequired,
+    deleteCamera: PropTypes.func.isRequired
   }
 
   componentDidMount() {
@@ -36,7 +37,7 @@ class Cameras extends Component {
                 <li className="item-li">{camera.name}</li>
                 <li className="item-li"><Link to={''}>PODGLĄD</Link></li>
                 <li className="icon item-li"><Link to={`/edit-camera/${camera.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
-                <li className="icon item-li"><i className="far fa-trash-alt fa-lg"></i></li>
+                <li className="icon item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteCamera.bind(this, camera.id)}></i></li>
               </ul>
             </div>
           )
@@ -50,4 +51,4 @@ const mapStateToProps = state => ({
   cameras: state.cameras.cameras
 })
 
-export default connect(mapStateToProps, { getCameras })(Cameras);
+export default connect(mapStateToProps, { getCameras, deleteCamera })(Cameras);
