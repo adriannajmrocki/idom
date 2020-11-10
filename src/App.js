@@ -21,6 +21,7 @@ import AddSensor from './components/sensors/AddSensor';
 import EditSensor from './components/sensors/EditSensor';
 import EditUser from './components/users/EditUser';
 import Cameras from './components/Cameras/Cameras';
+import AddCamera from './components/Cameras/AddCamera';
 import Controllers from './components/Controllers/Controllers';
 
 import Alerts from "./components/Alerts/Alerts";
@@ -64,6 +65,7 @@ class App extends Component {
                   <PrivateRoute path='/edit-sensor/:id' component={EditSensor} />
                   <PrivateRoute path='/edit-user/:id' component={EditUser} />
                   <PrivateRoute path='/cameras' component={Cameras} />
+                  <PrivateRoute path='/add-camera' component={AddCamera} />
                   <PrivateRoute path='/controllers' component={Controllers} />
                 </Switch>
               </div>

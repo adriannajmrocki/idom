@@ -34,7 +34,7 @@ class Cameras extends Component {
             <div key={camera.id} className="item">
               <ul className="item-ul">
                 <li className="item-li">{camera.name}</li>
-                <li className="item-li"><Link>PODGLĄD</Link></li>
+                <li className="item-li"><Link to={''}>PODGLĄD</Link></li>
                 <li className="icon item-li"><Link to={`/edit-camera/${camera.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                 <li className="icon item-li"><i className="far fa-trash-alt fa-lg"></i></li>
               </ul>

@@ -64,6 +64,10 @@ export class Alerts extends Component {
       if (message.resetPasswordEmailError) alert.error(message.resetPasswordEmailError);
       if (message.resetPasswordSuccess) alert.success(message.resetPasswordSuccess);
       if (message.resetPasswordError) alert.error(message.resetPasswordError);
+
+      // Cameras alerts
+      if (message.cameraAdded) alert.success(message.cameraAdded);
+      if (message.cameraExists) alert.error(message.cameraExists);
     }
   }
 

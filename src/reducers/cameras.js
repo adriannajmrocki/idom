@@ -1,4 +1,4 @@
-import { GET_CAMERAS } from '../actions/types';
+import { GET_CAMERAS, ADD_CAMERA } from '../actions/types';
 
 const initialState = {
   cameras: []
@@ -10,6 +10,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         cameras: action.payload
+      }
+    case ADD_CAMERA:
+      return {
+        ...state,
+        cameras: [...state.cameras, action.payload]
       }
     default:
       return state;

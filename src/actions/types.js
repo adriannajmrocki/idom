@@ -25,3 +25,4 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const RESET_PASSWORD = 'RESET_PASSWORD';
 
 export const GET_CAMERAS = 'GET_CAMERAS';
+export const ADD_CAMERA = 'ADD_CAMERA';
