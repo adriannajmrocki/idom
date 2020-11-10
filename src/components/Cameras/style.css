@@ -1,3 +1,7 @@
+.item-li {
+  flex: 1;
+}
+
 .fa-video {
   color: #987316;
 }
