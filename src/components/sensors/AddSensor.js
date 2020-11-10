@@ -9,7 +9,7 @@ import Select from 'react-select';
 
 const categoryOptions = [
   { value: "temperature", label: "Temperatura" },
-  { value: "temperature", label: "Temperatura wody" },
+  { value: "water_temp", label: "Temperatura wody" },
   { value: "humidity", label: "Wilgotność" }
 ]
 

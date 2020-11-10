@@ -61,7 +61,7 @@ class SensorsList extends Component {
           <h5 className="category-title">Temperatura</h5>
         </div>
         {this.props.sensors.map(sensor => {
-          if (sensor.category === 'temperature') {
+          if (sensor.category === 'temperature' || sensor.category === 'water_temp') {
             return (
               <Fragment>
                 <div key={sensor.id} className="item">

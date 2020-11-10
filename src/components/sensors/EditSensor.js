@@ -140,6 +140,7 @@ class EditSensor extends Component {
             />
           </div>
 
+          {this.props.sensorCategory !== 'water_temp' ?
           <div className="form-group">
             <label>Kategoria</label>
             <select className="form-control" onChange={this.handleCategorySelect} value={this.state.category}>
@@ -147,8 +148,9 @@ class EditSensor extends Component {
               <option value="temperature">Czujnik temperatury</option>
               <option value="humidity">Czujnik wilgotności</option>
             </select>
-          </div>
+          </div> : false}
 
+          {this.props.sensorCategory !== 'water_temp' ?
           <div className="form-group">
               <label>Częstotliwość pobierania danych</label>
               <select className="form-control" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
@@ -158,8 +160,9 @@ class EditSensor extends Component {
                 <option value="hours">Godziny</option>
                 <option value="days">Dni</option>
               </select>
-            </div>
+            </div> : false}
 
+            {this.props.sensorCategory !== 'water_temp' ?
             <div className="form-group">
               <input
                 type="string"
@@ -169,7 +172,7 @@ class EditSensor extends Component {
                 value={this.state.frequency}
                 placeholder={this.props.sensorFrequency}
               />
-            </div>
+            </div> : false}
 
           <div className="form-group">
             <button className="btn btn-primary">Potwierdź</button>
