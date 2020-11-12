@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { getCameras, deleteCamera } from '../../actions/cameras';
+import { baseURL } from '../../utils/url';
 
 import '../../styles/utilStyles.css'
 import './style.css';
@@ -35,7 +36,7 @@ class Cameras extends Component {
             <div key={camera.id} className="item">
               <ul className="item-ul">
                 <li className="item-li">{camera.name}</li>
-                <li className="item-li"><Link to={''}>PODGLĄD</Link></li>
+                <li className="item-li"><a href={`${baseURL}/cameras/stream/${camera.id}`} target="_blank" rel="noreferrer">PODGLĄD</a></li>
                 <li className="icon item-li"><Link to={`/edit-camera/${camera.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                 <li className="icon item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteCamera.bind(this, camera.id)}></i></li>
               </ul>
