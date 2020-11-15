@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { getSensors, deleteSensor } from '../../actions/sensors';
 
 import '../../styles/utilStyles.css';
@@ -66,10 +67,10 @@ class SensorsList extends Component {
               <Fragment>
                 <div key={sensor.id} className="item">
                   <ul className="item-ul">
-                    <li className="name">{sensor.name}</li>
-                    <li className="data">{`${sensor.last_data} °C`}</li>
-                    <li className="edit"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
-                    <li className="delete"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
+                    <li className="item-li">{sensor.name}</li>
+                    <li className="item-li">{`${sensor.last_data} °C`}</li>
+                    <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                    <li className="item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
                   </ul>
                 </div>
               </Fragment>
@@ -86,10 +87,10 @@ class SensorsList extends Component {
             return (
               <div key={sensor.id} className="item">
                 <ul className="item-ul">
-                  <li className="name">{sensor.name}</li>
-                  <li className="data">{`${sensor.last_data}%`}</li>
-                  <li className="edit"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
-                  <li className="delete"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
+                  <li className="item-li">{sensor.name}</li>
+                  <li className="item-li">{`${sensor.last_data}%`}</li>
+                  <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                  <li className="item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
                 </ul>
               </div>
             )
@@ -105,10 +106,10 @@ class SensorsList extends Component {
             return (
               <div key={sensor.id} className="item">
                 <ul className="item-ul">
-                  <li className="name">{sensor.name}</li>
+                  <li className="item-li">{sensor.name}</li>
                   {/* <li className="data">{`${sensor.last_data}%`}</li> */}
-                  <li className="edit"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
-                  <li className="delete"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
+                  <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                  <li className="item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
                 </ul>
               </div>
             )

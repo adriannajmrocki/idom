@@ -70,6 +70,13 @@ export class Alerts extends Component {
       if (message.cameraExists) alert.error(message.cameraExists);
       if (message.cameraDeleted) alert.success(message.cameraDeleted);
       if (message.cameraUpdated) alert.success(message.cameraUpdated);
+
+      // Controllers alerts
+      if (message.controllerAdded) alert.success(message.controllerAdded);
+      if (message.controllerExists) alert.error(message.controllerExists);
+      if (message.controllerDeleted) alert.success(message.controllerDeleted);
+      if (message.controllerUpdated) alert.success(message.controllerUpdated);
+      if (message.noDataError) alert.error(message.noDataError);
     }
   }
 

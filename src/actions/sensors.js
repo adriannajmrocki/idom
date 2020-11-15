@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA } from './types';
-import { createMessage, returnErrors } from './messages';
+import { createMessage } from './messages';
 import { baseURL } from '../utils/url';
 
 // GET SENSORS

@@ -65,6 +65,11 @@
   margin-bottom: 0;
 }
 
+.item-li {
+  flex: 1;
+  text-align: center;
+}
+
 li {
   list-style: none;
   font-size: 14px;

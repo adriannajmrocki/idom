@@ -1,5 +1,4 @@
 import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA } from '../actions/types';
-import { Redirect } from 'react-router-dom';
 
 const initialState = {
   sensors: [],

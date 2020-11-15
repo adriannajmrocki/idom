@@ -24,6 +24,8 @@ import Cameras from './components/Cameras/Cameras';
 import AddCamera from './components/Cameras/AddCamera';
 import EditCamera from './components/Cameras/EditCamera';
 import Controllers from './components/Controllers/Controllers';
+import AddController from './components/Controllers/AddController';
+import EditController from './components/Controllers/EditController';
 
 import Alerts from "./components/Alerts/Alerts";
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -69,6 +71,8 @@ class App extends Component {
                   <PrivateRoute path='/add-camera' component={AddCamera} />
                   <PrivateRoute path='/edit-camera/:id' component={EditCamera} />
                   <PrivateRoute path='/controllers' component={Controllers} />
+                  <PrivateRoute path='/add-controller' component={AddController} />
+                  <PrivateRoute path='/edit-controller/:id' component={EditController} />
                 </Switch>
               </div>
             </Fragment>
