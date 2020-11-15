@@ -5,6 +5,7 @@ import { createMessage } from './messages';
 import { baseURL } from '../utils/url';
 
 // GET USERS
+// Returns list of users
 export const getUsers = () => (dispatch, getState) => {
     // Get token from state
     const token = getState().auth.token;
@@ -29,29 +30,12 @@ export const getUsers = () => (dispatch, getState) => {
   .catch(err => console.log(err));
 }
 
-
-// // GET USER DATA
-// export const getUserData = (userData) => dispatch => {
-//   axios.get(`http://127.0.0.1:8000/users/list`)
-//   .then(res => {
-//     console.log(res);
-//     dispatch({
-//       type: GET_USER_DATA,
-//       payload: res.data
-//     });
-//   })
-//   .catch(err => console.log(err));
-// }
-
 // GET USER DATA
-// Return data of user
+// Returns data of user
 export const getUserData = (id) => (dispatch, getState) => {
 
-  // Get token from state
   const token = getState().auth.token;
-  console.log(token);
 
-  // Headers
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -59,7 +43,7 @@ export const getUserData = (id) => (dispatch, getState) => {
     }
   }
 
-  axios.get(`${baseURL}/users/detail_id/${id}`, config)
+  axios.get(`${baseURL}/users/detail/${id}`, config)
   .then(res => {
     console.log(res);
     if (res.status === 200) {

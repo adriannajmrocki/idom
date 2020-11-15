@@ -9,25 +9,25 @@ import { baseURL } from '../utils/url';
 // CHECK TOKEN & LOAD USER
 // export const loadUser = () => (dispatch, getState) => {
 
-//   // User Loading
-//   dispatch({ type: USER_LOADING });
+  // User Loading
+  // dispatch({ type: USER_LOADING });
 
-//   // Get token from state
-//   const token = getState().auth.token;
+  // Get token from state
+  // const token = getState().auth.token;
 
-//   // Headers
-//   const config = {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//   }
+  // Headers
+  // const config = {
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  // }
 
-//   // If token, add to headers config
-//   if (token) {
+  // If token, add to headers config
+  // if (token) {
 //     config.headers['Authorization'] = `Token ${token}`;
 //   }
 
-//   axios.get('http://127.0.0.1:8000/register/', config)
+//   axios.get('http://127.0.0.1:8000/api-token-auth/', config)
 //     .then(res => {
 //       console.log(res);
 //       dispatch({

@@ -4,7 +4,7 @@ const initialState = {
   token: localStorage.getItem('token'), // TU BYŁ KOMENT
   isAuthenticated: localStorage.getItem('token') ? true : false,
   isLoading: false,
-  // user: null,
+  user: null,
   isRegistered: false
 }
 

@@ -10,7 +10,8 @@ import Select from 'react-select';
 const categoryOptions = [
   { value: "temperature", label: "Temperatura" },
   { value: "water_temp", label: "Temperatura wody" },
-  { value: "humidity", label: "Wilgotność" }
+  { value: "humidity", label: "Wilgotność" },
+  { value: "smoke", label: "Dym" }
 ]
 
 const frequencyUnitOptions = [
@@ -200,16 +201,7 @@ class AddSensor extends Component {
               />
             </div>
             
-            {this.state.selectedCategoryLabel !== 'Temperatura wody' ?
-            <div>
-              <label>Częstotliwość pobierania danych</label>
-              <Select
-                value={this.state.frequencyUnit}
-                onChange={this.handleFrequencyUnitSelect}
-                options={frequencyUnitOptions}
-                placeholder={'Wybierz...'}
-              />
-            </div> :
+            {this.state.selectedCategoryLabel === 'Temperatura wody' || this.state.selectedCategoryLabel === 'Dym' ?
             <div>
               <label>Częstotliwość pobierania danych</label>
               <Select 
@@ -218,9 +210,29 @@ class AddSensor extends Component {
                 onChange={this.handleFrequencyUnitSelect}
                 placeholder={'Wybierz...'}
               />
+            </div>
+            :
+            <div>
+              <label>Częstotliwość pobierania danych</label>
+              <Select
+                value={this.state.frequencyUnit}
+                onChange={this.handleFrequencyUnitSelect}
+                options={frequencyUnitOptions}
+                placeholder={'Wybierz...'}
+              />
             </div> }
 
-            {this.state.selectedCategoryLabel !== 'Temperatura wody' ?
+            {this.state.selectedCategoryLabel === 'Temperatura wody' || this.state.selectedCategoryLabel === 'Dym' ?
+            <div>
+              <label>Wartość</label>
+              <Select 
+                options={constFrequencyOption}
+                value={this.state.frequency.value}
+                onChange={this.handleConstFrequencySelect}
+                placeholder={'Wybierz...'}
+              />
+            </div>
+            :
             <div className="form-group">
               <input
                 type="number"
@@ -229,16 +241,6 @@ class AddSensor extends Component {
                 onChange={this.handleChange}
                 value={this.state.frequency}
                 placeholder="Wartość..."
-              />
-            </div> 
-             :
-            <div>
-              <label>Wartość</label>
-              <Select 
-                options={constFrequencyOption}
-                value={this.state.frequency.value}
-                onChange={this.handleConstFrequencySelect}
-                placeholder={'Wybierz...'}
               />
             </div> }
 

@@ -140,6 +140,7 @@ class EditUser extends Component {
 }
 
 const mapStateToProps = state => ({
+  username: state.users.username,
   email: state.users.email,
   telephone: state.users.telephone,
   appNotifications: state.users.appNotifications,

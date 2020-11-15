@@ -140,7 +140,7 @@ class EditSensor extends Component {
             />
           </div>
 
-          {this.props.sensorCategory !== 'water_temp' ?
+          {this.props.sensorCategory !== 'water_temp' && this.props.sensorCategory !== 'smoke' ?
           <div className="form-group">
             <label>Kategoria</label>
             <select className="form-control" onChange={this.handleCategorySelect} value={this.state.category}>
@@ -150,7 +150,7 @@ class EditSensor extends Component {
             </select>
           </div> : false}
 
-          {this.props.sensorCategory !== 'water_temp' ?
+          {this.props.sensorCategory !== 'water_temp' && this.props.sensorCategory !== 'smoke' ?
           <div className="form-group">
               <label>Częstotliwość pobierania danych</label>
               <select className="form-control" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
@@ -162,7 +162,7 @@ class EditSensor extends Component {
               </select>
             </div> : false}
 
-            {this.props.sensorCategory !== 'water_temp' ?
+            {this.props.sensorCategory !== 'water_temp' && this.props.sensorCategory !== 'smoke' ?
             <div className="form-group">
               <input
                 type="string"

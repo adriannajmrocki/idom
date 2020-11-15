@@ -95,6 +95,25 @@ class SensorsList extends Component {
             )
           }
         })}
+
+        <div className="category-field add-margin" style={{"marginTop": "40px"}}>
+          <i class="fas fa-smoking fa-2x"></i>
+          <h5 className="category-title">Dym</h5>
+        </div>
+        {this.props.sensors.map(sensor => {
+          if (sensor.category === 'smoke') {
+            return (
+              <div key={sensor.id} className="item">
+                <ul className="item-ul">
+                  <li className="name">{sensor.name}</li>
+                  {/* <li className="data">{`${sensor.last_data}%`}</li> */}
+                  <li className="edit"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                  <li className="delete"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
+                </ul>
+              </div>
+            )
+          }
+        })}
       </div>
     );
   }
