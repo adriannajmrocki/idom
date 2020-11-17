@@ -7,6 +7,7 @@ import sensors from './sensors';
 import password from './password';
 import cameras from './cameras';
 import controllers from './controllers';
+import push from './push';
 
 export default combineReducers({
   users,
@@ -16,5 +17,6 @@ export default combineReducers({
   auth,
   password,
   cameras,
-  controllers
+  controllers,
+  push
 });

@@ -11,7 +11,9 @@ const categoryOptions = [
   { value: "temperature", label: "Temperatura" },
   { value: "water_temp", label: "Temperatura wody" },
   { value: "humidity", label: "Wilgotność" },
-  { value: "smoke", label: "Dym" }
+  { value: "smoke", label: "Dym" },
+  { value: "rain_sensor", label: "Deszcz" },
+  { value: "breathalyser", label: "Alkomat" }
 ]
 
 const frequencyUnitOptions = [
@@ -201,7 +203,7 @@ class AddSensor extends Component {
               />
             </div>
             
-            {this.state.selectedCategoryLabel === 'Temperatura wody' || this.state.selectedCategoryLabel === 'Dym' ?
+            {this.state.selectedCategoryLabel === 'Temperatura wody' || this.state.selectedCategoryLabel === 'Dym' || this.state.selectedCategoryLabel === 'Deszcz' || this.state.selectedCategoryLabel === 'Alkomat' ?
             <div>
               <label>Częstotliwość pobierania danych</label>
               <Select 
@@ -222,7 +224,7 @@ class AddSensor extends Component {
               />
             </div> }
 
-            {this.state.selectedCategoryLabel === 'Temperatura wody' || this.state.selectedCategoryLabel === 'Dym' ?
+            {this.state.selectedCategoryLabel === 'Temperatura wody' || this.state.selectedCategoryLabel === 'Dym' || this.state.selectedCategoryLabel === 'Deszcz' || this.state.selectedCategoryLabel === 'Alkomat' ?
             <div>
               <label>Wartość</label>
               <Select 

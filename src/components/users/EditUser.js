@@ -8,7 +8,8 @@ import axios from 'axios';
 
 class EditUser extends Component {
 
-  state = {  
+  state = {
+    username: this.props.username,  
     email: '',
     telephone: '',
     app_notifications: '',
@@ -81,6 +82,7 @@ class EditUser extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
+    console.log('1', this.state.username);
     
     this.props.getUserData(id);
   }

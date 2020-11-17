@@ -2,6 +2,7 @@ import { GET_USERS, DELETE_USER, UPDATE_USER, GET_USER_DATA } from '../actions/t
 
 const initialState = {
   users: [],
+  username: '',
   email: '',
   telephone: '',
   appNotifications: '',
@@ -18,6 +19,7 @@ export default function(state = initialState, action) {
     case GET_USER_DATA:
       return {
         ...state,
+        username: action.payload.username,
         email: action.payload.email,
         telephone: action.payload.telephone,
         appNotifications: '' + action.payload.app_notifications,
