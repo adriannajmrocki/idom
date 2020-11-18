@@ -1,17 +1,45 @@
 import React, { Component, Fragment } from 'react';
-import SensorsList from './SensorsList';
-
-import { requestFirebaseNotificationPermission } from '../../firebaseInit';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { sendFirebaseToken, getFirebaseToken } from '../../actions/push';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import SensorsList from './SensorsList';
 import { baseURL } from '../../utils/url';
+
+import { sendFirebaseToken, getFirebaseToken } from '../../actions/push';
+import { requestFirebaseNotificationPermission, onMessageListener } from '../../firebaseInit';
 
 class Dashboard extends Component {
 
   static propTypes = {
     isFirebaseTokenSent: PropTypes.bool.isRequired
+  }
+
+  componentDidMount() {
+    onMessageListener()
+    .then((payload) => {
+      console.log(payload)
+      console.log(payload.notification.body)
+      const { body } = payload.notification.body;
+      // console.log('title', title);
+      // console.log('body', body);
+      toast.warn(`${payload.notification.body}`, {
+        position: "top-right",
+        autoClose: false,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      // toast.success('test')
+    })
+    .catch((err) => {
+      toast.error(JSON.stringify(err));
+    });
   }
 
   render() {
@@ -37,6 +65,7 @@ class Dashboard extends Component {
 
     return (
       <Fragment>
+        <ToastContainer autoClose={8000} position="top-center" />
         <SensorsList />
       </Fragment>
     )
