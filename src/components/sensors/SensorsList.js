@@ -51,7 +51,7 @@ class SensorsList extends Component {
         })}
 
         <div className="category-field" style={{"marginTop": "40px"}}>
-          <i class="fas fa-water fa-2x"></i>
+          <i className="fas fa-water fa-2x"></i>
           <h5 className="category-title">Temperatura wody</h5>
         </div>
         {this.props.sensors.map(sensor => {
@@ -82,6 +82,44 @@ class SensorsList extends Component {
                 <ul className="item-ul">
                   <li className="item-li">{sensor.name}</li>
                   <li className="item-li">{`${sensor.last_data}%`}</li>
+                  <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                  <li className="item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
+                </ul>
+              </div>
+            )
+          }
+        })}
+
+        <div className="category-field add-margin" style={{"marginTop": "40px"}}>
+          <i className="fas fa-tint fa-2x"></i>
+          <h5 className="category-title">Wilgotność powietrza</h5>
+        </div>
+        {this.props.sensors.map(sensor => {
+          if (sensor.category === 'air_humidity') {
+            return (
+              <div key={sensor.id} className="item">
+                <ul className="item-ul">
+                  <li className="item-li">{sensor.name}</li>
+                  <li className="item-li">{`${sensor.last_data}%`}</li>
+                  <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                  <li className="item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
+                </ul>
+              </div>
+            )
+          }
+        })}
+        
+        <div className="category-field add-margin" style={{"marginTop": "40px"}}>
+          <i className="fas fa-sort-amount-up fa-2x"></i>
+          <h5 className="category-title">Ciśnienie</h5>
+        </div>
+        {this.props.sensors.map(sensor => {
+          if (sensor.category === 'atmo_pressure') {
+            return (
+              <div key={sensor.id} className="item">
+                <ul className="item-ul">
+                  <li className="item-li">{sensor.name}</li>
+                  <li className="item-li">{`${sensor.last_data} hPa`}</li>
                   <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
                 </ul>

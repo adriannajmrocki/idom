@@ -11,9 +11,11 @@ const categoryOptions = [
   { value: "temperature", label: "Temperatura" },
   { value: "water_temp", label: "Temperatura wody" },
   { value: "humidity", label: "Wilgotność" },
+  { value: "air_humidity", label: "Wilgotność powietrza" },
+  { value: "atmo_pressure", label: "Ciśnienie atmosferyczne" },
+  { value: "breathalyser", label: "Alkomat" },
   { value: "smoke", label: "Dym" },
   { value: "rain_sensor", label: "Deszcz" },
-  { value: "breathalyser", label: "Alkomat" }
 ]
 
 const frequencyUnitOptions = [
