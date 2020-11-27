@@ -105,7 +105,7 @@ class App extends Component {
                   <PrivateRoute path='/admin' component={AdminPage} />
                   <PrivateRoute path='/add-sensor' component={AddSensor} />
                   <PrivateRoute path='/edit-sensor/:id' component={EditSensor} />
-                  <PrivateRoute path='/edit-user/:username' component={EditUser} />
+                  <PrivateRoute path='/edit-user/:id' component={EditUser} />
                   <PrivateRoute path='/cameras' component={Cameras} />
                   <PrivateRoute path='/add-camera' component={AddCamera} />
                   <PrivateRoute path='/edit-camera/:id' component={EditCamera} />

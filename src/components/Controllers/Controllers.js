@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getControllers, deleteController } from '../../actions/controllers';
+import { getControllers, deleteController, runController } from '../../actions/controllers';
 
 import '../../styles/utilStyles.css';
 import './style.css';
@@ -13,7 +13,8 @@ class Controllers extends Component {
   static propTypes = {
     controllers: PropTypes.array.isRequired,
     getControllers: PropTypes.func.isRequired,
-    deleteController: PropTypes.func.isRequired
+    deleteController: PropTypes.func.isRequired,
+    runController: PropTypes.func.isRequired
   }
 
   componentDidMount() {
@@ -78,7 +79,7 @@ class Controllers extends Component {
               <div key={controller.id} className="item">
                 <ul className="item-ul">
                   <li className="item-li">{controller.name}</li>
-                  <li className="item-li"><i className="far fa-play-circle fa-lg"></i></li>
+                  <li className="item-li"><i className="far fa-play-circle fa-lg" onClick={this.props.runController.bind(this, controller.name)}></i></li>
                   <li className="icon item-li"><Link to={`/edit-controller/${controller.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="icon item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteController.bind(this, controller.id)}></i></li>
                 </ul>
@@ -95,4 +96,4 @@ const mapStateToProps = state => ({
   controllers: state.controllers.controllers
 })
 
-export default connect(mapStateToProps, { getControllers, deleteController })(Controllers);
+export default connect(mapStateToProps, { getControllers, deleteController, runController })(Controllers);

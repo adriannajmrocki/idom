@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA } from './types';
+import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA, GET_CHART_DATA } from './types';
 import { createMessage } from './messages';
 import { baseURL } from '../utils/url';
 
@@ -139,22 +139,18 @@ export const addSensor = sensor => (dispatch, getState) => {
 // Update sensor's data
 export const updateSensor = (id, sensor) => (dispatch, getState) => {
 
-  // Get token from state
   const token = getState().auth.token;
 
-  // Headers
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   } 
 
-  // If token exists, add to headers config
   if (token) {
     config.headers['Authorization'] = `Token ${token}`
   }
 
-  // Put request to API
   axios.put(`${baseURL}/sensors/update/${id}`, sensor, config)
   .then(res => {
     console.log(res);
@@ -172,4 +168,28 @@ export const updateSensor = (id, sensor) => (dispatch, getState) => {
       dispatch(createMessage({ sensorExists: 'Taki czujnik już istnieje' }))
     }
   })
+}
+
+// GET CHART DATA
+// Returns data from sensor which will use to create a chart
+export const getChartData = id => (dispatch, getState) => {
+
+  const token = getState().auth.token;
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    }
+  } 
+
+  axios.get(`${baseURL}/sensors_data/list/${id}`, config)
+  .then(res => {
+    console.log(res);
+    dispatch({
+      type: GET_CHART_DATA,
+      payload: res.data
+    })
+  })
+  .catch(err => console.log(err))
 }

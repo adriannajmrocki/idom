@@ -1,3 +1,107 @@
+// import React, { useEffect, useState } from 'react';
+// import { connect } from 'react-redux';
+
+// import { updateUser, getUserData } from '../../actions/users';
+// import { createMessage } from '../../actions/messages';
+// import Alerts from '../Alerts/Alerts';
+
+// const EditUser = (props) => {
+
+//   const [username, setUsername] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [telephone, setTelephone] = useState('');
+//   const [app_notifications, setAppNotifications] = useState('');
+//   const [sms_notifications, setSmsNotifications] = useState('');
+
+//   useEffect(() => {
+//     const id = props.match.params.id;
+//     let usernameByID = props.users.map(user => id === user.id ? user.username : null)
+//     setUsername(usernameByID);
+//     console.log('username ' + username);
+//     console.log('usernameByID ' + usernameByID);
+//     // props.getUserData(username);
+//   }, [])
+
+//   const handleChange = e => {
+//     console.log(e.target.value);
+//   }
+
+//   const handleAppSelect = e => {
+//     console.log(e.target.value);
+//   }
+
+//   const handleSmsSelect = e => {
+//     console.log(e.target.value);
+//   }
+
+//   const handleSubmit = e => {
+//     console.log('submit');
+//   }
+
+//   return (
+//     <div className="col-md-6 m-auto">
+//       <div className="card card-body mt-5">
+//         <h2 className="text-center">Edytuj użytkownika</h2>
+//         <form onSubmit={handleSubmit}>
+//           <div className="form-group">
+//             <label>Email</label>
+//             <input
+//               type="email"
+//               className="form-control"
+//               name="email"
+//               onChange={handleChange}
+//               value={email}
+//               placeholder={props.email}
+//             />
+//           </div>
+//           <div className="form-group">
+//             <label>Numer telefonu z kierunkowym (opcjonalnie)</label>
+//             <input
+//               type="text"
+//               className="form-control"
+//               name="telephone"
+//               onChange={handleChange}
+//               value={telephone}
+//               placeholder={props.telephone}
+//             />
+//           </div>
+//           <div className="form-group">
+//             <label>Powiadomienia w aplikacji</label>
+//             <select className="form-control" onChange={handleAppSelect} value={app_notifications}>
+//               <option value="" disabled selected>{props.appNotifications === 'true' ? 'TAK' : 'NIE'}</option>
+//               <option value="true">TAK</option>
+//               <option value="false">NIE</option>
+//             </select>
+//           </div>
+//           <div className="form-group">
+//             <label>Powiadomienia SMS</label>
+//             <select className="form-control" onChange={handleSmsSelect} value={sms_notifications}>
+//               <option value="" disabled selected>{props.smsNotifications === 'true' ? 'TAK' : 'NIE'}</option>
+//               <option value="true">TAK</option>
+//               <option value="false">NIE</option>
+//             </select>
+//           </div>
+//           <div className="form-group">
+//             <button className="btn btn-primary">Potwierdź</button>
+//           </div>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// }
+
+// const mapStateToProps = state => ({
+//   users: state.users.users,
+//   username: state.users.username,
+//   email: state.users.email,
+//   telephone: state.users.telephone,
+//   appNotifications: state.users.appNotifications,
+//   smsNotifications: state.users.smsNotifications,
+// })
+ 
+// export default connect(mapStateToProps, { updateUser, getUserData, createMessage })(EditUser);
+
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,8 +112,7 @@ import axios from 'axios';
 
 class EditUser extends Component {
 
-  state = {
-    username: this.props.username,  
+  state = {  
     email: '',
     telephone: '',
     app_notifications: '',
@@ -82,8 +185,7 @@ class EditUser extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log('1', this.state.username);
-    
+
     this.props.getUserData(id);
   }
 
@@ -142,7 +244,7 @@ class EditUser extends Component {
 }
 
 const mapStateToProps = state => ({
-  username: state.users.username,
+  // username: state.users.username,
   email: state.users.email,
   telephone: state.users.telephone,
   appNotifications: state.users.appNotifications,

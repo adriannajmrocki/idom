@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_CONTROLLERS, ADD_CONTROLLER, DELETE_CONTROLLER, UPDATE_CONTROLLER, GET_CONTROLLER_DATA } from './types';
+import { GET_CONTROLLERS, ADD_CONTROLLER, DELETE_CONTROLLER, UPDATE_CONTROLLER, GET_CONTROLLER_DATA, RUN_CONTROLLER } from './types';
 import { createMessage } from './messages';
 import { baseURL } from '../utils/url';
 
@@ -136,4 +136,33 @@ export const getControllerData = (id) => (dispatch, getState) => {
     }
   })
   .catch(err => console.log(err))
+}
+
+// RUN CONTROLLER
+// Communicates with backend and run the controller
+export const runController = name => (dispatch, getState) => {
+
+  const token = getState().auth.token;
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    }
+  } 
+
+  axios.post(`${baseURL}/drivers/action`, name, config)
+  .then(res => {
+    if (res.status === 201) {
+      dispatch(createMessage({ controllerRunning: 'Sterownik został uruchomiony' }))
+      dispatch({
+        type: RUN_CONTROLLER,
+        payload: res.data
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err.response)
+    dispatch(createMessage({ controllerRunError: 'Nie udało się uruchomić sterownika' }))
+  })
 }

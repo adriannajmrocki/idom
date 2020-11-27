@@ -1,7 +1,8 @@
-import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA } from '../actions/types';
+import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA, GET_CHART_DATA } from '../actions/types';
 
 const initialState = {
   sensors: [],
+  chartData: [],
   sensorName: '',
   sensorCategory: '',
   sensorFrequency: ''
@@ -37,6 +38,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         sensors: state.sensors.map(sensor => (sensor.id === action.payload.id ? action.payload : state))
+      }
+    case GET_CHART_DATA:
+      return {
+        ...state,
+        chartData: action.payload
       }
     default:
       return state;

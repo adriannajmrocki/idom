@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getSensors, deleteSensor } from '../../actions/sensors';
+import { getSensors, deleteSensor, getChartData } from '../../actions/sensors';
 
 import '../../styles/utilStyles.css';
 import './style.css';

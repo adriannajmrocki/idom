@@ -47,7 +47,7 @@ class UsersList extends Component {
 
       <div className="container">
         <div className="head" style={{"marginBottom": "40px"}}>
-          <i class="far fa-user fa-2x"></i>
+          <i className="far fa-user fa-2x"></i>
           <h2>Użytkownicy</h2>
           <div className="line"></div>
         </div>
@@ -61,7 +61,7 @@ class UsersList extends Component {
                   <li className="email">{user.email}</li>
                   <li className="telephone">{user.telephone}</li>
                   <li className="icon"><Link to={`/edit-user/${user.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
-                  {!user.is_staff ? <li className="icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteUser.bind(this, user.id)}></i></li> : <li className="icon"><i class="fas fa-lock"></i></li>}
+                  {!user.is_staff ? <li className="icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteUser.bind(this, user.id)}></i></li> : <li className="icon"><i className="fas fa-lock"></i></li>}
                 </ul>
               </div>
             )

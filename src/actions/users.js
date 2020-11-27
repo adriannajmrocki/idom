@@ -32,7 +32,7 @@ export const getUsers = () => (dispatch, getState) => {
 
 // GET USER DATA
 // Returns data of user
-export const getUserData = (username) => (dispatch, getState) => {
+export const getUserData = (id) => (dispatch, getState) => {
 
   const token = getState().auth.token;
 
@@ -43,7 +43,7 @@ export const getUserData = (username) => (dispatch, getState) => {
     }
   }
 
-  axios.get(`${baseURL}/users/detail/${username}`, config)
+  axios.get(`${baseURL}/users/frontdetail/${id}`, config)
   .then(res => {
     console.log(res);
     if (res.status === 200) {
@@ -53,7 +53,7 @@ export const getUserData = (username) => (dispatch, getState) => {
       })
     }
   })
-  .catch(err => console.log(err))
+  .catch(err => console.log(err.response))
 }
 
 

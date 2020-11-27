@@ -77,6 +77,8 @@ export class Alerts extends Component {
       if (message.controllerDeleted) alert.success(message.controllerDeleted);
       if (message.controllerUpdated) alert.success(message.controllerUpdated);
       if (message.noDataError) alert.error(message.noDataError);
+      if (message.controllerRunning) alert.success(message.controllerRunning);
+      if (message.controllerRunError) alert.error(message.controllerRunError);
     }
   }
 
