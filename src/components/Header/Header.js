@@ -32,6 +32,9 @@ export class Header extends Component {
           <Link to='/cameras' className="nav-link">Kamery</Link>
         </li>
         <li className="nav-item">
+          <Link to='/csv' className="nav-link">CSV</Link>
+        </li>
+        <li className="nav-item">
           <Link to='/admin' className="nav-link">Użytkownicy</Link>
         </li>
         <li className="nav-item">
