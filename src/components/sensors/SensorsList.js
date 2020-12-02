@@ -28,12 +28,17 @@ class SensorsList extends Component {
           <div className="line"></div>
           <Link to='add-sensor'><button type="button" className="add-btn">+</button></Link>
         </div>
+
+        <div className="csv">
+          <p>Potrzebujesz pliku z danymi w formacie .csv?</p>
+          <p><Link to="/csv">Wygeneruj <i className="far fa-file-alt"></i></Link></p>
+        </div>
         
         <div className="category-field">
           <i className="fas fa-thermometer-half fa-2x"></i>
           <h5 className="category-title">Temperatura</h5>
         </div>
-        {this.props.sensors.map(sensor => {
+        {this.props.sensors.map((sensor, id) => {
           if (sensor.category === 'temperature') {
             return (
               <Fragment>
@@ -55,10 +60,9 @@ class SensorsList extends Component {
           <i className="fas fa-water fa-2x"></i>
           <h5 className="category-title">Temperatura wody</h5>
         </div>
-        {this.props.sensors.map(sensor => {
+        {this.props.sensors.map((sensor, id) => {
           if (sensor.category === 'water_temp') {
             return (
-              <Fragment>
                 <div key={sensor.id} className="item">
                   <ul className="item-ul">
                     <li className="item-li">{sensor.name}</li>
@@ -68,7 +72,6 @@ class SensorsList extends Component {
                     <li className="item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
                   </ul>
                 </div>
-              </Fragment>
             )
           }
         })}
@@ -77,7 +80,7 @@ class SensorsList extends Component {
           <i className="fas fa-tint fa-2x"></i>
           <h5 className="category-title">Wilgotność</h5>
         </div>
-        {this.props.sensors.map(sensor => {
+        {this.props.sensors.map((sensor, id) => {
           if (sensor.category === 'humidity') {
             return (
               <div key={sensor.id} className="item">
@@ -97,7 +100,7 @@ class SensorsList extends Component {
           <i className="fas fa-tint fa-2x"></i>
           <h5 className="category-title">Wilgotność powietrza</h5>
         </div>
-        {this.props.sensors.map(sensor => {
+        {this.props.sensors.map((sensor, id) => {
           if (sensor.category === 'air_humidity') {
             return (
               <div key={sensor.id} className="item">
@@ -117,7 +120,7 @@ class SensorsList extends Component {
           <i className="fas fa-sort-amount-up fa-2x"></i>
           <h5 className="category-title">Ciśnienie</h5>
         </div>
-        {this.props.sensors.map(sensor => {
+        {this.props.sensors.map((sensor, id) => {
           if (sensor.category === 'atmo_pressure') {
             return (
               <div key={sensor.id} className="item">
@@ -137,7 +140,7 @@ class SensorsList extends Component {
           <i className="fas fa-glass-cheers fa-2x"></i>
           <h5 className="category-title">Alkomat</h5>
         </div>
-        {this.props.sensors.map(sensor => {
+        {this.props.sensors.map((sensor, id) => {
           if (sensor.category === 'breathalyser') {
             return (
               <div key={sensor.id} className="item">
@@ -157,7 +160,7 @@ class SensorsList extends Component {
           <i className="fas fa-smoking fa-2x"></i>
           <h5 className="category-title">Dym</h5>
         </div>
-        {this.props.sensors.map(sensor => {
+        {this.props.sensors.map((sensor, id) => {
           if (sensor.category === 'smoke') {
             return (
               <div key={sensor.id} className="item">
@@ -177,7 +180,7 @@ class SensorsList extends Component {
           <i className="fas fa-cloud-rain fa-2x"></i>
           <h5 className="category-title">Deszcz</h5>
         </div>
-        {this.props.sensors.map(sensor => {
+        {this.props.sensors.map((sensor, id) => {
           if (sensor.category === 'rain_sensor') {
             return (
               <div key={sensor.id} className="item">

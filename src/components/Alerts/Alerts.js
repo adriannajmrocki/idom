@@ -79,6 +79,12 @@ export class Alerts extends Component {
       if (message.noDataError) alert.error(message.noDataError);
       if (message.controllerRunning) alert.success(message.controllerRunning);
       if (message.controllerRunError) alert.error(message.controllerRunError);
+
+      // CSV alerts
+      if (message.noItems) alert.error(message.noItems);
+      if (message.noFilter) alert.error(message.noFilter);
+      if (message.daysError) alert.error(message.daysError);
+      if (message.csvAccepted) alert.success(message.csvAccepted);
     }
   }
 

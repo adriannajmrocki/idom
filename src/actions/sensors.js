@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA, GET_CHART_DATA } from './types';
+import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA, GET_CHART_DATA, POST_CSV } from './types';
 import { createMessage } from './messages';
 import { baseURL } from '../utils/url';
 
@@ -10,7 +10,6 @@ export const getSensors = () => (dispatch, getState) => {
 
   // Get token from state
   const token = getState().auth.token;
-  console.log(token);
 
   // Headers
   const config = {
@@ -22,7 +21,6 @@ export const getSensors = () => (dispatch, getState) => {
 
   axios.get(`${baseURL}/sensors/list`, config)
   .then(res => {
-    console.log(res);
     dispatch({
       type: GET_SENSORS,
       payload: res.data
@@ -38,7 +36,6 @@ export const getSensorData = (id) => (dispatch, getState) => {
 
   // Get token from state
   const token = getState().auth.token;
-  console.log(token);
 
   // Headers
   const config = {
@@ -50,7 +47,6 @@ export const getSensorData = (id) => (dispatch, getState) => {
 
   axios.get(`${baseURL}/sensors/detail/${id}`, config)
   .then(res => {
-    console.log(res);
     if (res.status === 200) {
       dispatch({
         type: GET_SENSOR_DATA,
@@ -84,7 +80,6 @@ export const deleteSensor = id => (dispatch, getState) => {
   // Delete request to API
   axios.delete(`${baseURL}/sensors/delete/${id}`, config)
   .then(res => {
-    console.log(res);
     dispatch(createMessage({ sensorDeleted: 'Czujnik został usunięty' }))
     dispatch({
       type: DELETE_SENSOR,
@@ -117,7 +112,6 @@ export const addSensor = sensor => (dispatch, getState) => {
   // Post request to API
   axios.post(`${baseURL}/sensors/add`, sensor, config)
   .then(res => {
-    console.log(res);
     if (res.status === 201) {
       dispatch(createMessage({ sensorAdded: 'Czujnik został dodany' }))
       dispatch({
@@ -127,7 +121,6 @@ export const addSensor = sensor => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log(err.response.status);
     if (err.response.status === 400) {
       dispatch(createMessage({ sensorExists: 'Czujnik o podanej nazwie już istnieje' }))
     }
@@ -153,7 +146,6 @@ export const updateSensor = (id, sensor) => (dispatch, getState) => {
 
   axios.put(`${baseURL}/sensors/update/${id}`, sensor, config)
   .then(res => {
-    console.log(res);
     if (res.status === 200) {
       dispatch(createMessage({ sensorUpdated: 'Czujnik został zmodyfikowany' }))
       dispatch({
@@ -163,7 +155,6 @@ export const updateSensor = (id, sensor) => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log(err.response);
     if (err.response.status === 400 || err.response.status === 404) {
       dispatch(createMessage({ sensorExists: 'Taki czujnik już istnieje' }))
     }
@@ -185,11 +176,46 @@ export const getChartData = id => (dispatch, getState) => {
 
   axios.get(`${baseURL}/sensors_data/list/${id}`, config)
   .then(res => {
-    console.log(res);
     dispatch({
       type: GET_CHART_DATA,
       payload: res.data
     })
   })
   .catch(err => console.log(err))
+}
+
+// POST CSV
+// Send a post request for .csv file
+export const postCsv = sensorData => (dispatch, getState) => {
+
+  // Get token from state
+  const token = getState().auth.token;
+
+  // Headers
+  const config = {
+    headers: {
+      'Content-Type': "application/json"
+    }
+  }
+
+  // If token exists, add to headers config
+  if (token) {
+    config.headers['Authorization'] = `Token ${token}`
+  }
+
+  // Post request to API
+  axios.post(`${baseURL}/sensors_data/csv`, sensorData, config)
+  .then(res => {
+    console.log(res);
+    if (res.status === 200) {
+      dispatch(createMessage({ csvAccepted: 'Plik został wygenerowany' }))
+      dispatch({
+        type: POST_CSV,
+        payload: res.data
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err.response);
+  })
 }
