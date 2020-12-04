@@ -37,6 +37,7 @@ export class Alerts extends Component {
       if (message.frequencyMaxHoursError) alert.error(message.frequencyMaxHoursError);
       if (message.frequencyMinDaysError) alert.error(message.frequencyMinDaysError);
       if (message.frequencyMaxDaysError) alert.error(message.frequencyMaxDaysError);
+      if (message.noChartData) alert.info(message.noChartData);
 
       // Users alerts
       if (message.userDeleted) alert.success(message.userDeleted);
