@@ -1,0 +1,37 @@
+.filter-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.filter-btn {
+  border-radius: 50%;
+  border: 1px solid #987316;
+  height: 53px;
+  width: 53px;
+  font-size: 10px;
+  background-color: inherit;
+  color: #987316;
+  font-weight: 900;
+}
+
+.filter-btn:hover {
+  opacity: 0.8;
+}
+
+.filter-btn:focus { outline: none; }
+
+.two-weeks {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.month {
+  margin-left: 5px;
+}
+
+.choose-filter {
+  text-align: center;
+  margin-top: 80px;
+}
