@@ -3,13 +3,10 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
 } from "react-router-dom";
-import axios from 'axios';
 
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
-import { requestFirebaseNotificationPermission } from './firebaseInit'
 
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -30,18 +27,14 @@ import AddController from './components/Controllers/AddController';
 import EditController from './components/Controllers/EditController';
 import Chart from './components/Chart/Chart';
 import Csv from './components/Csv/Csv';
+import BulbColor from './components/Controllers/BulbColor';
 
 import Alerts from "./components/Alerts/Alerts";
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 import { Provider } from "react-redux";
 import store from "./store";
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
 
-import { loadUser } from './actions/auth';
-// import { sendFirebaseToken } from './actions/push';
-import { baseURL } from './utils/url';
 
 // Alert Options
 const alertOptions = {
@@ -51,43 +44,7 @@ const alertOptions = {
 
 class App extends Component {
 
-  // static propTypes = {
-  //   isFirebaseTokenSent: PropTypes.bool.isRequired
-  // }
-
-  // componentDidMount() {
-  //   store.dispatch(loadUser());
-  // }
-
   render() {
-
-  // requestFirebaseNotificationPermission()
-  // .then((firebaseToken) => {
-  //   // eslint-disable-next-line no-console
-  //   console.log('FIREBASE TOKEN', firebaseToken);
-  //   const device = 'web';
-  //   const firebaseData = { device, firebaseToken }
-  //   // this.props.sendFirebaseToken(firebaseData);
-
-  //   // const token = getState().auth.token;
-  //   let token = JSON.parse(localStorage.getItem('token'))
-  //   console.log('user token', token);
-
-  //   axios({
-  //     method: 'post',
-  //     url: `${baseURL}/devices/`,
-  //     data: {
-  //       registration_id: firebaseToken,
-  //       type: 'web'
-  //     }
-  //   });
-
-  //   console.log(firebaseData);
-  // })
-  // .catch((err) => {
-  //   return err;
-  // });
-
     return (
       <Provider store={store}>
         <AlertProvider template={AlertTemplate} {...alertOptions}>
@@ -115,6 +72,7 @@ class App extends Component {
                   <PrivateRoute path='/edit-controller/:id' component={EditController} />
                   <PrivateRoute path='/chart/:id' component={Chart} />
                   <PrivateRoute path='/csv' component={Csv} />
+                  <PrivateRoute path='/bulb-color/:id' component={BulbColor} />
                 </Switch>
               </div>
             </Fragment>
@@ -124,9 +82,5 @@ class App extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   isFirebaseTokenSent: state.push.isFirebaseTokenSent
-// })
 
 export default App;

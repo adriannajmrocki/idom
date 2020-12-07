@@ -80,6 +80,8 @@ export class Alerts extends Component {
       if (message.noDataError) alert.error(message.noDataError);
       if (message.controllerRunning) alert.success(message.controllerRunning);
       if (message.controllerRunError) alert.error(message.controllerRunError);
+      if (message.bulbDataSent) alert.success(message.bulbDataSent);
+      if (message.bulbDataSentError) alert.error(message.bulbDataSentError);
 
       // CSV alerts
       if (message.noItems) alert.error(message.noItems);
