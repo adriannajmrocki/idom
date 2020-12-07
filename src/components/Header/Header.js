@@ -25,9 +25,12 @@ export class Header extends Component {
         <li className="nav-item">
           <Link to='/dashboard' className="nav-link">Czujniki</Link>
         </li>
-        <div className="nav-item">
+        <li className="nav-item">
           <Link to='/controllers' className="nav-link">Sterowniki</Link>
-        </div>
+        </li>
+        <li className="nav-item">
+          <Link to='/actions' className="nav-link">Akcje</Link>
+        </li>
         <li className="nav-item">
           <Link to='/cameras' className="nav-link">Kamery</Link>
         </li>
