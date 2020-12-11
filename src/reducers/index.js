@@ -8,6 +8,7 @@ import password from './password';
 import cameras from './cameras';
 import controllers from './controllers';
 import push from './push';
+import actions from './actions'
 
 export default combineReducers({
   users,
@@ -18,5 +19,6 @@ export default combineReducers({
   password,
   cameras,
   controllers,
-  push
+  push,
+  actions
 });
