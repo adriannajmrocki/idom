@@ -74,3 +74,13 @@ li {
   list-style: none;
   font-size: 14px;
 }
+
+.required {
+  color: #987316;
+}
+
+
+/* Icons */
+.fa-angle-double-right {
+  color: #987316;
+}

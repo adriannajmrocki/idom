@@ -6,6 +6,9 @@ import { login } from '../../actions/auth';
 import { createMessage } from '../../actions/messages';
 import Alerts from '../Alerts/Alerts';
 
+import { withTranslation } from 'react-i18next';
+
+
 class LoginPage extends Component {
   state = {  
     username: '',
@@ -27,6 +30,8 @@ class LoginPage extends Component {
   }
 
   render() { 
+    const { t } = this.props;
+
     if (this.props.isAuthenticated) {
       return <Redirect to="/dashboard" />
     }
@@ -47,7 +52,7 @@ class LoginPage extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Hasło</label>
+              <label>{t('Hasło')}</label>
               <input
                 type="password"
                 className="form-control"
@@ -76,4 +81,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 })
  
-export default connect(mapStateToProps, { login })(LoginPage);
+export default withTranslation()(connect(mapStateToProps, { login })(LoginPage));

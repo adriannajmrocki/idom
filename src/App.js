@@ -28,6 +28,8 @@ import EditController from './components/Controllers/EditController';
 import Chart from './components/Chart/Chart';
 import Csv from './components/Csv/Csv';
 import BulbColor from './components/Controllers/BulbColor';
+import Actions from './components/Actions/Actions';
+import AddAction from './components/Actions/AddAction';
 
 import Alerts from "./components/Alerts/Alerts";
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -73,6 +75,8 @@ class App extends Component {
                   <PrivateRoute path='/chart/:id' component={Chart} />
                   <PrivateRoute path='/csv' component={Csv} />
                   <PrivateRoute path='/bulb-color/:id' component={BulbColor} />
+                  <PrivateRoute path='/actions' component={Actions} />
+                  <PrivateRoute path='/add-action/' component={AddAction} />
                 </Switch>
               </div>
             </Fragment>
@@ -83,4 +87,12 @@ class App extends Component {
   }
 }
 
-export default App;
+function RootApp() {
+  return (
+    <React.Suspense fallback="Loading...">
+      <App />
+    </React.Suspense>
+  )
+}
+
+export default RootApp;
