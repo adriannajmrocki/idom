@@ -28,7 +28,7 @@ class AddCamera extends Component {
     const { name } = this.state;
     const newCamera = { name };
 
-    this.props.updateCamera(newCamera);
+    this.props.addCamera(newCamera);
     this.setState({ name: '' });
   }
 

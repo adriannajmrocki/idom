@@ -33,7 +33,12 @@ class AddController extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { name, category, data } = this.state;
+    const { name, category } = this.state;
+    let { data } = this.state;
+
+    if (category !== 'roller_blind') {
+      data = null;
+    }
     const newController = { name, category, data };
 
     if (category === 'roller_blind' && data === null) {
@@ -41,6 +46,7 @@ class AddController extends Component {
     } else {
       this.props.addController(newController);
     }
+    console.log('new', newController)
 
     this.setState({
       name: '',

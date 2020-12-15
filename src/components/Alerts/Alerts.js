@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
 export class Alerts extends Component {
 
@@ -11,7 +12,7 @@ export class Alerts extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { error, alert, message } = this.props;
+    const { error, alert, message, t } = this.props;
 
     if (error !== prevProps.error) {
       // if (error.msg.name.join() === 'This field may not be blank.') alert.error('Wpisz nazwę czujnika');
@@ -67,7 +68,7 @@ export class Alerts extends Component {
       if (message.resetPasswordError) alert.error(message.resetPasswordError);
 
       // Cameras alerts
-      if (message.cameraAdded) alert.success(message.cameraAdded);
+      if (message.cameraAdded) alert.success(t(message.cameraAdded));
       if (message.cameraExists) alert.error(message.cameraExists);
       if (message.cameraDeleted) alert.success(message.cameraDeleted);
       if (message.cameraUpdated) alert.success(message.cameraUpdated);
@@ -80,12 +81,19 @@ export class Alerts extends Component {
       if (message.noDataError) alert.error(message.noDataError);
       if (message.controllerRunning) alert.success(message.controllerRunning);
       if (message.controllerRunError) alert.error(message.controllerRunError);
+      if (message.bulbDataSent) alert.success(message.bulbDataSent);
+      if (message.bulbDataSentError) alert.error(message.bulbDataSentError);
 
       // CSV alerts
       if (message.noItems) alert.error(message.noItems);
       if (message.noFilter) alert.error(message.noFilter);
       if (message.daysError) alert.error(message.daysError);
       if (message.csvAccepted) alert.success(message.csvAccepted);
+
+      // Actions alerts
+      if (message.actionAdded) alert.success(message.actionAdded);
+      if (message.actionDeleted) alert.success(message.actionDeleted);
+      if (message.actionExists) alert.error(message.actionExists);
     }
   }
 
@@ -99,4 +107,4 @@ const mapStateToProps = state => ({
   message: state.messages
 })
  
-export default connect(mapStateToProps)(withAlert()(Alerts));
+export default withTranslation()(connect(mapStateToProps)(withAlert()(Alerts)));

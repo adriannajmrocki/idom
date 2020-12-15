@@ -166,3 +166,95 @@ export const runController = name => (dispatch, getState) => {
     dispatch(createMessage({ controllerRunError: 'Nie udało się uruchomić sterownika' }))
   })
 }
+
+// RUN BULB
+// Communicates with backend and switch on/off a bulb
+export const runBulb = (id, flag) => (dispatch, getState) => {
+
+  const token = getState().auth.token;
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    }
+  } 
+
+  // const body = JSON.stringify({ flag });
+
+  axios.post(`${baseURL}/bulbs/switch/${id}`, flag, config)
+  .then(res => {
+    console.log(res);
+    if (res.status === 200) {
+      dispatch(createMessage({ controllerRunning: 'Sterownik został uruchomiony' }))
+      dispatch({
+        type: RUN_CONTROLLER,
+        payload: res.data
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err.response)
+    dispatch(createMessage({ controllerRunError: 'Nie udało się uruchomić sterownika' }))
+  })
+}
+
+// RUN BULB
+// Communicates with backend and switch on/off a bulb
+export const postBulbBrightness = (id, data) => (dispatch, getState) => {
+
+  const token = getState().auth.token;
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    }
+  } 
+
+  axios.post(`${baseURL}/bulbs/brightness/${id}`, data, config)
+  .then(res => {
+    console.log(res);
+    if (res.status === 200) {
+      dispatch(createMessage({ bulbDataSent: 'Dane zostały zaktualizowane' }))
+      dispatch({
+        type: RUN_CONTROLLER,
+        payload: res.data
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err.response)
+    dispatch(createMessage({ bulbDataSentError: 'Operacja nie powiodła się' }))
+  })
+}
+
+// RUN BULB
+// Communicates with backend and switch on/off a bulb
+export const postBulbColor = (id, data) => (dispatch, getState) => {
+
+  const token = getState().auth.token;
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    }
+  } 
+
+  axios.post(`${baseURL}/bulbs/color/${id}`, data, config)
+  .then(res => {
+    console.log(res);
+    if (res.status === 200) {
+      dispatch(createMessage({ bulbDataSent: 'Dane zostały zaktualizowane' }))
+      dispatch({
+        type: RUN_CONTROLLER,
+        payload: res.data
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err.response)
+    dispatch(createMessage({ bulbDataSentError: 'Operacja nie powiodła się' }))
+  })
+}
