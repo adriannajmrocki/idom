@@ -8,6 +8,7 @@ import '../../styles/utilStyles.css';
 import './style.css';
 
 class UsersList extends Component {
+
   static propTypes = {
     users: PropTypes.array.isRequired,
     getUsers: PropTypes.func.isRequired,
@@ -20,31 +21,6 @@ class UsersList extends Component {
 
   render() { 
     return (  
-      // <Fragment>
-      //   <h2 style={{ marginTop: "40px" }}>Użytkownicy</h2>
-      //   <table className="table table-striped">
-      //     <thead>
-      //       <tr>
-      //         <th>Login</th>
-      //         <th>Email</th>
-      //         <th>Numer telefonu</th>
-      //         <th></th>
-      //       </tr>
-      //     </thead>
-      //     <tbody>
-      //       { this.props.users.map(user => (
-      //         <tr key={user.id}>
-      //           {user.is_active ? <td>{user.username}</td> : false}
-      //           {user.is_active ? <td>{user.email}</td> : false}
-      //           {user.is_active ? <td>{user.telephone}</td> : false}
-      //           {user.is_active ? <td><Link to={`/edit-user/${user.id}`}><button className="btn btn-primary btn-sm">Edytuj</button></Link></td> : false}
-      //           {user.is_active ? <td>{!user.is_staff ? <button onClick={this.props.deleteUser.bind(this, user.id)} className="btn btn-danger btn-sm">Usuń</button> : ''}</td> : false}
-      //         </tr>
-      //       )) }
-      //     </tbody>
-      //   </table>
-      // </Fragment>
-
       <div className="container">
         <div className="head" style={{"marginBottom": "40px"}}>
           <i className="far fa-user fa-2x"></i>
@@ -67,6 +43,11 @@ class UsersList extends Component {
             )
           }
         })}
+
+        <div className="reset-section">
+          <p>Potrzebujesz resetu systemu?</p>
+          <p>Skorzystaj z <span className='guide'><a href="https://adriannajmrocki.github.io/idom-website/" target="_blank" rel="noreferrer">poradnika</a></span></p>
+        </div>
       </div>
     );
   }
