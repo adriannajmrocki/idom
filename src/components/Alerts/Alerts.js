@@ -57,6 +57,7 @@ export class Alerts extends Component {
       if (message.passwordsNotMatch) alert.error(message.passwordsNotMatch);
       if (message.registerSuccess) alert.success(message.registerSuccess);
       if (message.userExists) alert.error(message.userExists);
+      if (message.languageError) alert.error(message.languageError);
       
       // Login alerts
       if (message.loginError) alert.error(message.loginError);
