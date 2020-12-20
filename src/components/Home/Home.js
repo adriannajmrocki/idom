@@ -119,7 +119,15 @@ class Home extends Component {
     if (validation.correct) {
       const newUser = { username, email, telephone, password1, password2, language }
       this.props.register(newUser);
-      console.log(newUser);
+      this.setState({
+        username: '',
+        email: '',
+        telephone: '',
+        password1: '',
+        password2: '',
+        language: '',
+        isSelected: false
+      })
     } 
   }
 
