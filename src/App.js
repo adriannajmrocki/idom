@@ -4,14 +4,16 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import { Provider } from "react-redux";
 
+import store from "./store";
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import Alerts from "./components/Alerts/Alerts";
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
 import Dashboard from './components/sensors/Dashboard';
 import AdminPage from './components/users/AdminPage';
 import ResetPasswordPage from './components/password/ResetPasswordPage';
@@ -32,13 +34,6 @@ import Actions from './components/Actions/Actions';
 import AddAction from './components/Actions/AddAction';
 import EditAction from './components/Actions/EditAction';
 import Board from './components/Board/Board';
-
-import Alerts from "./components/Alerts/Alerts";
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-
-import { Provider } from "react-redux";
-import store from "./store";
-
 
 // Alert Options
 const alertOptions = {
