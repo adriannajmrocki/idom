@@ -30,6 +30,8 @@ import Csv from './components/Csv/Csv';
 import BulbColor from './components/Controllers/BulbColor';
 import Actions from './components/Actions/Actions';
 import AddAction from './components/Actions/AddAction';
+import EditAction from './components/Actions/EditAction';
+import Board from './components/Board/Board';
 
 import Alerts from "./components/Alerts/Alerts";
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -54,11 +56,8 @@ class App extends Component {
             <Fragment>
               <Header />
               <Alerts />
-              <div className="container">
                 <Switch>
                   <Route exact path='/' component={Home} />
-                  <Route path='/register' component={Register} />
-                  <Route path='/login' component={Login} />
                   <Route path='/resetpwd' component={ResetPasswordPage} />
                   <Route path='/password-reset/:token' component={NewPasswordView} />
                   <PrivateRoute path='/dashboard' component={Dashboard} />
@@ -77,8 +76,9 @@ class App extends Component {
                   <PrivateRoute path='/bulb-color/:id' component={BulbColor} />
                   <PrivateRoute path='/actions' component={Actions} />
                   <PrivateRoute path='/add-action/' component={AddAction} />
+                  <PrivateRoute path='/edit-action/:id' component={EditAction} />
+                  <PrivateRoute path='/board' component={Board} />
                 </Switch>
-              </div>
             </Fragment>
           </Router>
         </AlertProvider>

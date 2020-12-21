@@ -134,7 +134,7 @@ class Home extends Component {
   render() {
 
     if (this.props.isAuthenticated) {
-      return <Redirect to='/dashboard' />
+      return <Redirect to='/board' />
     }
 
     const { signUpMode, username, signInPassword, email, telephone, language, password1, password2, isSelected } = this.state;
