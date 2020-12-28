@@ -6,6 +6,9 @@ import { addCamera } from '../../actions/cameras';
 
 import Alerts from '../Alerts/Alerts';
 
+import '../../styles/utilStyles.css';
+import './style.css';
+
 class AddCamera extends Component {
 
   state = {  
@@ -33,27 +36,28 @@ class AddCamera extends Component {
   }
 
   render() { 
-    return (  
-      <div className="col-md-6 m-auto">
-        <div className="card card-body mt-5">
-          <h2 className="text-center">Dodaj kamerę</h2>
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-group">
-              <label>Nazwa</label>
-              <input
-                type="text"
-                className="form-control"
-                name="name"
-                onChange={this.handleChange}
-                value={this.state.name}
-              />
-            </div>
 
-            <div className="form-group">
-              <button className="btn btn-primary">Dodaj</button>
-            </div>
-          </form>
-        </div>
+    const { name } = this.state;
+
+    return (  
+      <div className="form-container">
+        <form className="app-forms" onSubmit={this.handleSubmit}>
+          <h2 className="form-header">Dodaj kamerę</h2>
+          <div className="form-field">
+            <label>Nazwa</label>
+            <input 
+              type="text"
+              className="form-input"
+              name="name"
+              onChange={this.handleChange}
+              value={name}
+            />
+          </div>
+
+          <div className="form-field ff-center">
+            <button className="button">Dodaj</button>
+          </div>
+        </form>
       </div>
     );
   }
