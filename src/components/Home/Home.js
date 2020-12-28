@@ -143,7 +143,7 @@ class Home extends Component {
       <div className={`home-container ${signUpMode ? 'sign-up-mode' : ''}`}>
         <div className="forms-container">
           <div className="signin-signup">
-            <form className="sign-in-form" onSubmit={this.handleSignInSubmit}>
+            <form className="home-form sign-in-form" onSubmit={this.handleSignInSubmit}>
               <div className="avatar">
                 <i className="fas fa-user fa-4x"></i>
               </div>
@@ -173,7 +173,7 @@ class Home extends Component {
               </div>
             </form>
   
-            <form className="sign-up-form" onSubmit={this.handleSignUpSubmit}>
+            <form className="home-form sign-up-form" onSubmit={this.handleSignUpSubmit}>
               <h2 className="home-title">Rejestracja</h2>
               <div className="input-field">
                 <i className="fas fa-user"></i>
