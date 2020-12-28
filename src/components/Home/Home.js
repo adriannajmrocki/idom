@@ -174,9 +174,6 @@ class Home extends Component {
             </form>
   
             <form className="sign-up-form" onSubmit={this.handleSignUpSubmit}>
-              {/* <div className="avatar">
-                <i className="fas fa-user fa-4x"></i>
-              </div> */}
               <h2 className="home-title">Rejestracja</h2>
               <div className="input-field">
                 <i className="fas fa-user"></i>
