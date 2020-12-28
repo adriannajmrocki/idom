@@ -24,7 +24,7 @@ class UsersList extends Component {
       <div className="container">
         <div className="head" style={{"marginBottom": "40px"}}>
           <i className="far fa-user fa-2x"></i>
-          <h2>Użytkownicy</h2>
+          <h2 className="ml-10">Użytkownicy</h2>
           <div className="line"></div>
         </div>
 
