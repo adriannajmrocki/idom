@@ -236,6 +236,11 @@ class Home extends Component {
         <div className="panels-container">
           <div className="panel left-panel">
             <div className="content">
+              <h6 className="lng-h6">Język</h6>
+              <div className="lng-field">
+                <button className="lng-btn btn-pl">PL</button>
+                <button className="lng-btn btn-en">ENG</button>
+              </div>
               <h3 className="panel-head">Nie masz jeszcze konta?</h3>
               <p>Dzięki aplikacji IDOM możesz kontrolować swój inteligentny dom nie ruszając się zmiejsca. <br /> Dołącz do nas i zobacz jakie to proste!</p>
               <button className="button transparent"id="sign-up-btn" onClick={() => this.setState({ signUpMode: true })}>Dołącz do IDOM</button>
