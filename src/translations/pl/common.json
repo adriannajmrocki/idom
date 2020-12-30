@@ -65,5 +65,11 @@
     "d": "dni",
     "day": "dzień",
     "select-filter": "Wybierz filtr, aby narysować wykres"
+  },
+
+  "csv-generate": {
+    "csv-file": "Plik CSV",
+    "csv-filter": "Wybierz filtr",
+    "categories": "Kategorie"
   }
 }

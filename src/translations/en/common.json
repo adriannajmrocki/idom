@@ -65,5 +65,11 @@
     "d": "days",
     "day": "day",
     "select-filter": "Select a filter to draw a chart"
+  },
+
+  "csv-generate": {
+    "csv-file": "CSV file",
+    "csv-filter": "Select a filter",
+    "categories": "Categories"
   }
 }
