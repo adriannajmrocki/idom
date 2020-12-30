@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
 import { addController } from '../../actions/controllers';
 
@@ -55,13 +56,16 @@ class AddController extends Component {
   }
 
   render() { 
+
+    const { t } = this.props;
+
     return (  
       <div className="col-md-6 m-auto">
         <div className="card card-body mt-5">
-          <h2 className="text-center">Dodaj sterownik</h2>
+          <h2 className="text-center">{t('controllers.add-controller')}</h2>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label>Nazwa</label>
+              <label>{t('sensors.name')}</label>
               <input
                 type="text"
                 className="form-control"
@@ -72,28 +76,28 @@ class AddController extends Component {
             </div>
 
             <div className="form-group">
-              <label>Kategoria</label>
+              <label>{t('sensors.category')}</label>
               <select className="form-control" onChange={this.handleCategorySelect} value={this.state.category}>
                 <option value="" disabled defaultValue></option>
-                <option value="clicker">Przycisk</option>
-                <option value="bulb">Żarówka</option>
-                <option value="roller_blind">Roleta</option>
+                <option value="clicker">{t('controllers.clicker')}</option>
+                <option value="bulb">{t('controllers.bulb')}</option>
+                <option value="roller_blind">{t('controllers.blind')}</option>
               </select>
             </div>
 
             {this.state.category === 'roller_blind' ?
             <div className="form-group">
-              <label>Aktualny stan rolet</label>
+              <label>{t('controllers.current-pos')}</label>
               <select className="form-control" onChange={this.handleDataSelect} value={this.state.data}>
                 <option value="" defaultValue></option>
-                <option value="true">Odsłonięte</option>
-                <option value="false">Zasłonięte</option>
+                <option value="true">{t('controllers.up')}</option>
+                <option value="false">{t('controllers.down')}</option>
               </select>
             </div>
             : false }
 
             <div className="form-group">
-              <button className="btn btn-primary">Dodaj</button>
+              <button className="btn btn-primary">{t('sensors.add')}</button>
             </div>
           </form>
         </div>
@@ -102,4 +106,4 @@ class AddController extends Component {
   }
 }
  
-export default connect(null, { addController, createMessage })(AddController);
+export default withTranslation('common')(connect(null, { addController, createMessage })(AddController));

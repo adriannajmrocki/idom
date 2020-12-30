@@ -47,6 +47,8 @@ class AddSensor extends Component {
   };
 
   formValidation = () => {
+    const { t } = this.props;
+
     let name = false;
     let category = false;
     let frequencyUnit = false;
@@ -54,7 +56,7 @@ class AddSensor extends Component {
     let correct = false;
 
     if (!this.state.name) {
-      this.props.createMessage({ noSensorNameError: 'Podaj nazwę czujnika' })
+      this.props.createMessage({ noSensorNameError: `${t('notifications.no-sensor-name-error')}` })
     } else {
       name = true;
     }

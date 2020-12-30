@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
 import { updateController, getControllerData } from '../../actions/controllers';
 
@@ -43,13 +44,16 @@ class EditController extends Component {
   }
 
   render() { 
+
+    const { t } = this.props;
+
     return (  
       <div className="col-md-6 m-auto">
         <div className="card card-body mt-5">
-          <h2 className="text-center">Edytuj sterownik</h2>
+          <h2 className="text-center">{t('controllers.edit-controller')}</h2>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label>Nazwa</label>
+              <label>{t('sensors.name')}</label>
               <input
                 type="text"
                 className="form-control"
@@ -61,7 +65,7 @@ class EditController extends Component {
             </div>
 
             <div className="form-group">
-              <button className="btn btn-primary">Potwierdź</button>
+              <button className="btn btn-primary">{t('sensors.edit')}</button>
             </div>
           </form>
         </div>
@@ -76,4 +80,4 @@ const mapStateToProps = state => ({
   controllerData: state.controllers.controllerData,
 })
  
-export default connect(mapStateToProps, { updateController, getControllerData })(EditController);
+export default withTranslation('common')(connect(mapStateToProps, { updateController, getControllerData })(EditController));

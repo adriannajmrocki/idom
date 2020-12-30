@@ -71,5 +71,21 @@
     "csv-file": "Plik CSV",
     "csv-filter": "Wybierz filtr",
     "categories": "Kategorie"
+  },
+
+  "notifications": {
+    "sensor-added": "Czujnik został dodany",
+    "no-sensor-name-error": "Podaj nazwę czujnika"
+  },
+
+  "controllers": {
+    "clicker": "Przycisk",
+    "bulb": "Żarówka",
+    "blind": "Roleta",
+    "edit-controller": "Edytuj sterownik",
+    "add-controller": "Dodaj sterownik",
+    "current-pos": "Aktualne położenie rolet",
+    "up": "Odsłonięte",
+    "down": "Zasłonięte"
   }
 }

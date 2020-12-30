@@ -52,7 +52,7 @@
     "min": "Minutes",
     "h": "Hours",
     "days": "Days",
-    "edit": "Edytuj",
+    "edit": "Edit",
     "add-sensor": "Add sensor",
     "select": "Select...",
     "value": "Value",
@@ -71,5 +71,21 @@
     "csv-file": "CSV file",
     "csv-filter": "Select a filter",
     "categories": "Categories"
+  },
+
+  "notifications": {
+    "sensor-added": "Sensor added",
+    "no-sensor-name-error": "Enter the sensor name"
+  },
+
+  "controllers": {
+    "clicker": "Clicker",
+    "bulb": "Bulb",
+    "blind": "Blind",
+    "edit-controller": "Edit controller",
+    "add-controller": "Add controller",
+    "current-pos": "Current position of blinds",
+    "up": "Up",
+    "down": "Down"
   }
 }
