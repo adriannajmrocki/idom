@@ -17,5 +17,13 @@
     "join": "Join IDOM",
     "rp-head": "Already using IDOM",
     "rp-p": "Great! Sign in to take full advantage of a smart home facilities."
+  },
+  "header": {
+    "sensors": "Sensors",
+    "controllers": "Controllers",
+    "actions": "Actions",
+    "cameras": "Cameras",
+    "account": "Account",
+    "logout": "Logout"
   }
 }

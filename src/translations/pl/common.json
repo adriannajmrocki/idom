@@ -17,5 +17,13 @@
     "join": "Dołącz do IDOM",
     "rp-head": "Korzystasz z IDOM",
     "rp-p": "Świetnie! Zaloguj się, aby w pełni korzystać z udogodnień inteligentnego domu."
+  },
+  "header": {
+    "sensors": "Czujniki",
+    "controllers": "Sterowniki",
+    "actions": "Akcje",
+    "cameras": "Kamery",
+    "account": "Konto",
+    "logout": "Wyloguj"
   }
 }
