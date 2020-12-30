@@ -18,6 +18,7 @@
     "rp-head": "Korzystasz z IDOM",
     "rp-p": "Świetnie! Zaloguj się, aby w pełni korzystać z udogodnień inteligentnego domu."
   },
+
   "header": {
     "sensors": "Czujniki",
     "controllers": "Sterowniki",
@@ -26,8 +27,35 @@
     "account": "Konto",
     "logout": "Wyloguj"
   },
+
   "board": {
     "welcome": "Witaj w",
     "p": "Twój inteligentny dom jest gotowy do pracy. Wybierz odpowiednią kategorię i pozwól mu działać."
+  },
+
+  "sensors": {
+    "csv": "Potrzebujesz pliku z danymi w formacie .csv",
+    "generate": "Wygeneruj",
+    "temp": "Temperatura",
+    "water-temp": "Temperatura wody",
+    "hum": "Wilgotność",
+    "air-hum": "Wilgotność powietrza",
+    "pressure": "Ciśnienie",
+    "alc": "Alkomat",
+    "smoke": "Dym",
+    "rain": "Deszcz",
+    "edit-sensor": "Edytuj czujnik",
+    "name": "Nazwa",
+    "category": "Kategoria",
+    "data-samp-freq": "Częstotliwość pobierania danych",
+    "sec": "Sekundy",
+    "min": "Minuty",
+    "h": "Godziny",
+    "days": "Dni",
+    "edit": "Edit",
+    "add-sensor": "Dodaj czujnik",
+    "select": "Wybierz...",
+    "value": "Wartość",
+    "add": "Dodaj"
   }
 }

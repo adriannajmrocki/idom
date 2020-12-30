@@ -18,6 +18,7 @@
     "rp-head": "Already using IDOM",
     "rp-p": "Great! Sign in to take full advantage of a smart home facilities."
   },
+
   "header": {
     "sensors": "Sensors",
     "controllers": "Controllers",
@@ -26,8 +27,35 @@
     "account": "Account",
     "logout": "Logout"
   },
+
   "board": {
     "welcome": "Welcome to",
     "p": "Your smart home is ready to work. Select a category and let it run."
+  },
+
+  "sensors": {
+    "csv": "Need a data file in .csv format",
+    "generate": "Generate",
+    "temp": "Temperature",
+    "water-temp": "Water temperature",
+    "hum": "Humidity",
+    "air-hum": "Air humidity",
+    "pressure": "Pressure",
+    "alc": "Breathalyser",
+    "smoke": "Smoke",
+    "rain": "Rain",
+    "edit-sensor": "Edit sensor",
+    "name": "Name",
+    "category": "Category",
+    "data-samp-freq": "Data sampling frequency",
+    "sec": "Seconds",
+    "min": "Minutes",
+    "h": "Hours",
+    "days": "Days",
+    "edit": "Edytuj",
+    "add-sensor": "Add sensor",
+    "select": "Select...",
+    "value": "Value",
+    "add": "Add"
   }
 }

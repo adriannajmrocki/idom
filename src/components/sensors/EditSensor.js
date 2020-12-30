@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
+
 import { updateSensor, getSensorData } from '../../actions/sensors';
 import { createMessage } from '../../actions/messages';
 import Alerts from '../Alerts/Alerts';
-import { Redirect } from 'react-router-dom';
 
 class EditSensor extends Component {
 
@@ -123,13 +124,16 @@ class EditSensor extends Component {
   }
 
   render() { 
+
+    const { t } = this.props;
+
     return (  
       <div className="col-md-6 m-auto">
       <div className="card card-body mt-5">
-        <h2 className="text-center">Edytuj czujnik</h2>
+        <h2 className="text-center">{t('sensors.edit-sensor')}</h2>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label>Nazwa</label>
+            <label>{t('sensors.name')}</label>
             <input
               type="text"
               className="form-control"
@@ -142,23 +146,23 @@ class EditSensor extends Component {
 
           {this.props.sensorCategory !== 'water_temp' && this.props.sensorCategory !== 'smoke' && this.props.sensorCategory !== 'rain_sensor' && this.props.sensorCategory !== 'breathalyser' ?
           <div className="form-group">
-            <label>Kategoria</label>
+            <label>{t('sensors.category')}</label>
             <select className="form-control" onChange={this.handleCategorySelect} value={this.state.category}>
-              <option value="" disabled selected>{this.props.sensorCategory === 'temperature' ? 'Czujnik temperatury' : 'Czujnik wilgotności'}</option>
-              <option value="temperature">Czujnik temperatury</option>
-              <option value="humidity">Czujnik wilgotności</option>
+              <option value="" disabled selected>{this.props.sensorCategory === 'temperature' ? `${t('sensors.temp')}` : `${t('sensors.hum')}`}</option>
+              <option value="temperature">{t('sensors.temp')}</option>
+              <option value="humidity">{t('sensors.hum')}</option>
             </select>
           </div> : false}
 
           {this.props.sensorCategory !== 'water_temp' && this.props.sensorCategory !== 'smoke' && this.props.sensorCategory !== 'rain_sensor' && this.props.sensorCategory !== 'breathalyser' ?
           <div className="form-group">
-              <label>Częstotliwość pobierania danych</label>
+              <label>{t('sensors.data-samp-freq')}</label>
               <select className="form-control" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
-                <option value="" disabled selected>Sekundy</option>
-                <option value="seconds">Sekundy</option>
-                <option value="minutes">Minuty</option>
-                <option value="hours">Godziny</option>
-                <option value="days">Dni</option>
+                <option value="" disabled selected>{t('sensors.sec')}</option>
+                <option value="seconds">{t('sensors.sec')}</option>
+                <option value="minutes">{t('sensors.min')}</option>
+                <option value="hours">{t('sensors.h')}</option>
+                <option value="days">{t('sensors.days')}</option>
               </select>
             </div> : false}
 
@@ -175,7 +179,7 @@ class EditSensor extends Component {
             </div> : false}
 
           <div className="form-group">
-            <button className="btn btn-primary">Potwierdź</button>
+            <button className="btn btn-primary">{t('sensors.edit')}</button>
           </div>
         </form>
       </div>
@@ -190,4 +194,4 @@ const mapStateToProps = state => ({
   sensorFrequency: state.sensors.sensorFrequency
 })
  
-export default connect(mapStateToProps, { updateSensor, createMessage, getSensorData })(EditSensor);
+export default withTranslation('common')(connect(mapStateToProps, { updateSensor, createMessage, getSensorData })(EditSensor));
