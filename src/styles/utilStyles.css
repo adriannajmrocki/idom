@@ -119,6 +119,23 @@ li {
   align-items: center;
 }
 
+.custom-border-style {
+  border: 1px solid #987316;
+  border-radius: 10px;
+  padding: 50px 40px;
+}
+
+.custom-input-style {
+  border: 1px solid #987316 !important;
+  border-radius: 5px;
+  background-color: #fff;
+  outline: none;
+}
+
+.custom-mb {
+  margin-bottom: 30px;
+}
+
 
 /* Icons */
 .fa-angle-double-right {
