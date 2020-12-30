@@ -1,0 +1,21 @@
+{
+  "home": {
+    "signin-h": "Logowanie",
+    "username": "Nazwa uytkownika",
+    "password": "Hasło",
+    "forgot-password": "Nie pamiętasz hasła?",
+    "signup-h": "Rejestracja",
+    "phone-number": "Numer telefonu (z kierunkowym)",
+    "notifications-lng": "Język powiadomień",
+    "pl": "Polski",
+    "en": "Angielski",
+    "repeat-password": "Powtórz hasło",
+    "lng": "Język",
+    "lp-head": "Nie masz jeszcze konta?",
+    "lp-p1": "Dzięki aplikacji IDOM możesz kontrolować swój inteligentny dom nie ruszając się zmiejsca",
+    "lp-p2": "Dołącz do nas i zobacz jakie to proste",
+    "join": "Dołącz do IDOM",
+    "rp-head": "Korzystasz z IDOM",
+    "rp-p": "Świetnie! Zaloguj się, aby w pełni korzystać z udogodnień inteligentnego domu."
+  }
+}

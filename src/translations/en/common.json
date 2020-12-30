@@ -1,0 +1,21 @@
+{
+  "home": {
+    "signin-h": "Sign in",
+    "username": "Username",
+    "password": "Password",
+    "forgot-password": "Forgot password?",
+    "signup-h": "Sign up",
+    "phone-number": "Phone number (with area code)",
+    "notifications-lng": "Notifications language",
+    "pl": "Polish",
+    "en": "English",
+    "repeat-password": "Repeat password",
+    "lng": "Language",
+    "lp-head": "Don't have an account yet?",
+    "lp-p1": "You can control your smart home because of IDOM web application",
+    "lp-p2": "Join us and see how simple it is",
+    "join": "Join IDOM",
+    "rp-head": "Already using IDOM",
+    "rp-p": "Great! Sign in to take full advantage of a smart home facilities."
+  }
+}

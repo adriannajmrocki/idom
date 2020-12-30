@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import i18n from '../../i18n/i18n';
-import { useTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 import { login, register } from '../../actions/auth';
 import { createMessage } from '../../actions/messages';
@@ -15,7 +14,6 @@ import idom2 from './img/idom2.svg';
 import './style.css';
 
 class Home extends Component {
-  // const { t } = useTranslation();
 
   state = {
     signUpMode: false,
@@ -138,6 +136,7 @@ class Home extends Component {
     }
 
     const { signUpMode, username, signInPassword, email, telephone, language, password1, password2, isSelected } = this.state;
+    const { t, i18n } = this.props;
 
     return (  
       <div className={`home-container ${signUpMode ? 'sign-up-mode' : ''}`}>
@@ -147,7 +146,7 @@ class Home extends Component {
               <div className="avatar">
                 <i className="fas fa-user fa-4x"></i>
               </div>
-              <h2 className="home-title">Logowanie</h2>
+              <h2 className="home-title">{t('home.signin-h')}</h2>
               <div className="input-field">
                 <i className="fas fa-user"></i>
                 <input
@@ -155,7 +154,7 @@ class Home extends Component {
                   name="username"
                   onChange={this.handleTextChange}
                   value={username}
-                  placeholder="Nazwa użytkownika" />
+                  placeholder={`${t('home.username')}`} />
               </div>
               <div className="input-field">
                 <i className="fas fa-lock"></i>
@@ -164,17 +163,17 @@ class Home extends Component {
                   name="signInPassword"
                   onChange={this.handleTextChange}
                   value={signInPassword}
-                  placeholder="Hasło" />
+                  placeholder={`${t('home.password')}`} />
               </div>
-              <input type="submit" value="Zaloguj się" className="button solid" />
+              <input type="submit" value={`${t('home.signin-h')}`} className="button solid" />
   
               <div className="pwd-reset-section">
-                <p className="pwd-reset"><Link to="/resetpwd">Nie pamiętasz hasła?</Link></p>
+                <p className="pwd-reset"><Link to="/resetpwd">{t('home.forgot-password')}</Link></p>
               </div>
             </form>
   
             <form className="home-form sign-up-form" onSubmit={this.handleSignUpSubmit}>
-              <h2 className="home-title">Rejestracja</h2>
+              <h2 className="home-title">{t('home.signup-h')}</h2>
               <div className="input-field">
                 <i className="fas fa-user"></i>
                 <input 
@@ -182,7 +181,7 @@ class Home extends Component {
                   name="username"
                   onChange={this.handleTextChange}
                   value={username}
-                  placeholder="Nazwa użytkownika" />
+                  placeholder={`${t('home.username')}`} />
               </div>
               <div className="input-field">
                 <i className="fas fa-envelope"></i>
@@ -200,14 +199,14 @@ class Home extends Component {
                 name="telephone"
                 onChange={this.handleTextChange}
                 value={telephone}
-                placeholder="Numer telefonu (z kierunkowym)" />
+                placeholder={`${t('home.phone-number')}`} />
               </div>
               <div className="input-field">
                 <i className="fas fa-globe-americas"></i>
                 <select name="language" className={`${isSelected ? 'selected' : ''}`} onChange={this.handleSelect} value={language}>
-                  <option value="" defaultValue disabled>Język powiadomień</option>
-                  <option value="pl">Polski</option>
-                  <option value="eng">Angielski</option>
+                  <option value="" defaultValue disabled>{t('home.notifications-lng')}</option>
+                  <option value="pl">{t('home.pl')}</option>
+                  <option value="eng">{t('home.en')}</option>
                 </select>
               </div>
               <div className="input-field">
@@ -217,7 +216,7 @@ class Home extends Component {
                   name="password1"
                   onChange={this.handleTextChange}
                   value={password1}
-                  placeholder="Hasło" />
+                  placeholder={`${t('home.password')}`} />
               </div>
               <div className="input-field">
                 <i className="fas fa-lock"></i>
@@ -226,9 +225,9 @@ class Home extends Component {
                   name="password2"
                   onChange={this.handleTextChange}
                   value={password2}
-                  placeholder="Powtórz hasło" />
+                  placeholder={`${t('home.repeat-password')}`} />
               </div>
-              <input type="submit" value="Zarejestruj się" className="button solid" />
+              <input type="submit" value={`${t('home.signup-h')}`} className="button solid" />
             </form>
           </div>
         </div>
@@ -236,23 +235,23 @@ class Home extends Component {
         <div className="panels-container">
           <div className="panel left-panel">
             <div className="content">
-              <h6 className="lng-h6">Język</h6>
+              <h6 className="lng-h6">{t('home.lng')}</h6>
               <div className="lng-field">
-                <button className="lng-btn btn-pl">PL</button>
-                <button className="lng-btn btn-en">ENG</button>
+                <button className="lng-btn btn-pl" onClick={() => i18n.changeLanguage('pl')}>PL</button>
+                <button className="lng-btn btn-en" onClick={() => i18n.changeLanguage('en')}>ENG</button>
               </div>
-              <h3 className="panel-head">Nie masz jeszcze konta?</h3>
-              <p>Dzięki aplikacji IDOM możesz kontrolować swój inteligentny dom nie ruszając się zmiejsca. <br /> Dołącz do nas i zobacz jakie to proste!</p>
-              <button className="button transparent"id="sign-up-btn" onClick={() => this.setState({ signUpMode: true })}>Dołącz do IDOM</button>
+              <h3 className="panel-head">{t('home.lp-head')}</h3>
+              <p>{t('home.lp-p1')}. <br /> {t('home.lp-p2')}!</p>
+              <button className="button transparent"id="sign-up-btn" onClick={() => this.setState({ signUpMode: true })}>{t('home.join')}</button>
               <img src={idom2} className="image" alt=""/>
             </div>
           </div>
   
           <div className="panel right-panel">
             <div className="content">
-              <h3 className="panel-head">Korzystasz z IDOM?</h3>
-              <p>Świetnie! Zaloguj się, aby w pełni korzystać z udogodnień inteligentnego domu.</p>
-              <button className="button transparent" id="sign-in-btn" onClick={() => this.setState({ signUpMode: false })}>Zaloguj się</button>
+              <h3 className="panel-head">{t('home.rp-head')}?</h3>
+              <p>{t('home.rp-p')}</p>
+              <button className="button transparent" id="sign-in-btn" onClick={() => this.setState({ signUpMode: false })}>{t('home.signin-h')}</button>
               <img src={idom1} className="image" alt=""/>
             </div>
           </div>
@@ -267,4 +266,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 })
  
-export default connect(mapStateToProps, { login, register, createMessage })(Home);
+export default withTranslation('common')(connect(mapStateToProps, { login, register, createMessage })(Home));

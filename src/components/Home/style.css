@@ -188,7 +188,6 @@
 .lng-field {
   display: flex;
   padding-bottom: 1.5rem;
-
 }
 
 .lng-h6 {
@@ -208,6 +207,7 @@
   color: #fff;
   background-color: inherit;
   margin-right: 5px;
+  outline: none;
 }
 
 .right-panel {
