@@ -25,5 +25,9 @@
     "cameras": "Cameras",
     "account": "Account",
     "logout": "Logout"
+  },
+  "board": {
+    "welcome": "Welcome to",
+    "p": "Your smart home is ready to work. Select a category and let it run."
   }
 }

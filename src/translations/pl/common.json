@@ -25,5 +25,9 @@
     "cameras": "Kamery",
     "account": "Konto",
     "logout": "Wyloguj"
+  },
+  "board": {
+    "welcome": "Witaj w",
+    "p": "Twój inteligentny dom jest gotowy do pracy. Wybierz odpowiednią kategorię i pozwól mu działać."
   }
 }
