@@ -57,5 +57,13 @@
     "select": "Wybierz...",
     "value": "Wartość",
     "add": "Dodaj"
+  },
+
+  "charts": {
+    "chart": "Wykres",
+    "history": "Historia",
+    "d": "dni",
+    "day": "dzień",
+    "select-filter": "Wybierz filtr, aby narysować wykres"
   }
 }
