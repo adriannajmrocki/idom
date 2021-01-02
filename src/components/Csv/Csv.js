@@ -98,12 +98,12 @@ function Csv(props) {
         <div className="line"></div>
       </div>
   
-      <div className="col-md-6 m-auto">
-        <div className="card card-body mt-5">
+      <div className="col-md-6 m-auto custom-position">
+        <div className="card card-body mt-5 custom-border-style custom-position">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>{t('csv-generate.csv-filter')}</label>
-              <select className="form-control" onChange={handleFilterSelect} value={filter}>
+              <select className="form-control custom-input-style" onChange={handleFilterSelect} value={filter}>
                 <option value="" disabled defaultValue></option>
                 <option value="sensors">{t('header.sensors')}</option>
                 <option value="categories">{t('csv-generate.categories')}</option>
@@ -117,7 +117,7 @@ function Csv(props) {
                   <div key={id} className="form-check">
                     <label className="form-check-label">
                       <input
-                        className="form-check-input"
+                        className="form-check-input custom-input-style"
                         type="checkbox"
                         onChange={event => {
                           let checked = event.target.checked;
@@ -148,7 +148,7 @@ function Csv(props) {
                     <label className="form-check-label">
                       <input
                         type="checkbox"
-                        className="form-check-input"
+                        className="form-check-input custom-input-style"
                         onChange={event => {
                           let checked = event.target.checked;
                           setCategoriesState(
@@ -174,15 +174,15 @@ function Csv(props) {
               <label>{t('sensors.days')}</label>
               <input 
                 type="text"
-                className="form-control"
+                className="form-control custom-input-style"
                 name="days"
                 onChange={handleDaysChange}
                 value={days}
               />
             </div>
   
-            <div className="form-group">
-              <button className="btn btn-primary">{t('sensors.add')}</button>
+            <div className="ff-center">
+              <button className="button">{t('sensors.add')}</button>
             </div>
           </form>
         </div>

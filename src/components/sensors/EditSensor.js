@@ -128,15 +128,15 @@ class EditSensor extends Component {
     const { t } = this.props;
 
     return (  
-      <div className="col-md-6 m-auto">
-      <div className="card card-body mt-5">
-        <h2 className="text-center">{t('sensors.edit-sensor')}</h2>
+      <div className="col-md-6 m-auto custom-position">
+      <div className="card card-body mt-5 custom-border-style custom-position">
+        <h2 className="text-center custom-mb">{t('sensors.edit-sensor')}</h2>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>{t('sensors.name')}</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control custom-input-style"
               name="name"
               onChange={this.handleChange}
               value={this.state.name}
@@ -147,7 +147,7 @@ class EditSensor extends Component {
           {this.props.sensorCategory !== 'water_temp' && this.props.sensorCategory !== 'smoke' && this.props.sensorCategory !== 'rain_sensor' && this.props.sensorCategory !== 'breathalyser' ?
           <div className="form-group">
             <label>{t('sensors.category')}</label>
-            <select className="form-control" onChange={this.handleCategorySelect} value={this.state.category}>
+            <select className="form-control custom-input-style" onChange={this.handleCategorySelect} value={this.state.category}>
               <option value="" disabled selected>{this.props.sensorCategory === 'temperature' ? `${t('sensors.temp')}` : `${t('sensors.hum')}`}</option>
               <option value="temperature">{t('sensors.temp')}</option>
               <option value="humidity">{t('sensors.hum')}</option>
@@ -157,7 +157,7 @@ class EditSensor extends Component {
           {this.props.sensorCategory !== 'water_temp' && this.props.sensorCategory !== 'smoke' && this.props.sensorCategory !== 'rain_sensor' && this.props.sensorCategory !== 'breathalyser' ?
           <div className="form-group">
               <label>{t('sensors.data-samp-freq')}</label>
-              <select className="form-control" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
+              <select className="form-control custom-input-style" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
                 <option value="" disabled selected>{t('sensors.sec')}</option>
                 <option value="seconds">{t('sensors.sec')}</option>
                 <option value="minutes">{t('sensors.min')}</option>
@@ -170,7 +170,7 @@ class EditSensor extends Component {
             <div className="form-group">
               <input
                 type="string"
-                className="form-control"
+                className="form-control custom-input-style"
                 name="frequency"
                 onChange={this.handleChange}
                 value={this.state.frequency}
@@ -178,8 +178,8 @@ class EditSensor extends Component {
               />
             </div> : false}
 
-          <div className="form-group">
-            <button className="btn btn-primary">{t('sensors.edit')}</button>
+          <div className="ff-center">
+            <button className="button">{t('sensors.edit')}</button>
           </div>
         </form>
       </div>

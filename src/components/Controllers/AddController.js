@@ -60,15 +60,15 @@ class AddController extends Component {
     const { t } = this.props;
 
     return (  
-      <div className="col-md-6 m-auto">
-        <div className="card card-body mt-5">
-          <h2 className="text-center">{t('controllers.add-controller')}</h2>
+      <div className="col-md-6 m-auto custom-position">
+        <div className="card card-body mt-5 custom-border-style custom-position">
+          <h2 className="text-center custom-mb">{t('controllers.add-controller')}</h2>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label>{t('sensors.name')}</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control custom-input-style"
                 name="name"
                 onChange={this.handleChange}
                 value={this.state.name}
@@ -77,7 +77,7 @@ class AddController extends Component {
 
             <div className="form-group">
               <label>{t('sensors.category')}</label>
-              <select className="form-control" onChange={this.handleCategorySelect} value={this.state.category}>
+              <select className="form-control custom-input-style" onChange={this.handleCategorySelect} value={this.state.category}>
                 <option value="" disabled defaultValue></option>
                 <option value="clicker">{t('controllers.clicker')}</option>
                 <option value="bulb">{t('controllers.bulb')}</option>
@@ -88,7 +88,7 @@ class AddController extends Component {
             {this.state.category === 'roller_blind' ?
             <div className="form-group">
               <label>{t('controllers.current-pos')}</label>
-              <select className="form-control" onChange={this.handleDataSelect} value={this.state.data}>
+              <select className="form-control custom-input-style" onChange={this.handleDataSelect} value={this.state.data}>
                 <option value="" defaultValue></option>
                 <option value="true">{t('controllers.up')}</option>
                 <option value="false">{t('controllers.down')}</option>
@@ -96,8 +96,8 @@ class AddController extends Component {
             </div>
             : false }
 
-            <div className="form-group">
-              <button className="btn btn-primary">{t('sensors.add')}</button>
+            <div className="ff-center">
+              <button className="button">{t('sensors.add')}</button>
             </div>
           </form>
         </div>

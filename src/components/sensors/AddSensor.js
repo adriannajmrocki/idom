@@ -147,8 +147,8 @@ class AddSensor extends Component {
     const { t } = this.props;
 
     return (  
-      <div className="col-md-6 m-auto">
-        <div className="card card-body mt-5 custom-border-style">
+      <div className="col-md-6 m-auto custom-position">
+        <div className="card card-body mt-5 custom-border-style custom-position">
           <h2 className="text-center custom-mb">{t('sensors.add-sensor')}</h2>
           <form onSubmit={this.handleSubmit} noValidate>
             <div className="form-group">

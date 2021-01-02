@@ -91,54 +91,54 @@ class EditUser extends Component {
     const { t } = this.props;
 
     return (  
-      <div className="col-md-6 m-auto">
-      <div className="card card-body mt-5">
-        <h2 className="text-center">{t('users.edit-usr')}</h2>
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label>Email</label>
-            <input
-              type="email"
-              className="form-control"
-              name="email"
-              onChange={this.handleChange}
-              value={this.state.email}
-              placeholder={this.props.email}
-            />
-          </div>
-          <div className="form-group">
-            <label>{t('home.phone-number')}</label>
-            <input
-              type="text"
-              className="form-control"
-              name="telephone"
-              onChange={this.handleChange}
-              value={this.state.telephone}
-              placeholder={this.props.telephone}
-            />
-          </div>
-          <div className="form-group">
-            <label>{t('users.app-not')}</label>
-            <select className="form-control" onChange={this.handleAppSelect} value={this.state.app_notifications}>
-              <option value="" disabled selected>{this.props.appNotifications === 'true' ? `${t('users.yes')}` : `${t('users.no')}`}</option>
-              <option value="true">{t('users.yes')}</option>
-              <option value="false">{t('users.no')}</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label>{t('users.sms-not')}</label>
-            <select className="form-control" onChange={this.handleSmsSelect} value={this.state.sms_notifications}>
-              <option value="" disabled selected>{this.props.smsNotifications === 'true' ? `${t('users.yes')}` : `${t('users.no')}`}</option>
-              <option value="true">{t('users.yes')}</option>
-              <option value="false">{t('users.no')}</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <button className="btn btn-primary">{t('sensors.edit')}</button>
-          </div>
-        </form>
+      <div className="col-md-6 m-auto custom-position">
+        <div className="card card-body mt-5 custom-border-style custom-position">
+          <h2 className="text-center custom-mb">{t('users.edit-usr')}</h2>
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                className="form-control custom-input-style"
+                name="email"
+                onChange={this.handleChange}
+                value={this.state.email}
+                placeholder={this.props.email}
+              />
+            </div>
+            <div className="form-group">
+              <label>{t('home.phone-number')}</label>
+              <input
+                type="text"
+                className="form-control custom-input-style"
+                name="telephone"
+                onChange={this.handleChange}
+                value={this.state.telephone}
+                placeholder={this.props.telephone}
+              />
+            </div>
+            <div className="form-group">
+              <label>{t('users.app-not')}</label>
+              <select className="form-control custom-input-style" onChange={this.handleAppSelect} value={this.state.app_notifications}>
+                <option value="" disabled selected>{this.props.appNotifications === 'true' ? `${t('users.yes')}` : `${t('users.no')}`}</option>
+                <option value="true">{t('users.yes')}</option>
+                <option value="false">{t('users.no')}</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label>{t('users.sms-not')}</label>
+              <select className="form-control custom-input-style" onChange={this.handleSmsSelect} value={this.state.sms_notifications}>
+                <option value="" disabled selected>{this.props.smsNotifications === 'true' ? `${t('users.yes')}` : `${t('users.no')}`}</option>
+                <option value="true">{t('users.yes')}</option>
+                <option value="false">{t('users.no')}</option>
+              </select>
+            </div>
+            <div className="ff-center">
+              <button className="button">{t('sensors.edit')}</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
     );
   }
 }

@@ -42,24 +42,26 @@ class AddCamera extends Component {
     const { t } = this.props;
 
     return (  
-      <div className="form-container">
-        <form className="app-forms" onSubmit={this.handleSubmit}>
-          <h2 className="form-header">{t('cameras.add-cam')}</h2>
-          <div className="form-field">
-            <label>{t('sensors.name')}</label>
-            <input 
-              type="text"
-              className="form-input"
-              name="name"
-              onChange={this.handleChange}
-              value={name}
-            />
-          </div>
+      <div className="col-md-6 m-auto custom-position">
+        <div className="card card-body mt-5 custom-border-style custom-position">
+          <h2 className="text-center custom-mb">{t('cameras.add-cam')}</h2>
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <label>{t('sensors.name')}</label>
+              <input 
+                type="text"
+                className="form-control custom-input-style"
+                name="name"
+                onChange={this.handleChange}
+                value={name}
+              />
+            </div>
 
-          <div className="form-field ff-center">
-            <button className="button">{t('sensors.add')}</button>
-          </div>
-        </form>
+            <div className="ff-center">
+              <button className="button">{t('sensors.add')}</button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

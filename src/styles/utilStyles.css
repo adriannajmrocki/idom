@@ -136,6 +136,10 @@ li {
   margin-bottom: 30px;
 }
 
+.custom-position {
+  position: static;
+}
+
 
 /* Icons */
 .fa-angle-double-right {
