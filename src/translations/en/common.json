@@ -105,5 +105,17 @@
     "cams": "Cameras",
     "edit-cam": "Edit camera",
     "add-cam": "Add camera"
+  },
+
+  "users": {
+    "usrs": "Users",
+    "need-reset": "Need a system reset",
+    "see": "See our",
+    "guide": "guide",
+    "edit-usr": "Edit user",
+    "app-not": "App notifications",
+    "yes": "YES",
+    "no": "NO",
+    "sms-not": "SMS notifications"
   }
 }

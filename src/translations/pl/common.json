@@ -105,5 +105,17 @@
     "cams": "Kamery",
     "edit-cam": "Edytuj kamerę",
     "add-cam": "Dodaj kamerę"
+  },
+
+  "users": {
+    "usrs": "Użytkownicy",
+    "need-reset": "Potrzebujesz resetu systemu",
+    "see": "Skorzystaj z",
+    "guide": "poradnika",
+    "edit-usr": "Edytuj użytkownika",
+    "app-not": "Powiadomienia w aplikacji",
+    "yes": "TAK",
+    "no": "NIE",
+    "sms-not": "Powiadomienia SMS"
   }
 }
