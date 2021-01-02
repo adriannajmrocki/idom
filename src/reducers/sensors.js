@@ -5,7 +5,7 @@ const initialState = {
   chartData: [],
   sensorName: '',
   sensorCategory: '',
-  sensorFrequency: ''
+  sensorFrequency: '',
 }
 
 export default function(state = initialState, action) {
@@ -18,8 +18,6 @@ export default function(state = initialState, action) {
     case GET_SENSOR_DATA:
       return {
         ...state,
-        // sensors: action.payload
-        // sensors: state.sensors.map(sensor => (sensor.id === action.payload.id ? action.payload : state)),
         sensorName: action.payload.name,
         sensorCategory: action.payload.category,
         sensorFrequency: action.payload.frequency
@@ -27,7 +25,7 @@ export default function(state = initialState, action) {
     case DELETE_SENSOR:
       return {
         ...state,
-        sensors: state.sensors.filter(sensor => sensor.id !== action.payload)
+        sensors: state.sensors.filter(sensor => sensor.id !== action.payload),
       }
     case ADD_SENSOR:
       return {

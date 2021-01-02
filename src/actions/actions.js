@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_ACTIONS, ADD_ACTION, DELETE_ACTION } from './types';
+import { GET_ACTIONS, ADD_ACTION, DELETE_ACTION, GET_ACTION_DATA } from './types';
 import { baseURL } from '../utils/url';
 import { createMessage } from './messages';
 
@@ -19,7 +19,7 @@ export const getActions = () => (dispatch, getState) => {
 
   axios.get(`${baseURL}/actions/list`, config)
   .then(res => {
-    console.log(res);
+    console.log('liosta', res);
     dispatch({
       type: GET_ACTIONS,
       payload: res.data
@@ -80,4 +80,32 @@ export const deleteAction = id => (dispatch, getState) => {
     })
   })
   .catch(err => console.log(err.response))
+}
+
+// GET ACTION DATA
+// Return data of action
+export const getActionData = (id) => (dispatch, getState) => {
+
+  // Get token from state
+  const token = getState().auth.token;
+
+  // Headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    }
+  }
+
+  axios.get(`${baseURL}/actions/detail/${id}`, config)
+  .then(res => {
+    console.log('data', res)
+    if (res.status === 200) {
+      dispatch({
+        type: GET_ACTION_DATA,
+        payload: res.data
+      })
+    }
+  })
+  .catch(err => console.log(err))
 }

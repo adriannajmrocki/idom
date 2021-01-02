@@ -180,8 +180,6 @@ export const runBulb = (id, flag) => (dispatch, getState) => {
     }
   } 
 
-  // const body = JSON.stringify({ flag });
-
   axios.post(`${baseURL}/bulbs/switch/${id}`, flag, config)
   .then(res => {
     console.log(res);
@@ -199,8 +197,8 @@ export const runBulb = (id, flag) => (dispatch, getState) => {
   })
 }
 
-// RUN BULB
-// Communicates with backend and switch on/off a bulb
+// SET BULB BRIGHTNESS
+// Communicates with backend and set brightness of a bulb
 export const postBulbBrightness = (id, data) => (dispatch, getState) => {
 
   const token = getState().auth.token;
@@ -229,8 +227,8 @@ export const postBulbBrightness = (id, data) => (dispatch, getState) => {
   })
 }
 
-// RUN BULB
-// Communicates with backend and switch on/off a bulb
+// SET BULB COLOR
+// Communicates with backend and set a color of a bulb
 export const postBulbColor = (id, data) => (dispatch, getState) => {
 
   const token = getState().auth.token;
