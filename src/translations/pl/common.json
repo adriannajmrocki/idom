@@ -87,5 +87,23 @@
     "current-pos": "Aktualne położenie rolet",
     "up": "Odsłonięte",
     "down": "Zasłonięte"
+  },
+
+  "actions": {
+    "actions-h": "Akcje",
+    "add-action": "Dodaj akcję",
+    "action-func": "Działanie akcji",
+    "act-time": "Akcja o wybranej godzinie",
+    "act-between-time": "Akcja pomiędzy wybranymi godzinami",
+    "act-sensor": "Akcja po wykryciu przez czujnik danej wartości",
+    "act-sensor-between": "Akcja po wykryciu przez czujnik danej wartości pomiędzy wybranymi godzinami",
+    "act-to-work": "Akcja, jaka ma się wykonać",
+    "sensor": "Czujnik"
+  },
+
+  "cameras": {
+    "cams": "Kamery",
+    "edit-cam": "Edytuj kamerę",
+    "add-cam": "Dodaj kamerę"
   }
 }

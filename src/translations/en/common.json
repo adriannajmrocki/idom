@@ -87,5 +87,23 @@
     "current-pos": "Current position of blinds",
     "up": "Up",
     "down": "Down"
+  },
+
+  "actions": {
+    "actions-h": "Actions",
+    "add-action": "Add action",
+    "action-func": "Action's function",
+    "act-time": "Action at selected time",
+    "act-between-time": "Action between selected time",
+    "act-sensor": "Action when sensor detects a given value",
+    "act-sensor-between": "Action when sensor detects a given value between selected hours",
+    "act-to-work": "Action to be worked",
+    "sensor": "Sensor"
+  },
+
+  "cameras": {
+    "cams": "Cameras",
+    "edit-cam": "Edit camera",
+    "add-cam": "Add camera"
   }
 }

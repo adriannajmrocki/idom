@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
 import { addCamera } from '../../actions/cameras';
 
@@ -38,13 +39,14 @@ class AddCamera extends Component {
   render() { 
 
     const { name } = this.state;
+    const { t } = this.props;
 
     return (  
       <div className="form-container">
         <form className="app-forms" onSubmit={this.handleSubmit}>
-          <h2 className="form-header">Dodaj kamerę</h2>
+          <h2 className="form-header">{t('cameras.add-cam')}</h2>
           <div className="form-field">
-            <label>Nazwa</label>
+            <label>{t('sensors.name')}</label>
             <input 
               type="text"
               className="form-input"
@@ -55,7 +57,7 @@ class AddCamera extends Component {
           </div>
 
           <div className="form-field ff-center">
-            <button className="button">Dodaj</button>
+            <button className="button">{t('sensors.add')}</button>
           </div>
         </form>
       </div>
@@ -63,4 +65,4 @@ class AddCamera extends Component {
   }
 }
  
-export default connect(null, { addCamera })(AddCamera);
+export default withTranslation('common')(connect(null, { addCamera })(AddCamera));
