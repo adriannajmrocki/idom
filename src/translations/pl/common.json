@@ -86,7 +86,8 @@
     "add-controller": "Dodaj sterownik",
     "current-pos": "Aktualne położenie rolet",
     "up": "Odsłonięte",
-    "down": "Zasłonięte"
+    "down": "Zasłonięte",
+    "ip": "Adres IP"
   },
 
   "actions": {
@@ -174,6 +175,7 @@
     "csvAccepted": "Plik został wygenerowany",
     "actionAdded": "Akcja została dodana",
     "actionDeleted": "Akcja została usunięta",
-    "actionExists": "Akcja o podanej nazwie już istnieje"
+    "actionExists": "Akcja o podanej nazwie już istnieje",
+    "ipError": "Podany adres IP jest nieprawidłowy"
   }
 }

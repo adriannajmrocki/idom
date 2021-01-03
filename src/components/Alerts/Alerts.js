@@ -78,6 +78,7 @@ export class Alerts extends Component {
       if (message.controllerRunError) alert.error(t('messages.controllerRunError'));
       if (message.bulbDataSent) alert.success(t('messages.bulbDataSent'));
       if (message.bulbDataSentError) alert.error(t('messages.bulbDataSentError'));
+      if (message.ipError) alert.error(t('messages.ipError'));
 
       // CSV alerts
       if (message.noItems) alert.error(t('messages.noItems'));
