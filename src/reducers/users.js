@@ -5,6 +5,7 @@ const initialState = {
   username: '',
   email: '',
   telephone: '',
+  language: '',
   appNotifications: '',
   smsNotifications: ''
 }
@@ -22,6 +23,7 @@ export default function(state = initialState, action) {
         username: action.payload.username,
         email: action.payload.email,
         telephone: action.payload.telephone,
+        language: action.payload.language,
         appNotifications: '' + action.payload.app_notifications,
         smsNotifications: '' + action.payload.sms_notifications
       }
