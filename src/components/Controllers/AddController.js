@@ -12,6 +12,7 @@ class AddController extends Component {
   state = { 
     name: '',
     category: '',
+    ip: '',
     data: null
   }
 
@@ -35,15 +36,22 @@ class AddController extends Component {
     e.preventDefault();
 
     const { name, category } = this.state;
-    let { data } = this.state;
+    let { data, ip } = this.state;
 
     if (category !== 'roller_blind') {
       data = null;
     }
-    const newController = { name, category, data };
+
+    if (category !== 'bulb') {
+      ip = null;
+    }
+
+    const newController = { name, category, ip, data };
 
     if (category === 'roller_blind' && data === null) {
       this.props.createMessage({ noDataError: 'Podaj aktualny stan rolety' })
+    } else if (category === 'bulb' && !ip.match(/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/)) {
+      this.props.createMessage({ ipError: 'Podany adres IP jest nieprawidłowy' })
     } else {
       this.props.addController(newController);
     }
@@ -51,7 +59,9 @@ class AddController extends Component {
 
     this.setState({
       name: '',
-      category: ''
+      category: '',
+      ip: '',
+      data: null
     })
   }
 
@@ -84,6 +94,19 @@ class AddController extends Component {
                 <option value="roller_blind">{t('controllers.blind')}</option>
               </select>
             </div>
+
+            {this.state.category === 'bulb' ?
+            <div className="form-group">
+              <label>{t('controllers.ip')}</label>
+              <input 
+                type="text"
+                className="form-control custom-input-style"
+                name="ip"
+                onChange={this.handleChange}
+                value={this.state.ip}
+              />
+            </div>
+            : false }
 
             {this.state.category === 'roller_blind' ?
             <div className="form-group">
