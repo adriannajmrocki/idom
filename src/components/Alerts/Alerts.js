@@ -18,77 +18,77 @@ export class Alerts extends Component {
       // Sensors alerts
       if (message.sensorDeleted) alert.success(t('messages.sensorDeleted'));
       if (message.sensorAdded) alert.success(t('messages.sensorAdded'));
-      if (message.sensorUpdated) alert.success(t('message.sensorUpdated'));
-      if (message.sensorExists) alert.error(t('message.sensorExists'));
-      if (message.noSensorNameError) alert.error(t('message.noSensorNameError'));
-      if (message.noSensorCategoryError) alert.error(t('message.noSensorCategoryError'));
-      if (message.noFrequencyUnitError) alert.error(t('message.noFrequencyUnitError'));
-      if (message.noFrequencyError) alert.error(t('message.noFrequencyError'));
-      if (message.frequencyMinSecondsError) alert.error(t('message.frequencyMinSecondsError'));
-      if (message.frequencyMaxSecondsError) alert.error(t('message.frequencyMaxSecondsError'));
-      if (message.frequencyMinMinutesError) alert.error(t('message.frequencyMinMinutesError'));
-      if (message.frequencyMaxMinutesError) alert.error(t('message.frequencyMaxMinutesError'));
-      if (message.frequencyMinHoursError) alert.error(t('message.frequencyMinHoursError'));
-      if (message.frequencyMaxHoursError) alert.error(t('message.frequencyMaxHoursError'));
-      if (message.frequencyMinDaysError) alert.error(t('message.frequencyMinDaysError'));
-      if (message.frequencyMaxDaysError) alert.error(t('message.frequencyMaxDaysError'));
-      if (message.noChartData) alert.info(t('message.noChartData'));
+      if (message.sensorUpdated) alert.success(t('messages.sensorUpdated'));
+      if (message.sensorExists) alert.error(t('messages.sensorExists'));
+      if (message.noSensorNameError) alert.error(t('messages.noSensorNameError'));
+      if (message.noSensorCategoryError) alert.error(t('messages.noSensorCategoryError'));
+      if (message.noFrequencyUnitError) alert.error(t('messages.noFrequencyUnitError'));
+      if (message.noFrequencyError) alert.error(t('messages.noFrequencyError'));
+      if (message.frequencyMinSecondsError) alert.error(t('messages.frequencyMinSecondsError'));
+      if (message.frequencyMaxSecondsError) alert.error(t('messages.frequencyMaxSecondsError'));
+      if (message.frequencyMinMinutesError) alert.error(t('messages.frequencyMinMinutesError'));
+      if (message.frequencyMaxMinutesError) alert.error(t('messages.frequencyMaxMinutesError'));
+      if (message.frequencyMinHoursError) alert.error(t('messages.frequencyMinHoursError'));
+      if (message.frequencyMaxHoursError) alert.error(t('messages.frequencyMaxHoursError'));
+      if (message.frequencyMinDaysError) alert.error(t('messages.frequencyMinDaysError'));
+      if (message.frequencyMaxDaysError) alert.error(t('messages.frequencyMaxDaysError'));
+      if (message.noChartData) alert.info(t('messages.noChartData'));
 
       // Users alerts
-      if (message.userDeleted) alert.success(t('message.userDeleted'));
-      if (message.dataNotChanged) alert.info(t('message.dataNotChanged'));
-      if (message.userUpdated) alert.success(t('message.userUpdated'));
-      if (message.userUpdateError) alert.error(t('message.userUpdateError'));
-      if (message.userUpdateDataError) alert.error(t('message.userUpdateDataError'));
+      if (message.userDeleted) alert.success(t('messages.userDeleted'));
+      if (message.dataNotChanged) alert.info(t('messages.dataNotChanged'));
+      if (message.userUpdated) alert.success(t('messages.userUpdated'));
+      if (message.userUpdateError) alert.error(t('messages.userUpdateError'));
+      if (message.userUpdateDataError) alert.error(t('messages.userUpdateDataError'));
 
       // Register alerts
-      if (message.usernameLengthError) alert.error(t('message.usernameLengthError'));
-      if (message.usernameSpaceError) alert.error(t('message.usernameSpaceError'));
-      if (message.emailLengthError) alert.error(t('message.emailLengthError'));
-      if (message.emailFormatError) alert.error(t('message.emailFormatError'));
-      if (message.telephoneFormatError) alert.error(t('message.telephoneFormatError'));
-      if (message.passwordLengthError) alert.error(t('message.passwordLengthError'));
-      if (message.passwordsNotMatch) alert.error(t('message.passwordsNotMatch'));
-      if (message.registerSuccess) alert.success(t('message.registerSuccess'));
-      if (message.userExists) alert.error(t('message.userExists'));
-      if (message.languageError) alert.error(t('message.languageError'));
+      if (message.usernameLengthError) alert.error(t('messages.usernameLengthError'));
+      if (message.usernameSpaceError) alert.error(t('messages.usernameSpaceError'));
+      if (message.emailLengthError) alert.error(t('messages.emailLengthError'));
+      if (message.emailFormatError) alert.error(t('messages.emailFormatError'));
+      if (message.telephoneFormatError) alert.error(t('messages.telephoneFormatError'));
+      if (message.passwordLengthError) alert.error(t('messages.passwordLengthError'));
+      if (message.passwordsNotMatch) alert.error(t('messages.passwordsNotMatch'));
+      if (message.registerSuccess) alert.success(t('messages.registerSuccess'));
+      if (message.userExists) alert.error(t('messages.userExists'));
+      if (message.languageError) alert.error(t('messages.languageError'));
       
       // Login alerts
-      if (message.loginError) alert.error(t('message.loginError'));
+      if (message.loginError) alert.error(t('messages.loginError'));
 
       // Password reset alerts
-      if (message.resetPasswordEmailSuccess) alert.success(t('message.resetPasswordEmailSuccess'));
-      if (message.resetPasswordEmailError) alert.error(t('message.resetPasswordEmailError'));
-      if (message.resetPasswordSuccess) alert.success(t('message.resetPasswordSuccess'));
-      if (message.resetPasswordError) alert.error(t('message.resetPasswordError'));
+      if (message.resetPasswordEmailSuccess) alert.success(t('messages.resetPasswordEmailSuccess'));
+      if (message.resetPasswordEmailError) alert.error(t('messages.resetPasswordEmailError'));
+      if (message.resetPasswordSuccess) alert.success(t('messages.resetPasswordSuccess'));
+      if (message.resetPasswordError) alert.error(t('messages.resetPasswordError'));
 
       // Cameras alerts
-      if (message.cameraAdded) alert.success(t('message.cameraAdded'));
-      if (message.cameraExists) alert.error(t('message.cameraExists'));
-      if (message.cameraDeleted) alert.success(t('message.cameraDeleted'));
-      if (message.cameraUpdated) alert.success(t('message.cameraUpdated'));
+      if (message.cameraAdded) alert.success(t('messages.cameraAdded'));
+      if (message.cameraExists) alert.error(t('messages.cameraExists'));
+      if (message.cameraDeleted) alert.success(t('messages.cameraDeleted'));
+      if (message.cameraUpdated) alert.success(t('messages.cameraUpdated'));
 
       // Controllers alerts
-      if (message.controllerAdded) alert.success(t('message.controllerAdded'));
-      if (message.controllerExists) alert.error(t('message.controllerExists'));
-      if (message.controllerDeleted) alert.success(t('message.controllerDeleted'));
-      if (message.controllerUpdated) alert.success(t('message.controllerUpdated'));
-      if (message.noDataError) alert.error(t('message.noDataError'));
-      if (message.controllerRunning) alert.success(t('message.controllerRunning'));
-      if (message.controllerRunError) alert.error(t('message.controllerRunError'));
-      if (message.bulbDataSent) alert.success(t('message.bulbDataSent'));
-      if (message.bulbDataSentError) alert.error(t('message.bulbDataSentError'));
+      if (message.controllerAdded) alert.success(t('messages.controllerAdded'));
+      if (message.controllerExists) alert.error(t('messages.controllerExists'));
+      if (message.controllerDeleted) alert.success(t('messages.controllerDeleted'));
+      if (message.controllerUpdated) alert.success(t('messages.controllerUpdated'));
+      if (message.noDataError) alert.error(t('messages.noDataError'));
+      if (message.controllerRunning) alert.success(t('messages.controllerRunning'));
+      if (message.controllerRunError) alert.error(t('messages.controllerRunError'));
+      if (message.bulbDataSent) alert.success(t('messages.bulbDataSent'));
+      if (message.bulbDataSentError) alert.error(t('messages.bulbDataSentError'));
 
       // CSV alerts
-      if (message.noItems) alert.error(t('message.noItems'));
-      if (message.noFilter) alert.error(t('message.noFilter'));
-      if (message.daysError) alert.error(t('message.daysError'));
-      if (message.csvAccepted) alert.success(t('message.csvAccepted'));
+      if (message.noItems) alert.error(t('messages.noItems'));
+      if (message.noFilter) alert.error(t('messages.noFilter'));
+      if (message.daysError) alert.error(t('messages.daysError'));
+      if (message.csvAccepted) alert.success(t('messages.csvAccepted'));
 
       // Actions alerts
-      if (message.actionAdded) alert.success(t('message.actionAdded'));
-      if (message.actionDeleted) alert.success(t('message.actionDeleted'));
-      if (message.actionExists) alert.error(t('message.actionExists'));
+      if (message.actionAdded) alert.success(t('messages.actionAdded'));
+      if (message.actionDeleted) alert.success(t('messages.actionDeleted'));
+      if (message.actionExists) alert.error(t('messages.actionExists'));
     }
   }
 
