@@ -12,6 +12,7 @@ class EditUser extends Component {
   state = {  
     email: '',
     telephone: '',
+    language: '',
     app_notifications: '',
     sms_notifications: '',
   }
@@ -20,6 +21,7 @@ class EditUser extends Component {
     updateUser: PropTypes.func.isRequired,
     email: PropTypes.string.isRequired,
     telephone: PropTypes.string,
+    language: PropTypes.string.isRequired,
     appNotifications: PropTypes.string.isRequired,
     smsNotifications: PropTypes.string.isRequired,
   }
@@ -36,6 +38,10 @@ class EditUser extends Component {
     this.setState({ sms_notifications: e.target.value })
   }
 
+  handleLangSelect = e => {
+    this.setState({ language: e.target.value })
+  }
+
   handleSubmit = (e, dispatch) => {
     e.preventDefault();
     console.log('EDIT USER SUBMIT');
@@ -43,30 +49,35 @@ class EditUser extends Component {
 
     const id = this.props.match.params.id;
 
-    let { email, telephone, app_notifications, sms_notifications } = this.state;
-    let userData = { email, telephone, app_notifications, sms_notifications };
+    let { email, telephone, language, app_notifications, sms_notifications } = this.state;
+    let userData = { email, telephone, language, app_notifications, sms_notifications };
 
     if (!email) {
       email = undefined;
-      userData = { email, telephone, app_notifications, sms_notifications };
+      userData = { email, telephone, language, app_notifications, sms_notifications };
     }
 
     if (!telephone) {
       telephone = undefined;
-      userData = { email, telephone, app_notifications, sms_notifications };
+      userData = { email, telephone, language, app_notifications, sms_notifications };
     }
 
     if (!app_notifications) {
       app_notifications = undefined;
-      userData = { email, telephone, app_notifications, sms_notifications };
+      userData = { email, telephone, language, app_notifications, sms_notifications };
     }
 
     if (!sms_notifications) {
       sms_notifications = undefined;
-      userData = { email, telephone, app_notifications, sms_notifications };
+      userData = { email, telephone, language, app_notifications, sms_notifications };
     }
 
-    if (email === undefined && telephone === undefined && app_notifications === undefined && sms_notifications === undefined) {
+    if (!language) {
+      language = undefined;
+      userData = { email, telephone, language, app_notifications, sms_notifications };
+    }
+
+    if (email === undefined && telephone === undefined && language === undefined && app_notifications === undefined && sms_notifications === undefined) {
       this.props.createMessage({ dataNotChanged: 'Żadne dane nie zostały zmienione' });
     } else {
       this.props.updateUser(id, userData);
@@ -75,6 +86,7 @@ class EditUser extends Component {
     this.setState({
       email: '',
       telephone: '',
+      language: '',
       app_notifications: '',
       sms_notifications: '',
     })
@@ -118,6 +130,14 @@ class EditUser extends Component {
               />
             </div>
             <div className="form-group">
+              <label>{t('home.notifications-lng')}</label>
+              <select className="form-control custom-input-style" onChange={this.handleLangSelect} value={this.state.language}>
+                <option value="" disabled selected>{this.props.language === 'pl' ? `${t('home.pl')}` : `${t('home.en')}`}</option>
+                <option value="pl">{t('home.pl')}</option>
+                <option value="eng">{t('home.en')}</option>
+              </select>
+            </div>
+            <div className="form-group">
               <label>{t('users.app-not')}</label>
               <select className="form-control custom-input-style" onChange={this.handleAppSelect} value={this.state.app_notifications}>
                 <option value="" disabled selected>{this.props.appNotifications === 'true' ? `${t('users.yes')}` : `${t('users.no')}`}</option>
@@ -146,6 +166,7 @@ class EditUser extends Component {
 const mapStateToProps = state => ({
   email: state.users.email,
   telephone: state.users.telephone,
+  language: state.users.language,
   appNotifications: state.users.appNotifications,
   smsNotifications: state.users.smsNotifications,
 })
