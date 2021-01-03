@@ -1,0 +1,179 @@
+{
+  "home": {
+    "signin-h": "Logowanie",
+    "username": "Nazwa uytkownika",
+    "password": "Hasło",
+    "forgot-password": "Nie pamiętasz hasła?",
+    "signup-h": "Rejestracja",
+    "phone-number": "Numer telefonu (z kierunkowym)",
+    "notifications-lng": "Język powiadomień",
+    "pl": "Polski",
+    "en": "Angielski",
+    "repeat-password": "Powtórz hasło",
+    "lng": "Język",
+    "lp-head": "Nie masz jeszcze konta?",
+    "lp-p1": "Dzięki aplikacji IDOM możesz kontrolować swój inteligentny dom nie ruszając się zmiejsca",
+    "lp-p2": "Dołącz do nas i zobacz jakie to proste",
+    "join": "Dołącz do IDOM",
+    "rp-head": "Korzystasz z IDOM",
+    "rp-p": "Świetnie! Zaloguj się, aby w pełni korzystać z udogodnień inteligentnego domu."
+  },
+
+  "header": {
+    "sensors": "Czujniki",
+    "controllers": "Sterowniki",
+    "actions": "Akcje",
+    "cameras": "Kamery",
+    "account": "Konto",
+    "logout": "Wyloguj"
+  },
+
+  "board": {
+    "welcome": "Witaj w",
+    "p": "Twój inteligentny dom jest gotowy do pracy. Wybierz odpowiednią kategorię i pozwól mu działać."
+  },
+
+  "sensors": {
+    "csv": "Potrzebujesz pliku z danymi w formacie .csv",
+    "generate": "Wygeneruj",
+    "temp": "Temperatura",
+    "water-temp": "Temperatura wody",
+    "hum": "Wilgotność",
+    "air-hum": "Wilgotność powietrza",
+    "pressure": "Ciśnienie",
+    "alc": "Alkomat",
+    "smoke": "Dym",
+    "rain": "Deszcz",
+    "edit-sensor": "Edytuj czujnik",
+    "name": "Nazwa",
+    "category": "Kategoria",
+    "data-samp-freq": "Częstotliwość pobierania danych",
+    "sec": "Sekundy",
+    "min": "Minuty",
+    "h": "Godziny",
+    "days": "Dni",
+    "edit": "Edit",
+    "add-sensor": "Dodaj czujnik",
+    "select": "Wybierz...",
+    "value": "Wartość",
+    "add": "Dodaj"
+  },
+
+  "charts": {
+    "chart": "Wykres",
+    "history": "Historia",
+    "d": "dni",
+    "day": "dzień",
+    "select-filter": "Wybierz filtr, aby narysować wykres"
+  },
+
+  "csv-generate": {
+    "csv-file": "Plik CSV",
+    "csv-filter": "Wybierz filtr",
+    "categories": "Kategorie"
+  },
+
+  "notifications": {
+    "sensor-added": "Czujnik został dodany",
+    "no-sensor-name-error": "Podaj nazwę czujnika"
+  },
+
+  "controllers": {
+    "clicker": "Przycisk",
+    "bulb": "Żarówka",
+    "blind": "Roleta",
+    "edit-controller": "Edytuj sterownik",
+    "add-controller": "Dodaj sterownik",
+    "current-pos": "Aktualne położenie rolet",
+    "up": "Odsłonięte",
+    "down": "Zasłonięte"
+  },
+
+  "actions": {
+    "actions-h": "Akcje",
+    "add-action": "Dodaj akcję",
+    "action-func": "Działanie akcji",
+    "act-time": "Akcja o wybranej godzinie",
+    "act-between-time": "Akcja pomiędzy wybranymi godzinami",
+    "act-sensor": "Akcja po wykryciu przez czujnik danej wartości",
+    "act-sensor-between": "Akcja po wykryciu przez czujnik danej wartości pomiędzy wybranymi godzinami",
+    "act-to-work": "Akcja, jaka ma się wykonać",
+    "sensor": "Czujnik"
+  },
+
+  "cameras": {
+    "cams": "Kamery",
+    "edit-cam": "Edytuj kamerę",
+    "add-cam": "Dodaj kamerę"
+  },
+
+  "users": {
+    "usrs": "Użytkownicy",
+    "need-reset": "Potrzebujesz resetu systemu",
+    "see": "Skorzystaj z",
+    "guide": "poradnika",
+    "edit-usr": "Edytuj użytkownika",
+    "app-not": "Powiadomienia w aplikacji",
+    "yes": "TAK",
+    "no": "NIE",
+    "sms-not": "Powiadomienia SMS"
+  },
+
+  "messages": {
+    "sensorDeleted": "Czujnik został usunięty",
+    "sensorAdded": "Czujnik został dodany",
+    "sensorUpdated": "Czujnik został zmodyfikowany",
+    "sensorExists": "Taki czujnik już istnieje",
+    "noSensorCategoryError": "Wybierz kategorię",
+    "noFrequencyUnitError": "Podaj jednostkę częstotliwości",
+    "noFrequencyError": "Podaj wartość częstotliwości",
+    "frequencyMinSecondsError": "Minimalna liczba sekund: 30",
+    "frequencyMaxSecondsError": "Maksymalna liczba sekund: 21474836",
+    "frequencyMinMinutesError": "Minimalna liczba minut: 1",
+    "frequencyMaxMinutesError": "Maksymalna liczba minut: 357913",
+    "frequencyMinHoursError": "Minimalna liczba godzin: 1",
+    "frequencyMaxHoursError": "Maksymalna liczba godzin: 5965",
+    "frequencyMinDaysError": "Minimalna liczba dni: 1",
+    "frequencyMaxDaysError": "Maksymalna liczba dni: 248",
+    "noChartData": "Brak danych do narysowania wykresu w wybranym przez Ciebie filtrze",
+    "userDeleted": "Użytkownik został usunięty",
+    "dataNotChanged": "Żadne dane nie zostały zmienione",
+    "userUpdated": "Dane użytkownika zostały zmodyfikowane",
+    "userUpdateDataError": "Taki użytkownik już istnieje lub dane zostały wprowadzone nieprawidłowo",
+    "usernameLengthError": "Nazwa użytkownika musi zawierać od 3 do 25 znaków",
+    "usernameSpaceError": "Nazwa użytkownika nie może zawierać spacji",
+    "emailLengthError": "Email jest wymagany",
+    "emailFormatError": "Nieprawidłowy format adresu email",
+    "telephoneFormatError": "Nieprawidłowy format numeru telefonu",
+    "passwordLengthError": "Hasło musi zawierać od 8 do 25 znaków",
+    "passwordsNotMatch": "Podane hasła nie są identyczne",
+    "registerSuccess": "Rejestracja przebiegła pomyślnie. Możesz się zalogować",
+    "userExists": "Taki użytkownik już istnieje. Spróbuj ponownie",
+    "languageError": "Wybierz język powiadomień",
+    "loginError": "Nieprawidłowy login lub hasło. Spróbuj ponownie",
+    "resetPasswordEmailSuccess": "Na podany adres email został wysłany link do zmiany hasła",
+    "resetPasswordEmailError": "Konto o podanym adresie email nie istnieje",
+    "resetPasswordSuccess": "Hasło zostało zmienione",
+    "resetPasswordError": "Hasło nie zawiera od 8 do 25 znaków lub jest zbyt łatwe",
+    "cameraAdded": "Kamera została dodana",
+    "cameraExists": "Kamera o podanej nazwie już istnieje",
+    "cameraDeleted": "Kamera została usunięta",
+    "cameraUpdated": "Kamera została zmodyfikowana",
+    "controllerAdded": "Sterownik został dodany",
+    "controllerExists": "Sterownik o podanej nazwie już istnieje",
+    "controllerDeleted": "Sterownik został usunięty",
+    "controllerUpdated": "Sterownik został zmodyfikowany",
+    "noDataError": "Podaj aktualny stan rolety",
+    "controllerRunning": "Sterownik został uruchomiony",
+    "controllerRunError": "Nie udało się uruchomić sterownika",
+    "bulbDataSent": "Dane zostały zaktualizowane",
+    "bulbDataSentError": "Operacja nie powiodła się",
+    "noItems": "Wybierz interesujące cię czujniki lub kategorie",
+    "noFilter": "Wybierz filtr",
+    "daysError": "Podaj liczbę dni z zakresu od 1 do 30",
+    "csvAccepted": "Plik został wygenerowany",
+    "actionAdded": "Akcja została dodana",
+    "actionDeleted": "Akcja została usunięta",
+    "actionExists": "Akcja o podanej nazwie już istnieje"
+  }
+}

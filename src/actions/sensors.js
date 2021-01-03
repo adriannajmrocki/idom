@@ -80,6 +80,7 @@ export const deleteSensor = id => (dispatch, getState) => {
   // Delete request to API
   axios.delete(`${baseURL}/sensors/delete/${id}`, config)
   .then(res => {
+    // console.log(res)
     dispatch(createMessage({ sensorDeleted: 'Czujnik został usunięty' }))
     dispatch({
       type: DELETE_SENSOR,

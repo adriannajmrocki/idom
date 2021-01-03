@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Line } from 'react-chartjs-2';
+import { useTranslation } from "react-i18next";
+
 
 import { getChartData } from '../../actions/sensors';
 import { createMessage } from '../../actions/messages'; 
@@ -13,6 +15,8 @@ const Chart = (props) => {
 
   const [chartDataState, setChartDataState] = useState({});
   const [renderChart, setRenderChart] = useState(false);
+
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     const id = props.match.params.id;
@@ -197,20 +201,20 @@ const Chart = (props) => {
   return (  
     <div className="container">
       <div className="head" style={{'marginBottom': '30px'}}>
-        <h2>Wykres</h2>
+        <h2>{t('charts.chart')}</h2>
         <div className="line" style={{"width": "900px"}}></div>
       </div>
 
       <div className="filter-buttons">
-        <button className="all filter-btn" onClick={handleAllClick}>Historia</button>
-        <button className="month filter-btn" onClick={handleMonthClick}>30 dni</button>
-        <button className="two-weeks filter-btn" onClick={handleTwoWeeksClick}>14 dni</button>
-        <button className="day filter-btn" onClick={handleDayClick}>1 dzień</button>
+        <button className="all filter-btn" onClick={handleAllClick}>{t('charts.history')}</button>
+        <button className="month filter-btn" onClick={handleMonthClick}>30 {t('charts.d')}</button>
+        <button className="two-weeks filter-btn" onClick={handleTwoWeeksClick}>14 {t('charts.d')}</button>
+        <button className="day filter-btn" onClick={handleDayClick}>1 {t('charts.day')}</button>
       </div>
 
       {renderChart === false ?
       <div className="choose-filter">
-        <h6>Wybierz filtr, aby narysować wykres</h6>
+        <h6>{t('charts.select-filter')}</h6>
       </div>
       :
       <div className="chart">

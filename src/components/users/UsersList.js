@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
+
 import { getUsers, deleteUser } from '../../actions/users';
 
 import '../../styles/utilStyles.css';
@@ -20,11 +22,14 @@ class UsersList extends Component {
   }
 
   render() { 
+
+    const { t } = this.props;
+
     return (  
       <div className="container">
         <div className="head" style={{"marginBottom": "40px"}}>
           <i className="far fa-user fa-2x"></i>
-          <h2>Użytkownicy</h2>
+          <h2 className="ml-10">{t('users.usrs')}</h2>
           <div className="line"></div>
         </div>
 
@@ -45,8 +50,8 @@ class UsersList extends Component {
         })}
 
         <div className="reset-section">
-          <p>Potrzebujesz resetu systemu?</p>
-          <p>Skorzystaj z <span className='guide'><a href="https://adriannajmrocki.github.io/idom-website/" target="_blank" rel="noreferrer">poradnika</a></span></p>
+          <p>{t('users.need-reset')}?</p>
+          <p>{t('users.see')} <span className='guide'><a href="https://adriannajmrocki.github.io/idom-website/" target="_blank" rel="noreferrer">{t('users.guide')}</a></span></p>
         </div>
       </div>
     );
@@ -57,4 +62,4 @@ const mapStateToProps = state => ({
   users: state.users.users
 })
  
-export default connect(mapStateToProps, { getUsers, deleteUser })(UsersList);
+export default withTranslation('common')(connect(mapStateToProps, { getUsers, deleteUser })(UsersList));

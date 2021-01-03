@@ -1,0 +1,179 @@
+{
+  "home": {
+    "signin-h": "Sign in",
+    "username": "Username",
+    "password": "Password",
+    "forgot-password": "Forgot password?",
+    "signup-h": "Sign up",
+    "phone-number": "Phone number (with area code)",
+    "notifications-lng": "Notifications language",
+    "pl": "Polish",
+    "en": "English",
+    "repeat-password": "Repeat password",
+    "lng": "Language",
+    "lp-head": "Don't have an account yet?",
+    "lp-p1": "You can control your smart home because of IDOM web application",
+    "lp-p2": "Join us and see how simple it is",
+    "join": "Join IDOM",
+    "rp-head": "Already using IDOM",
+    "rp-p": "Great! Sign in to take full advantage of a smart home facilities."
+  },
+
+  "header": {
+    "sensors": "Sensors",
+    "controllers": "Controllers",
+    "actions": "Actions",
+    "cameras": "Cameras",
+    "account": "Account",
+    "logout": "Logout"
+  },
+
+  "board": {
+    "welcome": "Welcome to",
+    "p": "Your smart home is ready to work. Select a category and let it run."
+  },
+
+  "sensors": {
+    "csv": "Need a data file in .csv format",
+    "generate": "Generate",
+    "temp": "Temperature",
+    "water-temp": "Water temperature",
+    "hum": "Humidity",
+    "air-hum": "Air humidity",
+    "pressure": "Pressure",
+    "alc": "Breathalyser",
+    "smoke": "Smoke",
+    "rain": "Rain",
+    "edit-sensor": "Edit sensor",
+    "name": "Name",
+    "category": "Category",
+    "data-samp-freq": "Data sampling frequency",
+    "sec": "Seconds",
+    "min": "Minutes",
+    "h": "Hours",
+    "days": "Days",
+    "edit": "Edit",
+    "add-sensor": "Add sensor",
+    "select": "Select...",
+    "value": "Value",
+    "add": "Add"
+  },
+
+  "charts": {
+    "chart": "Chart",
+    "history": "History",
+    "d": "days",
+    "day": "day",
+    "select-filter": "Select a filter to draw a chart"
+  },
+
+  "csv-generate": {
+    "csv-file": "CSV file",
+    "csv-filter": "Select a filter",
+    "categories": "Categories"
+  },
+
+  "notifications": {
+    "sensor-added": "Sensor added",
+    "no-sensor-name-error": "Enter the sensor name"
+  },
+
+  "controllers": {
+    "clicker": "Clicker",
+    "bulb": "Bulb",
+    "blind": "Blind",
+    "edit-controller": "Edit controller",
+    "add-controller": "Add controller",
+    "current-pos": "Current position of blinds",
+    "up": "Up",
+    "down": "Down"
+  },
+
+  "actions": {
+    "actions-h": "Actions",
+    "add-action": "Add action",
+    "action-func": "Action's function",
+    "act-time": "Action at selected time",
+    "act-between-time": "Action between selected time",
+    "act-sensor": "Action when sensor detects a given value",
+    "act-sensor-between": "Action when sensor detects a given value between selected hours",
+    "act-to-work": "Action to be worked",
+    "sensor": "Sensor"
+  },
+
+  "cameras": {
+    "cams": "Cameras",
+    "edit-cam": "Edit camera",
+    "add-cam": "Add camera"
+  },
+
+  "users": {
+    "usrs": "Users",
+    "need-reset": "Need a system reset",
+    "see": "See our",
+    "guide": "guide",
+    "edit-usr": "Edit user",
+    "app-not": "App notifications",
+    "yes": "YES",
+    "no": "NO",
+    "sms-not": "SMS notifications"
+  },
+
+  "messages": {
+    "sensorDeleted": "Sensor has beed deleted",
+    "sensorAdded": "Sensor has beed added",
+    "sensorUpdated": "Sensor has been updated",
+    "sensorExists": "Sensor with given data already exists",
+    "noSensorCategoryError": "Select category",
+    "noFrequencyUnitError": "Enter frequency unit",
+    "noFrequencyError": "Enter frequency value",
+    "frequencyMinSecondsError": "The minimum number of seconds is 30",
+    "frequencyMaxSecondsError": "The maximum number of seconds is 21474836",
+    "frequencyMinMinutesError": "The minimum number of minutes is 1",
+    "frequencyMaxMinutesError": "The maximum number of minutes is 357913",
+    "frequencyMinHoursError": "The minimum number of hours is 1",
+    "frequencyMaxHoursError": "The maximum number of hours is 5965",
+    "frequencyMinDaysError": "The minimum number of days is 1",
+    "frequencyMaxDaysError": "The maximum number of days is 248",
+    "noChartData": "No data to draw a chart with chosen filter",
+    "userDeleted": "User has been deleted",
+    "dataNotChanged": "User data have not been updated",
+    "userUpdated": "User data have been updated",
+    "userUpdateDataError": "User with given data already exists or data have been entered incorrectly",
+    "usernameLengthError": "Username has to contain 3 to 25 characters",
+    "usernameSpaceError": "Username can't contain spaces",
+    "emailLengthError": "Email is required",
+    "emailFormatError": "Email format is incorrect",
+    "telephoneFormatError": "Phone number format is incorrect",
+    "passwordLengthError": "Password has to contain 8 to 25 characters",
+    "passwordsNotMatch": "Given passwords are not the same",
+    "registerSuccess": "Register success. Please, sign in",
+    "userExists": "User already exists. Please, try again",
+    "languageError": "Select a notification language",
+    "loginError": "Incorrect login or password. Please, try again",
+    "resetPasswordEmailSuccess": "We sent you a link to given email address. Please, check it out",
+    "resetPasswordEmailError": "Account with given email address does not exist",
+    "resetPasswordSuccess": "Password has been changed",
+    "resetPasswordError": "Password does not contain 8 to 25 characters or is too simple",
+    "cameraAdded": "Camera has been added",
+    "cameraExists": "Camera with given name already exists",
+    "cameraDeleted": "Camera has been deleted",
+    "cameraUpdated": "Camera has been updated",
+    "controllerAdded": "Controller has been added",
+    "controllerExists": "Controller with given name already exists",
+    "controllerDeleted": "Controller has been deleted",
+    "controllerUpdated": "Controller has been updated",
+    "noDataError": "Enter the current position of the roller blind",
+    "controllerRunning": "Controller has been run",
+    "controllerRunError": "Failed to run the controller",
+    "bulbDataSent": "Data have been updated",
+    "bulbDataSentError": "Data have not been updated",
+    "noItems": "Select sensors or categories from the list",
+    "noFilter": "Select a filter",
+    "daysError": "Enter the number of days between 1 to 30",
+    "csvAccepted": "File has been generated",
+    "actionAdded": "Action has been added",
+    "actionDeleted": "Action has been deleted",
+    "actionExists": "Action with given name already exists"
+  }
+}

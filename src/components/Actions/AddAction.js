@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TimePicker from 'react-time-picker';
+import { withTranslation } from 'react-i18next';
 
 import { getSensors } from '../../actions/sensors';
 import { getControllers } from '../../actions/controllers';
@@ -111,15 +112,16 @@ class AddAction extends Component {
   render() { 
 
     const { name, sensor, trigger, operator, controller, days, startEvent, endEvent, flag, action } = this.state;
+    const { t } = this.props;
 
     return (  
       <div className="container">
         <div className="col-md-6 m-auto">
           <div className="card card-body mt-5">
-            <h2 className="text-center">Dodaj akcję</h2>
+            <h2 className="text-center">{t('actions.add-action')}</h2>
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <label>Nazwa</label>
+                <label>{t('sensors.name')}</label>
                 <input
                   type="text"
                   className="form-control"
@@ -130,13 +132,13 @@ class AddAction extends Component {
               </div>
 
               <div className="form-group">
-                <label>Działanie akcji</label>
+                <label>{t('actions.action-func')}</label>
                 <select name="flag" className="form-control" onChange={this.handleSelect} value={flag}>
                   <option value="" defaultValue></option>
-                  <option value="1">Akcja o wybranej godzinie</option>
-                  <option value="2">Akcja pomiędzy wybranymi godzinami</option>
-                  <option value="3">Akcja po wykryciu przez czujnik danej wartości</option>
-                  <option value="4">Akcja po wykryciu przez czujnik danej wartości pomiędzy wybranymi godzinami</option>
+                  <option value="1">{t('actions.act-time')}</option>
+                  <option value="2">{t('actions.act-between-time')}</option>
+                  <option value="3">{t('actions.act-sensor')}</option>
+                  <option value="4">{t('actions.act-sensor-between')}</option>
                 </select>
               </div>
 
@@ -159,7 +161,7 @@ class AddAction extends Component {
                 false
               ) : (
               <div className="form-group">
-                <label>Czujnik</label>
+                <label>{t('actions.sensor')}</label>
                 <select name="sensor" className="form-control" onChange={this.handleSelect} value={sensor}>
                   <option value="" defaultValue></option>
                   {this.props.sensors.map(sensor => {
@@ -288,4 +290,4 @@ const mapStateToProps = state => ({
   controllers: state.controllers.controllers
 })
  
-export default connect(mapStateToProps, { getSensors, getControllers, addAction })(AddAction);
+export default withTranslation('common')(connect(mapStateToProps, { getSensors, getControllers, addAction })(AddAction));

@@ -4,14 +4,16 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import { Provider } from "react-redux";
 
+import store from "./store";
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import Alerts from "./components/Alerts/Alerts";
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
 import Dashboard from './components/sensors/Dashboard';
 import AdminPage from './components/users/AdminPage';
 import ResetPasswordPage from './components/password/ResetPasswordPage';
@@ -30,13 +32,8 @@ import Csv from './components/Csv/Csv';
 import BulbColor from './components/Controllers/BulbColor';
 import Actions from './components/Actions/Actions';
 import AddAction from './components/Actions/AddAction';
-
-import Alerts from "./components/Alerts/Alerts";
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-
-import { Provider } from "react-redux";
-import store from "./store";
-
+import EditAction from './components/Actions/EditAction';
+import Board from './components/Board/Board';
 
 // Alert Options
 const alertOptions = {
@@ -54,11 +51,8 @@ class App extends Component {
             <Fragment>
               <Header />
               <Alerts />
-              <div className="container">
                 <Switch>
                   <Route exact path='/' component={Home} />
-                  <Route path='/register' component={Register} />
-                  <Route path='/login' component={Login} />
                   <Route path='/resetpwd' component={ResetPasswordPage} />
                   <Route path='/password-reset/:token' component={NewPasswordView} />
                   <PrivateRoute path='/dashboard' component={Dashboard} />
@@ -77,8 +71,9 @@ class App extends Component {
                   <PrivateRoute path='/bulb-color/:id' component={BulbColor} />
                   <PrivateRoute path='/actions' component={Actions} />
                   <PrivateRoute path='/add-action/' component={AddAction} />
+                  <PrivateRoute path='/edit-action/:id' component={EditAction} />
+                  <PrivateRoute path='/board' component={Board} />
                 </Switch>
-              </div>
             </Fragment>
           </Router>
         </AlertProvider>

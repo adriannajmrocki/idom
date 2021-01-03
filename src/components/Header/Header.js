@@ -1,72 +1,42 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
+
 import { logout } from '../../actions/auth';
 
+import './style.css';
 
-export class Header extends Component {
-  static propTypes = {
-    auth: PropTypes.object.isRequired,
-    logout: PropTypes.func.isRequired
+class Header extends Component {
+
+  state = {
+    isMenuVisible: false
   }
 
   render() {
-    const { isAuthenticated, user } = this.props.auth;
 
-    // If user is authenticated returns authLinks, else returns guestLinks
+    const { isAuthenticated } = this.props.auth;
+    const { isMenuVisible } = this.state;
+    const { t } = this.props;
+
     const authLinks = (
-      <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-        <span className="navbar-text mr-3">
-          <strong>
-            { user ? `Welcome ${user.username}` : ''}
-          </strong>
-        </span>
-        <li className="nav-item">
-          <Link to='/dashboard' className="nav-link">Czujniki</Link>
-        </li>
-        <li className="nav-item">
-          <Link to='/controllers' className="nav-link">Sterowniki</Link>
-        </li>
-        <li className="nav-item">
-          <Link to='/actions' className="nav-link">Akcje</Link>
-        </li>
-        <li className="nav-item">
-          <Link to='/cameras' className="nav-link">Kamery</Link>
-        </li>
-        <li className="nav-item">
-          <Link to='/admin' className="nav-link">Użytkownicy</Link>
-        </li>
-        <li className="nav-item">
-          <button onClick={this.props.logout} className="btn btn-outline-primary btn-sm">Wyloguj</button>
-        </li>
-      </ul>
+      <Fragment>
+        <label htmlFor="check" className="checkbtn"><i className="fas fa-bars" onClick={() => this.setState({ isMenuVisible: !isMenuVisible })}></i></label>
+        <label className="brand-name"><Link to="board">IDOM</Link></label>
+        <ul className={`${isMenuVisible ? 'show-menu' : ''}`}>
+          <li><NavLink to="/dashboard" onClick={() => this.setState({ isMenuVisible: !isMenuVisible })}>{t('header.sensors')}</NavLink></li>
+          <li><NavLink to="/controllers" onClick={() => this.setState({ isMenuVisible: !isMenuVisible })}>{t('header.controllers')}</NavLink></li>
+          <li><NavLink to="/actions" onClick={() => this.setState({ isMenuVisible: !isMenuVisible })}>{t('header.actions')}</NavLink></li>
+          <li><NavLink to="/cameras" onClick={() => this.setState({ isMenuVisible: !isMenuVisible })}>{t('header.cameras')}</NavLink></li>
+          <li><NavLink to="/admin" onClick={() => this.setState({ isMenuVisible: !isMenuVisible })}>{t('header.account')}</NavLink></li>
+          <button onClick={this.props.logout}>{t('header.logout')}</button>
+        </ul>
+      </Fragment>  
     );
 
-    const guestLinks = (
-      <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li className="nav-item">
-          <Link to='/register' className="nav-link">Rejestracja</Link>
-        </li>
-        <li className="nav-item">
-          <Link to='/login' className="nav-link">Logowanie</Link>
-        </li>
-      </ul>
-    )
-
     return (
-      // Render navbar
-      <nav className="navbar navbar-expand-sm navbar-light bg-light">
-        <div className="container">
-          <h1 className="navbar-brand">IDOM</h1>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            { isAuthenticated ? authLinks : guestLinks }
-          </div>
-        </div>
+      <nav className={`${isAuthenticated ? 'visible' : 'invisible'}`}>
+        { isAuthenticated ? authLinks : false }
       </nav>
     )
   }
@@ -76,4 +46,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, { logout })(Header);
+export default withTranslation('common')(connect(mapStateToProps, { logout })(Header));

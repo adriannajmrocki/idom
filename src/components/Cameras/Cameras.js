@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
 import { getCameras, deleteCamera } from '../../actions/cameras';
 import { baseURL } from '../../utils/url';
@@ -22,11 +23,14 @@ class Cameras extends Component {
   }
 
   render() {
+
+    const { t } = this.props;
+
     return (
       <div className="container">
         <div className="head" style={{"marginBottom": "40px"}}>
           <i class="fas fa-video fa-2x"></i>
-          <h2>Kamery</h2>
+          <h2>{t('cameras.cams')}</h2>
           <div className="line"></div>
           <Link to='/add-camera'><button type="button" className="add-btn">+</button></Link>
         </div>
@@ -52,4 +56,4 @@ const mapStateToProps = state => ({
   cameras: state.cameras.cameras
 })
 
-export default connect(mapStateToProps, { getCameras, deleteCamera })(Cameras);
+export default withTranslation('common')(connect(mapStateToProps, { getCameras, deleteCamera })(Cameras));

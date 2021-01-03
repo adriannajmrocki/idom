@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
 import { getActions, deleteAction } from '../../actions/actions';
 
@@ -18,11 +19,14 @@ class Actions extends Component {
   }
 
   render() { 
+
+    const { t } = this.props;
+
     return (  
       <div className="container">
         <div className="head" style={{"marginBottom": "40px"}}>
           <i className="fas fa-angle-double-right fa-2x"></i>
-          <h2>Akcje</h2>
+          <h2>{t('actions.actions-h')}</h2>
           <div className="line"></div>
           <Link to='/add-action'><button type="button" className="add-btn">+</button></Link>
         </div>
@@ -47,4 +51,4 @@ const mapStateToProps = state => ({
   interactions: state.actions.interactions
 })
 
-export default connect(mapStateToProps, { getActions, deleteAction })(Actions);
+export default withTranslation('common')(connect(mapStateToProps, { getActions, deleteAction })(Actions));
