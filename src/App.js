@@ -34,6 +34,7 @@ import Actions from './components/Actions/Actions';
 import AddAction from './components/Actions/AddAction';
 import EditAction from './components/Actions/EditAction';
 import Board from './components/Board/Board';
+import BulbIp from './components/Controllers/BulbIp';
 
 // Alert Options
 const alertOptions = {
@@ -73,6 +74,7 @@ class App extends Component {
                   <PrivateRoute path='/add-action/' component={AddAction} />
                   <PrivateRoute path='/edit-action/:id' component={EditAction} />
                   <PrivateRoute path='/board' component={Board} />
+                  <PrivateRoute path='/bulb-ip/:id' component={BulbIp} />
                 </Switch>
             </Fragment>
           </Router>

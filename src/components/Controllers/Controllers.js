@@ -85,8 +85,11 @@ class Controllers extends Component {
                         controller.data = !controller.data;
                       }} 
                       onColor='#987316'
+                      height={16}
+                      width={40}
                     />
                   </li>
+                  <li className="icon item-li"><Link to={`/bulb-ip/${controller.id}`}><i className="fas fa-wifi fa-lg"></i></Link></li>
                   <li className="icon item-li"><Link to={`/bulb-color/${controller.id}`}><i className="fas fa-palette fa-lg"></i></Link></li>
                   <li className="icon item-li"><Link to={`/edit-controller/${controller.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="icon item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteController.bind(this, controller.id)}></i></li>

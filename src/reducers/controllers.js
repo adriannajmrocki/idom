@@ -1,4 +1,4 @@
-import { GET_CONTROLLERS, ADD_CONTROLLER, DELETE_CONTROLLER, UPDATE_CONTROLLER, GET_CONTROLLER_DATA, RUN_CONTROLLER } from '../actions/types';
+import { GET_CONTROLLERS, ADD_CONTROLLER, DELETE_CONTROLLER, UPDATE_CONTROLLER, GET_CONTROLLER_DATA, RUN_CONTROLLER, SET_BULB_IP } from '../actions/types';
 
 const initialState = {
   controllers: [],
@@ -15,6 +15,7 @@ export default function(state = initialState, action) {
         controllers: action.payload
       }
     case ADD_CONTROLLER:
+    // case SET_BULB_IP:
       return {
         ...state,
         controllers: [...state.controllers, action.payload]
