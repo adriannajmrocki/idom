@@ -43,6 +43,7 @@ export const addAction = data => (dispatch, getState) => {
 
   axios.post(`${baseURL}/actions/add`, data, config)
   .then(res => {
+    console.log(res);
     if (res.status === 201) {
       dispatch(createMessage({ actionAdded: 'Akcja została dodana' }))
       dispatch({

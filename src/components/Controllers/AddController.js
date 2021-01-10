@@ -46,7 +46,7 @@ class AddController extends Component {
       ip = null;
     }
 
-    const newController = { name, category, ip, data };
+    const newController = { name, category, ip_address: ip, data };
 
     if (category === 'roller_blind' && data === null) {
       this.props.createMessage({ noDataError: 'Podaj aktualny stan rolety' })
