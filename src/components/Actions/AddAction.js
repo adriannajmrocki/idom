@@ -8,6 +8,7 @@ import hexRgb from 'hex-rgb'
 import { getSensors } from '../../actions/sensors';
 import { getControllers } from '../../actions/controllers';
 import { addAction } from '../../actions/actions';
+import { createMessage } from '../../actions/messages';
 
 import '../../styles/utilStyles.css';
 
@@ -101,31 +102,88 @@ class AddAction extends Component {
     
     if (flag === '1') {
       this.props.addAction(dataFirstFlag);
+      this.setState({
+        name: '',
+        sensor: '', 
+        trigger: '',
+        operator: '',
+        controller: '',
+        days: [
+          { id: 1, isChecked: false, value: '1', label: 'Poniedziałek' },
+          { id: 2, isChecked: false, value: '2', label: 'Wtorek' },
+          { id: 3, isChecked: false, value: '3', label: 'Środa' },
+          { id: 4, isChecked: false, value: '4', label: 'Czwartek' },
+          { id: 5, isChecked: false, value: '5', label: 'Piątek' },
+          { id: 6, isChecked: false, value: '6', label: 'Sobota' },
+          { id: 7, isChecked: false, value: '7', label: 'Niedziela' },
+        ],
+        startEvent: '',
+        endEvent: '',
+        type: '',
+        status: null,
+        brightness: 0,
+        color: '#ffffff',
+        red: 255,
+        green: 255,
+        blue: 255
+      })
     } else if (flag === '3') {
       this.props.addAction(dataThirdFlag);
+      this.setState({
+        name: '',
+        sensor: '', 
+        trigger: '',
+        operator: '',
+        controller: '',
+        days: [
+          { id: 1, isChecked: false, value: '1', label: 'Poniedziałek' },
+          { id: 2, isChecked: false, value: '2', label: 'Wtorek' },
+          { id: 3, isChecked: false, value: '3', label: 'Środa' },
+          { id: 4, isChecked: false, value: '4', label: 'Czwartek' },
+          { id: 5, isChecked: false, value: '5', label: 'Piątek' },
+          { id: 6, isChecked: false, value: '6', label: 'Sobota' },
+          { id: 7, isChecked: false, value: '7', label: 'Niedziela' },
+        ],
+        startEvent: '',
+        endEvent: '',
+        type: '',
+        status: null,
+        brightness: 0,
+        color: '#ffffff',
+        red: 255,
+        green: 255,
+        blue: 255
+      })
     } else if (flag === '4') {
       this.props.addAction(dataFourthFlag);
+      this.setState({
+        name: '',
+        sensor: '', 
+        trigger: '',
+        operator: '',
+        controller: '',
+        days: [
+          { id: 1, isChecked: false, value: '1', label: 'Poniedziałek' },
+          { id: 2, isChecked: false, value: '2', label: 'Wtorek' },
+          { id: 3, isChecked: false, value: '3', label: 'Środa' },
+          { id: 4, isChecked: false, value: '4', label: 'Czwartek' },
+          { id: 5, isChecked: false, value: '5', label: 'Piątek' },
+          { id: 6, isChecked: false, value: '6', label: 'Sobota' },
+          { id: 7, isChecked: false, value: '7', label: 'Niedziela' },
+        ],
+        startEvent: '',
+        endEvent: '',
+        type: '',
+        status: null,
+        brightness: 0,
+        color: '#ffffff',
+        red: 255,
+        green: 255,
+        blue: 255
+      })
+    } else if (!flag) {
+      this.props.createMessage({ emptyFieldsError: 'Nie wszystkie wymagane pola zostały wypełnione' })
     }
-
-    this.setState({
-      name: '',
-      sensor: '', 
-      trigger: '',
-      operator: '',
-      controller: '',
-      days: [
-        { id: 1, isChecked: false, value: '1', label: 'Poniedziałek' },
-        { id: 2, isChecked: false, value: '2', label: 'Wtorek' },
-        { id: 3, isChecked: false, value: '3', label: 'Środa' },
-        { id: 4, isChecked: false, value: '4', label: 'Czwartek' },
-        { id: 5, isChecked: false, value: '5', label: 'Piątek' },
-        { id: 6, isChecked: false, value: '6', label: 'Sobota' },
-        { id: 7, isChecked: false, value: '7', label: 'Niedziela' },
-      ],
-      startEvent: '',
-      endEvent: '',
-      flag: '',
-    })
   }
 
   render() { 
@@ -135,15 +193,15 @@ class AddAction extends Component {
 
     return (  
       <div className="container">
-        <div className="col-md-6 m-auto">
-          <div className="card card-body mt-5">
-            <h2 className="text-center">{t('actions.add-action')}</h2>
+        <div className="col-md-6 m-auto custom-position">
+          <div className="card card-body mt-5 custom-border-style custom-position">
+            <h2 className="text-center custom-mb">{t('actions.add-action')}</h2>
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label>{t('sensors.name')}</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-input-style"
                   name="name"
                   onChange={this.handleTextChange}
                   value={name}
@@ -152,7 +210,7 @@ class AddAction extends Component {
 
               <div className="form-group">
                 <label>{t('actions.action-func')}</label>
-                <select name="flag" className="form-control" onChange={this.handleSelect} value={flag}>
+                <select name="flag" className="form-control custom-input-style" onChange={this.handleSelect} value={flag}>
                   <option value="" defaultValue></option>
                   <option value="1">{t('actions.act-time')}</option>
                   <option value="3">{t('actions.act-sensor')}</option>
@@ -165,7 +223,7 @@ class AddAction extends Component {
               ) : (
               <div className="form-group">
                 <label>Sterownik wykonujący akcję</label>
-                <select name="controller" className="form-control" onChange={this.handleSelect} value={controller}>
+                <select name="controller" className="form-control custom-input-style" onChange={this.handleSelect} value={controller}>
                   <option value="" defaultValue></option>
                   {this.props.controllers.map(controller => {
                     return (
@@ -185,7 +243,7 @@ class AddAction extends Component {
                       return (
                         <Fragment>
                           <label>Akcja do wykonania</label>
-                          <select name="type" className="form-control" onChange={this.handleSelect} value={type}>
+                          <select name="type" className="form-control custom-input-style" onChange={this.handleSelect} value={type}>
                             <option value="" defaultValue></option>
                             <option value="turn">Włącz / wyłącz żarówkę</option>
                             <option value="brightness">Ustaw jasność</option>
@@ -200,7 +258,7 @@ class AddAction extends Component {
 
               {type === 'turn' && (
               <div className="form-group">
-                <select name="status" className="form-control" onChange={this.handleSelect} value={status}>
+                <select name="status" className="form-control custom-input-style" onChange={this.handleSelect} value={status}>
                   <option value="" defaultValue></option>
                   <option value="on">Włącz</option>
                   <option value="off">Wyłącz</option>
@@ -227,7 +285,7 @@ class AddAction extends Component {
               ) : (
               <div className="form-group">
                 <label>{t('actions.sensor')}</label>
-                <select name="sensor" className="form-control" onChange={this.handleSelect} value={sensor}>
+                <select name="sensor" className="form-control custom-input-style" onChange={this.handleSelect} value={sensor}>
                   <option value="" defaultValue></option>
                   {this.props.sensors.map(sensor => {
                     return (
@@ -245,7 +303,7 @@ class AddAction extends Component {
                 <label>Dla jakiej wartości z czujnika wykonać akcję?</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-input-style"
                   name="trigger"
                   onChange={this.handleTextChange}
                   value={trigger}
@@ -258,7 +316,7 @@ class AddAction extends Component {
               ) : (
               <div className="form-group">
                 <label>Mniejsze / większe / równe?</label>
-                <select name="operator" className="form-control" onChange={this.handleSelect} value={operator}>
+                <select name="operator" className="form-control custom-input-style" onChange={this.handleSelect} value={operator}>
                   <option value="" defaultValue></option>
                   <option value="<">Mniejszy</option>
                   <option value=">">Większy</option>
@@ -339,4 +397,4 @@ const mapStateToProps = state => ({
   controllers: state.controllers.controllers
 })
  
-export default withTranslation('common')(connect(mapStateToProps, { getSensors, getControllers, addAction })(AddAction));
+export default withTranslation('common')(connect(mapStateToProps, { getSensors, getControllers, addAction, createMessage })(AddAction));

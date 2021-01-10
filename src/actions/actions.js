@@ -53,8 +53,11 @@ export const addAction = data => (dispatch, getState) => {
     }
   })
   .catch(err => {
+    console.log(err.response);
     if (err.response.status === 400) {
       dispatch(createMessage({ actionExists: 'Akcja o podanej nazwie już istnieje' }))
+    } else if (err.response.status === 404) {
+      dispatch(createMessage({ emptyFieldsError: 'Nie wszystkie wymagane pola zostały wypełnione' }))
     }
   })
 }
