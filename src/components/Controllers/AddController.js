@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 
-import { addController } from '../../actions/controllers';
+import { addController, setBulbIp } from '../../actions/controllers';
 
 import { createMessage } from '../../actions/messages';
 import Alerts from '../Alerts/Alerts';
@@ -13,7 +13,7 @@ class AddController extends Component {
     name: '',
     category: '',
     ip: '',
-    data: null
+    data: null,
   }
 
   static propTypes = {
@@ -42,27 +42,20 @@ class AddController extends Component {
       data = null;
     }
 
-    if (category !== 'bulb') {
-      ip = null;
-    }
-
-    const newController = { name, category, ip_address: ip, data };
+    const newController = { name, category, ip_address: null, data };
 
     if (category === 'roller_blind' && data === null) {
       this.props.createMessage({ noDataError: 'Podaj aktualny stan rolety' })
-    } else if (category === 'bulb' && !ip.match(/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/)) {
-      this.props.createMessage({ ipError: 'Podany adres IP jest nieprawidłowy' })
     } else {
       this.props.addController(newController);
-    }
-    console.log('new', newController)
 
-    this.setState({
-      name: '',
-      category: '',
-      ip: '',
-      data: null
-    })
+      this.setState({
+        name: '',
+        category: '',
+        ip: '',
+        data: null
+      })
+    }
   }
 
   render() { 
@@ -95,19 +88,6 @@ class AddController extends Component {
               </select>
             </div>
 
-            {this.state.category === 'bulb' ?
-            <div className="form-group">
-              <label>{t('controllers.ip')}</label>
-              <input 
-                type="text"
-                className="form-control custom-input-style"
-                name="ip"
-                onChange={this.handleChange}
-                value={this.state.ip}
-              />
-            </div>
-            : false }
-
             {this.state.category === 'roller_blind' ?
             <div className="form-group">
               <label>{t('controllers.current-pos')}</label>
@@ -129,4 +109,4 @@ class AddController extends Component {
   }
 }
  
-export default withTranslation('common')(connect(null, { addController, createMessage })(AddController));
+export default withTranslation('common')(connect(null, { addController, setBulbIp, createMessage })(AddController));

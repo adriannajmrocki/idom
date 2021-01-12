@@ -98,7 +98,7 @@ class AddAction extends Component {
 
     const dataFirstFlag = { name: name, sensor: null, trigger: null, operator: null, driver: controller, days: daysArray.toString(), start_event: startEvent, end_event: null, flag: 1 * flag, action: { type: type, status: status, brightness: brightness, red: red, green: green, blue: blue } }
     const dataThirdFlag = { name: name, sensor: sensor, trigger: 1 * trigger, operator: operator, driver: controller, days: daysArray.toString(), start_event: "00:00", end_event: null, flag: 1 * flag, action: { type: type, status: status, brightness: brightness, red: red, green: green, blue: blue } }
-    const dataFourthFlag = { name: name, sensor: sensor, trigger: 1 * trigger, operator: operator, driver: controller, days: daysArray.toString(), start_event: startEvent, end_event: endEvent, flag: 1 * flag, action: action }
+    const dataFourthFlag = { name: name, sensor: sensor, trigger: 1 * trigger, operator: operator, driver: controller, days: daysArray.toString(), start_event: startEvent, end_event: endEvent, flag: 1 * flag, action: { type: type, status: status, brightness: brightness, red: red, green: green, blue: blue } }
     
     if (flag === '1') {
       this.props.addAction(dataFirstFlag);
@@ -119,6 +119,7 @@ class AddAction extends Component {
         ],
         startEvent: '',
         endEvent: '',
+        flag: '',
         type: '',
         status: null,
         brightness: 0,
@@ -146,6 +147,7 @@ class AddAction extends Component {
         ],
         startEvent: '',
         endEvent: '',
+        flag: '',
         type: '',
         status: null,
         brightness: 0,
@@ -173,6 +175,7 @@ class AddAction extends Component {
         ],
         startEvent: '',
         endEvent: '',
+        flag: '',
         type: '',
         status: null,
         brightness: 0,
@@ -251,6 +254,27 @@ class AddAction extends Component {
                           </select>
                         </Fragment>
                       )
+                    } else if (controller === item.name && item.category === 'clicker') {
+                      return (
+                        <Fragment>
+                          <label>Akcja do wykonania</label>
+                          <select name="status" className="form-control custom-input-style" onChange={this.handleSelect} value={status}>
+                            <option value="" defaultValue></option>
+                            <option value="on">Kliknij przycisk</option>
+                          </select>
+                        </Fragment>
+                      )
+                    } else if (controller === item.name && item.category === 'roller_blind') {
+                      return (
+                        <Fragment>
+                          <label>Akcja do wykonania</label>
+                          <select name="status" className="form-control custom-input-style" onChange={this.handleSelect} value={status}>
+                            <option value="" defaultValue></option>
+                            <option value="on">Zasłoń rolety</option>
+                            <option value="off">Odsłoń rolety</option>
+                          </select>
+                        </Fragment>
+                      )
                     }
                   })}
                 </div>
@@ -301,13 +325,12 @@ class AddAction extends Component {
               ) : (
               <div className="form-group">
                 <label>Dla jakiej wartości z czujnika wykonać akcję?</label>
-                <input
-                  type="text"
-                  className="form-control custom-input-style"
-                  name="trigger"
-                  onChange={this.handleTextChange}
-                  value={trigger}
-                />
+                <select name="operator" className="form-control custom-input-style" onChange={this.handleSelect} value={operator}>
+                  <option value="" defaultValue></option>
+                  <option value="<">Wartość mniejsza od</option>
+                  <option value=">">Wartość większa od</option>
+                  <option value="=">Wartość równa</option>
+                </select>
               </div>
               )}
 
@@ -315,13 +338,14 @@ class AddAction extends Component {
                 false
               ) : (
               <div className="form-group">
-                <label>Mniejsze / większe / równe?</label>
-                <select name="operator" className="form-control custom-input-style" onChange={this.handleSelect} value={operator}>
-                  <option value="" defaultValue></option>
-                  <option value="<">Mniejszy</option>
-                  <option value=">">Większy</option>
-                  <option value="=">Równy</option>
-                </select>
+                <input
+                  type="text"
+                  className="form-control custom-input-style"
+                  name="trigger"
+                  onChange={this.handleTextChange}
+                  value={trigger}
+                  placeholder="Podaj wartość..."
+                />
               </div>
               )}
 
@@ -362,6 +386,7 @@ class AddAction extends Component {
               ) : (
               <div className="form-group">
                 <label>Godzina rozpoczęcia akcji</label>
+                <br />
                 <TimePicker
                   onChange={this.handleStartEventChange}
                   value={startEvent}
@@ -374,6 +399,7 @@ class AddAction extends Component {
               ) : (
               <div className="form-group">
                 <label>Godzina zakończenia akcji</label>
+                <br />
                 <TimePicker
                   onChange={this.handleEndEventChange}
                   value={endEvent}

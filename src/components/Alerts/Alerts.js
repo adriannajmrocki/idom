@@ -78,7 +78,9 @@ export class Alerts extends Component {
       if (message.controllerRunError) alert.error(t('messages.controllerRunError'));
       if (message.bulbDataSent) alert.success(t('messages.bulbDataSent'));
       if (message.bulbDataSentError) alert.error(t('messages.bulbDataSentError'));
-      if (message.ipError) alert.error(t('messages.ipError'));
+      // if (message.ipError) alert.error(t('messages.ipError'));
+      if (message.ipSet) alert.success(message.ipSet);
+      if (message.ipError) alert.error(message.ipError);
 
       // CSV alerts
       if (message.noItems) alert.error(t('messages.noItems'));
@@ -88,9 +90,12 @@ export class Alerts extends Component {
 
       // Actions alerts
       if (message.actionAdded) alert.success(t('messages.actionAdded'));
+      if (message.actionUpdated) alert.success(message.actionUpdated);
       if (message.actionDeleted) alert.success(t('messages.actionDeleted'));
       if (message.actionExists) alert.error(t('messages.actionExists'));
       if (message.emptyFieldsError) alert.error(message.emptyFieldsError);
+      if (message.invalidData) alert.error(message.invalidData);
+      if (message.actionExistsError) alert.error(message.actionExistsError);
     }
   }
 

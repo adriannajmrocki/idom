@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_CONTROLLERS, ADD_CONTROLLER, DELETE_CONTROLLER, UPDATE_CONTROLLER, GET_CONTROLLER_DATA, RUN_CONTROLLER } from './types';
+import { GET_CONTROLLERS, ADD_CONTROLLER, DELETE_CONTROLLER, UPDATE_CONTROLLER, GET_CONTROLLER_DATA, RUN_CONTROLLER, SET_BULB_IP } from './types';
 import { createMessage } from './messages';
 import { baseURL } from '../utils/url';
 
@@ -254,5 +254,39 @@ export const postBulbColor = (id, data) => (dispatch, getState) => {
   .catch(err => {
     console.log(err.response)
     dispatch(createMessage({ bulbDataSentError: 'Operacja nie powiodła się' }))
+  })
+}
+
+// SET BULB IP
+// Set IP address for a bulb
+export const setBulbIp = (id, data) => (dispatch, getState) => {
+
+  const token = getState().auth.token;
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    }
+  } 
+
+  axios.put(`${baseURL}/bulbs/ip/${id}`, data, config)
+  .then(res => {
+    console.log(res);
+    if (res.status === 200) {
+      dispatch(createMessage({ ipSet: 'Adres IP został poprawnie dodany' }))
+      dispatch({
+        type: SET_BULB_IP,
+        payload: res.data
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err.response)
+    if (err.response.status === 400) {
+      dispatch(createMessage({ ipError: 'Podany adres IP jest nieprawidłowy' }))
+    } else if (err.response.status === 503) {
+      dispatch(createMessage({ ipSet: 'Adres IP został poprawnie dodany' }))
+    }
   })
 }
