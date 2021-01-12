@@ -29,22 +29,22 @@ const Board = () => {
             </div>
           </Link>
           <Link to="/actions">
-          <div className="board-card actions-card">
-            <i className="fas fa-angle-double-right fa-5x"></i>
-            <h5>{t('header.actions')}</h5>
-          </div>
+            <div className="board-card actions-card">
+              <i className="fas fa-angle-double-right fa-5x"></i>
+              <h5>{t('header.actions')}</h5>
+            </div>
           </Link>
           <Link to="/cameras">
-          <div className="board-card cameras-card">
-            <i className="fas fa-video fa-5x"></i>
-            <h5>{t('header.cameras')}</h5>
-          </div>
+            <div className="board-card cameras-card">
+              <i className="fas fa-video fa-5x"></i>
+              <h5>{t('header.cameras')}</h5>
+            </div>
           </Link>
           <Link to="/admin">
-          <div className="board-card account-card">
-            <i className="far fa-user fa-5x"></i>
-            <h5>{t('header.account')}</h5>
-          </div>
+            <div className="board-card account-card">
+              <i className="far fa-user fa-5x"></i>
+              <h5>{t('header.account')}</h5>
+            </div>
           </Link>
         </div>
     </div>
