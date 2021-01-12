@@ -46,4 +46,5 @@ export const GET_FIREBASE_TOKEN = 'GET_FIREBASE_TOKEN';
 export const GET_ACTIONS = 'GET_ACTIONS';
 export const ADD_ACTION = 'ADD_ACTION';
 export const DELETE_ACTION = 'DELETE_ACTION';
+export const UPDATE_ACTION = 'UPDATE_ACTION';
 export const GET_ACTION_DATA = 'GET_ACTION_DATA';

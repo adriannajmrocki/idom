@@ -98,7 +98,7 @@ class AddAction extends Component {
 
     const dataFirstFlag = { name: name, sensor: null, trigger: null, operator: null, driver: controller, days: daysArray.toString(), start_event: startEvent, end_event: null, flag: 1 * flag, action: { type: type, status: status, brightness: brightness, red: red, green: green, blue: blue } }
     const dataThirdFlag = { name: name, sensor: sensor, trigger: 1 * trigger, operator: operator, driver: controller, days: daysArray.toString(), start_event: "00:00", end_event: null, flag: 1 * flag, action: { type: type, status: status, brightness: brightness, red: red, green: green, blue: blue } }
-    const dataFourthFlag = { name: name, sensor: sensor, trigger: 1 * trigger, operator: operator, driver: controller, days: daysArray.toString(), start_event: startEvent, end_event: endEvent, flag: 1 * flag, action: action }
+    const dataFourthFlag = { name: name, sensor: sensor, trigger: 1 * trigger, operator: operator, driver: controller, days: daysArray.toString(), start_event: startEvent, end_event: endEvent, flag: 1 * flag, action: { type: type, status: status, brightness: brightness, red: red, green: green, blue: blue } }
     
     if (flag === '1') {
       this.props.addAction(dataFirstFlag);
@@ -119,6 +119,7 @@ class AddAction extends Component {
         ],
         startEvent: '',
         endEvent: '',
+        flag: '',
         type: '',
         status: null,
         brightness: 0,
@@ -146,6 +147,7 @@ class AddAction extends Component {
         ],
         startEvent: '',
         endEvent: '',
+        flag: '',
         type: '',
         status: null,
         brightness: 0,
@@ -173,6 +175,7 @@ class AddAction extends Component {
         ],
         startEvent: '',
         endEvent: '',
+        flag: '',
         type: '',
         status: null,
         brightness: 0,

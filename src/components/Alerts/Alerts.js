@@ -90,9 +90,12 @@ export class Alerts extends Component {
 
       // Actions alerts
       if (message.actionAdded) alert.success(t('messages.actionAdded'));
+      if (message.actionUpdated) alert.success(message.actionUpdated);
       if (message.actionDeleted) alert.success(t('messages.actionDeleted'));
       if (message.actionExists) alert.error(t('messages.actionExists'));
       if (message.emptyFieldsError) alert.error(message.emptyFieldsError);
+      if (message.invalidData) alert.error(message.invalidData);
+      if (message.actionExistsError) alert.error(message.actionExistsError);
     }
   }
 

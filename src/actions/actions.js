@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_ACTIONS, ADD_ACTION, DELETE_ACTION, GET_ACTION_DATA } from './types';
+import { GET_ACTIONS, ADD_ACTION, DELETE_ACTION, GET_ACTION_DATA, UPDATE_ACTION } from './types';
 import { baseURL } from '../utils/url';
 import { createMessage } from './messages';
 
@@ -112,4 +112,41 @@ export const getActionData = (id) => (dispatch, getState) => {
     }
   })
   .catch(err => console.log(err))
+}
+
+// UPDATE ACTION
+// Update action's data
+export const updateAction = (id, data) => (dispatch, getState) => {
+
+  const token = getState().auth.token;
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  } 
+
+  if (token) {
+    config.headers['Authorization'] = `Token ${token}`
+  }
+
+  axios.put(`${baseURL}/actions/update/${id}`, data, config)
+  .then(res => {
+    console.log(res)
+    if (res.status === 200) {
+      dispatch(createMessage({ actionUpdated: 'Akcja została zmodyfikowana' }))
+      dispatch({
+        type: UPDATE_ACTION,
+        payload: res.data
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err.response)
+    if (err.response.status === 400) {
+      dispatch(createMessage({ invalidData: 'Wprowadzone dane są nieprawidłowe' }))
+    } else if (err.response.status === 404) {
+      dispatch(createMessage({ actionExistsError: 'Akcja nie istnieje' }))
+    }
+  })
 }

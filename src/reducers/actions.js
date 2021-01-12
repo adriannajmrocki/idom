@@ -1,4 +1,4 @@
-import { ADD_ACTION, GET_ACTIONS, DELETE_ACTION, GET_ACTION_DATA } from '../actions/types';
+import { ADD_ACTION, GET_ACTIONS, DELETE_ACTION, GET_ACTION_DATA, UPDATE_ACTION } from '../actions/types';
 
 const initialState = {
   interactions: [],
@@ -12,7 +12,12 @@ const initialState = {
   startEvent: '',
   endEvent: '',
   flag: '',
-  action: ''
+  type: '',
+  status: '',
+  brightness: '',
+  red: '',
+  green: '',
+  blue: ''
 }
 
 export default function(state = initialState, action) {
@@ -45,7 +50,17 @@ export default function(state = initialState, action) {
         startEvent: action.payload.start_event,
         endEvent: action.payload.end_event,
         flag: action.payload.flag,
-        action: action.payload.action,
+        type: action.payload.action.type,
+        status: action.payload.action.status,
+        brightness: action.payload.action.brightness,
+        red: action.payload.action.red,
+        green: action.payload.action.green,
+        blue: action.payload.action.blue,
+      }
+    case UPDATE_ACTION:
+      return {
+        ...state,
+        interactions: state.interactions.map(interaction => (interaction.id === action.payload.id ? action.payload : state))
       }
     default:
       return state;
