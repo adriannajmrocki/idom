@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SEND_TOKEN, GET_FIREBASE_TOKEN } from './types';
+import { SEND_TOKEN, GET_FIREBASE_TOKEN, GET_FIREBASE_TOKEN_STATUS } from './types';
 import { baseURL } from '../utils/url';
 
 // SEND FIREBASE TOKEN
@@ -27,7 +27,7 @@ export const sendFirebaseToken = data => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log(err);
+    console.log('nie wyslano', err);
   })
 }
 
@@ -45,13 +45,15 @@ export const getFirebaseToken = () => (dispatch, getState) => {
 
   axios.get(`${baseURL}/devices/`, config)
   .then(res => {
-    console.log('get frb token', res);
-    if (res.status !== 200) {
-      dispatch({
-        type: GET_FIREBASE_TOKEN,
-        payload: res.data
-      })
-    }
+    console.log('get token', res);
+    dispatch({
+      type: GET_FIREBASE_TOKEN,
+      payload: res.data
+    })
+    dispatch({
+      type: GET_FIREBASE_TOKEN_STATUS,
+      payload: res.status
+    })
   })
   .catch(err => console.log(err))
 }

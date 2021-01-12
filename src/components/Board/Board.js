@@ -1,15 +1,68 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { useTranslation } from "react-i18next";
+
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { requestFirebaseNotificationPermission, onMessageListener } from '../../firebaseInit';
+import { sendFirebaseToken, getFirebaseToken } from '../../actions/push';
 
 import './style.css';
 
-const Board = () => {
+const Board = (props) => {
 
   const { t } = useTranslation('common');
 
+  useEffect(() => {
+    onMessageListener()
+    .then((payload) => {
+      console.log('not body', payload.notification.body)
+      const { body } = payload.notification.body;
+      // console.log('title', title);
+      // console.log('body', body);
+      toast.warn(`${payload.notification.body}`, {
+        position: "top-right",
+        autoClose: false,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      // toast.success('test')
+    })
+    .catch((err) => {
+      toast.error(JSON.stringify(err));
+    });
+  }, [])
+
+  requestFirebaseNotificationPermission()
+  .then((firebaseToken) => {
+    // eslint-disable-next-line no-console
+    console.log('firebase token', firebaseToken);
+
+    const registration_id = firebaseToken;
+    const type = 'web';
+    const data = { registration_id, type }
+
+    props.getFirebaseToken();
+    
+    if (props.firebaseTokenStatus !== 200) {
+      props.sendFirebaseToken(data);
+    }
+    console.log('send token', data);
+  })
+  .catch((err) => {
+    return err;
+  });
+
   return (  
     <div className="board-container">
+      <ToastContainer autoClose={8000} position="top-center" />
+
         <div className="board-left">
           <h1>{t('board.welcome')} <span>IDOM</span>!</h1>
           <p>{t('board.p')}</p>
@@ -50,5 +103,10 @@ const Board = () => {
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  isFirebaseTokenSent: state.push.isFirebaseTokenSent,
+  firebaseTokenStatus: state.push.firebaseTokenStatus
+})
  
-export default Board;
+export default connect(mapStateToProps, { sendFirebaseToken, getFirebaseToken })(Board);

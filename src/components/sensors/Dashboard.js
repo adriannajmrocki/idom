@@ -19,49 +19,49 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    onMessageListener()
-    .then((payload) => {
-      console.log(payload)
-      console.log(payload.notification.body)
-      const { body } = payload.notification.body;
-      // console.log('title', title);
-      // console.log('body', body);
-      toast.warn(`${payload.notification.body}`, {
-        position: "top-right",
-        autoClose: false,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      // toast.success('test')
-    })
-    .catch((err) => {
-      toast.error(JSON.stringify(err));
-    });
+    // onMessageListener()
+    // .then((payload) => {
+    //   console.log(payload)
+    //   console.log(payload.notification.body)
+    //   const { body } = payload.notification.body;
+    //   // console.log('title', title);
+    //   // console.log('body', body);
+    //   toast.warn(`${payload.notification.body}`, {
+    //     position: "top-right",
+    //     autoClose: false,
+    //     hideProgressBar: true,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //   });
+    //   // toast.success('test')
+    // })
+    // .catch((err) => {
+    //   toast.error(JSON.stringify(err));
+    // });
   }
 
   render() {
 
-    requestFirebaseNotificationPermission()
-    .then((firebaseToken) => {
-      // eslint-disable-next-line no-console
-      console.log(firebaseToken);
+    // requestFirebaseNotificationPermission()
+    // .then((firebaseToken) => {
+    //   // eslint-disable-next-line no-console
+    //   console.log(firebaseToken);
 
-      const registration_id = firebaseToken;
-      const type = 'web';
-      const data = { registration_id, type }
+    //   const registration_id = firebaseToken;
+    //   const type = 'web';
+    //   const data = { registration_id, type }
 
-      this.props.getFirebaseToken();
+    //   this.props.getFirebaseToken();
 
       
-      this.props.sendFirebaseToken(data);
-      console.log('data', data);
-    })
-    .catch((err) => {
-      return err;
-    });
+    //   this.props.sendFirebaseToken(data);
+    //   console.log('data', data);
+    // })
+    // .catch((err) => {
+    //   return err;
+    // });
 
     return (
       <Fragment>
