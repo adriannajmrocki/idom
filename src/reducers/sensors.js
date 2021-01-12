@@ -1,4 +1,4 @@
-import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA, GET_CHART_DATA } from '../actions/types';
+import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA, GET_CHART_DATA, POST_CSV_STATUS, POST_CSV_DATA } from '../actions/types';
 
 const initialState = {
   sensors: [],
@@ -6,6 +6,8 @@ const initialState = {
   sensorName: '',
   sensorCategory: '',
   sensorFrequency: '',
+  csvStatus: null,
+  csvData: {}
 }
 
 export default function(state = initialState, action) {
@@ -41,6 +43,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         chartData: action.payload
+      }
+    case POST_CSV_STATUS:
+      return {
+        ...state,
+        csvStatus: action.payload
+      }
+    case POST_CSV_DATA:
+      return {
+        ...state,
+        csvData: action.payload
       }
     default:
       return state;

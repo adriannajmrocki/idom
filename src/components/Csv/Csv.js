@@ -6,16 +6,7 @@ import { getSensors, postCsv } from '../../actions/sensors';
 import { createMessage } from '../../actions/messages';
 import Alerts from '../Alerts/Alerts';
 
-// const categories = [
-//   { id: 1, isChecked: false, value: "temperature", label: `${t('sensors.temp')}` },
-//   { id: 2, isChecked: false, value: "water_temp", label: "Temperatura wody" },
-//   { id: 3, isChecked: false, value: "humidity", label: "Wilgotność" },
-//   { id: 4, isChecked: false, value: "air_humidity", label: "Wilgotność powietrza" },
-//   { id: 5, isChecked: false, value: "atmo_pressure", label: "Ciśnienie atmosferyczne" },
-//   { id: 6, isChecked: false, value: "breathalyser", label: "Alkomat" },
-//   { id: 7, isChecked: false, value: "smoke", label: "Dym" },
-//   { id: 8, isChecked: false, value: "rain_sensor", label: "Deszcz" },
-// ]
+import './style.css';
 
 function Csv(props) {
 
@@ -100,7 +91,7 @@ function Csv(props) {
   
       <div className="col-md-6 m-auto custom-position">
         <div className="card card-body mt-5 custom-border-style custom-position">
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className="form-group">
               <label>{t('csv-generate.csv-filter')}</label>
               <select className="form-control custom-input-style" onChange={handleFilterSelect} value={filter}>
@@ -182,8 +173,22 @@ function Csv(props) {
             </div>
   
             <div className="ff-center">
-              <button className="button">{t('sensors.add')}</button>
+              <button className="button" onClick={handleSubmit}>
+                {t('sensors.add')}
+              </button>
             </div>
+
+            {props.csvStatus === 200 && (
+              <div className="ff-center">
+                <a
+                  href={`data:text/csv;charset=utf-8,${escape(props.csvData)}`}
+                  download="idom_data.csv"
+                  className="csv-button"
+                >
+                  Pobierz
+                </a>
+              </div>
+            )}
           </form>
         </div>
       </div>
@@ -192,7 +197,9 @@ function Csv(props) {
 }
 
 const mapStateToProps = state => ({
-  sensors: state.sensors.sensors
+  sensors: state.sensors.sensors,
+  csvStatus: state.sensors.csvStatus,
+  csvData: state.sensors.csvData
 })
 
 export default connect(mapStateToProps, { getSensors, postCsv, createMessage })(Csv);

@@ -9,7 +9,8 @@ export const ADD_SENSOR = 'ADD_SENSOR';
 export const UPDATE_SENSOR = 'UPDATE_SENSOR';
 export const GET_SENSOR_DATA = 'GET_SENSOR_DATA';
 export const GET_CHART_DATA = 'GET_CHART_DATA';
-export const POST_CSV = 'POST_CSV';
+export const POST_CSV_STATUS = 'POST_CSV_STATUS';
+export const POST_CSV_DATA = 'POST_CSV_DATA';
 
 export const GET_ERRORS = 'GET_ERRORS';
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';

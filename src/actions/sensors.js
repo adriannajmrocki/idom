@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA, GET_CHART_DATA, POST_CSV } from './types';
+import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA, GET_CHART_DATA, POST_CSV_STATUS, POST_CSV_DATA } from './types';
 import { createMessage } from './messages';
 import { baseURL } from '../utils/url';
 
@@ -209,9 +209,13 @@ export const postCsv = sensorData => (dispatch, getState) => {
   .then(res => {
     console.log(res);
     if (res.status === 200) {
-      dispatch(createMessage({ csvAccepted: 'Plik został wygenerowany' }))
+      dispatch(createMessage({ csvAccepted: 'Dane zostały zapisane do pliku CSV. Kliknij "Pobierz", by zapisać go na swoim komputerze' }))
       dispatch({
-        type: POST_CSV,
+        type: POST_CSV_STATUS,
+        payload: res.status
+      })
+      dispatch({
+        type: POST_CSV_DATA,
         payload: res.data
       })
     }

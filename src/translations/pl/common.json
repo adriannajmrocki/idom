@@ -172,7 +172,7 @@
     "noItems": "Wybierz interesujące cię czujniki lub kategorie",
     "noFilter": "Wybierz filtr",
     "daysError": "Podaj liczbę dni z zakresu od 1 do 30",
-    "csvAccepted": "Plik został wygenerowany",
+    "csvAccepted": "Dane zostały zapisane do pliku CSV. Kliknij 'Pobierz', by zapisać go na swoim komputerze",
     "actionAdded": "Akcja została dodana",
     "actionDeleted": "Akcja została usunięta",
     "actionExists": "Akcja o podanej nazwie już istnieje",
