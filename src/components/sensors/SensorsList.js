@@ -48,7 +48,7 @@ class SensorsList extends Component {
                 <div key={sensor.id} className="item">
                   <ul className="item-ul">
                     <li className="item-li">{sensor.name}</li>
-                    <li className="item-li">{`${sensor.last_data} °C`}</li>
+                    <li className="item-li">{`${sensor.last_data === null ? '---' : sensor.last_data} °C`}</li>
                     <li className="item-li"><i className="fas fa-battery-three-quarters fa-sm"></i>{`${sensor.battery_level}%`}</li>
                     <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                     <li className="item-li"><Link to={`/chart/${sensor.id}`}><i className="fas fa-chart-line fa-lg"></i></Link></li>
@@ -69,7 +69,7 @@ class SensorsList extends Component {
                 <div key={sensor.id} className="item">
                   <ul className="item-ul">
                     <li className="item-li">{sensor.name}</li>
-                    <li className="item-li">{`${sensor.last_data} °C`}</li>
+                    <li className="item-li">{`${sensor.last_data === null ? '---' : sensor.last_data} °C`}</li>
                     <li className="item-li"><i className="fas fa-battery-three-quarters fa-sm"></i>{`${sensor.battery_level}%`}</li>
                     <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                     <li className="item-li"><Link to={`/chart/${sensor.id}`}><i className="fas fa-chart-line fa-lg"></i></Link></li>
@@ -90,7 +90,7 @@ class SensorsList extends Component {
               <div key={sensor.id} className="item">
                 <ul className="item-ul">
                   <li className="item-li">{sensor.name}</li>
-                  <li className="item-li">{`${sensor.last_data}%`}</li>
+                  <li className="item-li">{`${sensor.last_data === null ? '---' : sensor.last_data} %`}</li>
                   <li className="item-li"><i className="fas fa-battery-three-quarters fa-sm"></i>{`${sensor.battery_level}%`}</li>
                   <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="item-li"><Link to={`/chart/${sensor.id}`}><i className="fas fa-chart-line fa-lg"></i></Link></li>
@@ -111,7 +111,7 @@ class SensorsList extends Component {
               <div key={sensor.id} className="item">
                 <ul className="item-ul">
                   <li className="item-li">{sensor.name}</li>
-                  <li className="item-li">{`${sensor.last_data}%`}</li>
+                  <li className="item-li">{`${sensor.last_data === null ? '---' : sensor.last_data} %`}</li>
                   <li className="item-li"><i className="fas fa-battery-three-quarters fa-sm"></i>{`${sensor.battery_level}%`}</li>
                   <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="item-li"><Link to={`/chart/${sensor.id}`}><i className="fas fa-chart-line fa-lg"></i></Link></li>
@@ -132,7 +132,7 @@ class SensorsList extends Component {
               <div key={sensor.id} className="item">
                 <ul className="item-ul">
                   <li className="item-li">{sensor.name}</li>
-                  <li className="item-li">{`${sensor.last_data} hPa`}</li>
+                  <li className="item-li">{`${sensor.last_data === null ? '---' : sensor.last_data} hPa`}</li>
                   <li className="item-li"><i className="fas fa-battery-three-quarters fa-sm"></i>{`${sensor.battery_level}%`}</li>
                   <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="item-li"><Link to={`/chart/${sensor.id}`}><i className="fas fa-chart-line fa-lg"></i></Link></li>
@@ -153,7 +153,7 @@ class SensorsList extends Component {
               <div key={sensor.id} className="item">
                 <ul className="item-ul">
                   <li className="item-li">{sensor.name}</li>
-                  <li className="item-li">{`${sensor.last_data}‰`}</li>
+                  <li className="item-li">{`${sensor.last_data === null ? '---' : sensor.last_data} ‰`}</li>
                   <li className="item-li"><i className="fas fa-battery-three-quarters fa-sm"></i>{`${sensor.battery_level}%`}</li>
                   <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="item-li"><Link to={`/chart/${sensor.id}`}><i className="fas fa-chart-line fa-lg"></i></Link></li>
@@ -174,7 +174,7 @@ class SensorsList extends Component {
               <div key={sensor.id} className="item">
                 <ul className="item-ul">
                   <li className="item-li">{sensor.name}</li>
-                  {/* <li className="data">{`${sensor.last_data}%`}</li> */}
+                  <li className="item-li">{`${sensor.last_data === null ? '---' : sensor.last_data} %`}</li>
                   <li className="item-li"><i className="fas fa-battery-three-quarters fa-sm"></i>{`${sensor.battery_level}%`}</li>
                   <li className="item-li"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="item-li"><Link to={`/chart/${sensor.id}`}><i className="fas fa-chart-line fa-lg"></i></Link></li>

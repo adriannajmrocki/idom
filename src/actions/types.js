@@ -43,6 +43,7 @@ export const SET_BULB_IP = 'SET_BULB_IP';
 
 export const SEND_TOKEN = 'SEND_TOKEN';
 export const GET_FIREBASE_TOKEN = 'GET_FIREBASE_TOKEN';
+export const GET_FIREBASE_TOKEN_STATUS = 'GET_FIREBASE_TOKEN_STATUS';
 
 export const GET_ACTIONS = 'GET_ACTIONS';
 export const ADD_ACTION = 'ADD_ACTION';
