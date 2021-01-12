@@ -29,10 +29,17 @@ class EditController extends Component {
     e.preventDefault();
 
     const id = this.props.match.params.id
-    const { name, category, data } = this.state;
-    const updatedController = { name, category, data };
+    let { name, category, data } = this.state;
 
-    if (name !== this.props.controllerName) {
+    if (category !== 'roller_blind') {
+      data = null;
+    }
+
+    const updatedController = { name, category: undefined, data };
+
+    if (name === '') {
+      this.props.createMessage({ dataNotChanged: 'Żadne dane nie zostały zmienione' })
+    } else if (name !== this.props.controllerName) {
       this.props.updateController(id, updatedController);
       this.setState({ name: '' })
     }
@@ -80,4 +87,4 @@ const mapStateToProps = state => ({
   controllerData: state.controllers.controllerData,
 })
  
-export default withTranslation('common')(connect(mapStateToProps, { updateController, getControllerData })(EditController));
+export default withTranslation('common')(connect(mapStateToProps, { updateController, getControllerData, createMessage })(EditController));
