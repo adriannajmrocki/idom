@@ -38,11 +38,11 @@ class UsersList extends Component {
             return (
               <div key={user.id} className="item">
                 <ul className="item-ul">
-                  <li className="username">{user.username}</li>
-                  <li className="email">{user.email}</li>
-                  <li className="telephone">{user.telephone}</li>
-                  <li className="icon"><Link to={`/edit-user/${user.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
-                  {!user.is_staff ? <li className="icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteUser.bind(this, user.id)}></i></li> : <li className="icon"><i className="fas fa-lock"></i></li>}
+                  <li className="item-li item-li-name-users">{user.username}</li>
+                  <li className="item-li item-li-email-users">{user.email}</li>
+                  <li className="item-li item-li-data-users">{user.telephone}</li>
+                  <li className="item-li item-li-icon"><Link to={`/edit-user/${user.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                  {!user.is_staff ? <li className="item-li item-li-icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteUser.bind(this, user.id)}></i></li> : <li className="item-li item-li-icon"><i className="fas fa-lock"></i></li>}
                 </ul>
               </div>
             )

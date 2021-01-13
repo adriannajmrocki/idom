@@ -49,10 +49,10 @@ class Controllers extends Component {
             return (
               <div key={controller.id} className="item">
                 <ul className="item-ul">
-                  <li className="item-li">{controller.name}</li>
-                  <li className="item-li"><i className="far fa-play-circle fa-lg" onClick={this.props.runController.bind(this, controller.name)}></i></li>
-                  <li className="icon item-li"><Link to={`/edit-controller/${controller.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
-                  <li className="icon item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteController.bind(this, controller.id)}></i></li>
+                  <li className="item-li item-li-name">{controller.name}</li>
+                  <li className="item-li item-li-icon"><i className="far fa-play-circle fa-lg" onClick={this.props.runController.bind(this, controller.name)}></i></li>
+                  <li className="item-li item-li-icon"><Link to={`/edit-controller/${controller.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                  <li className="item-li item-li-icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteController.bind(this, controller.id)}></i></li>
                 </ul>
               </div>
             )
@@ -68,8 +68,8 @@ class Controllers extends Component {
             return (
               <div key={controller.id} className="item">
                 <ul className="item-ul">
-                  <li className="item-li" style={{"flex": "3"}}>{controller.name}</li>
-                  <li className="item-li">
+                  <li className="item-li item-li-name">{controller.name}</li>
+                  <li className="item-li item-li-icon">
                     <Switch
                       checked={controller.data} 
                       onChange={e => {
@@ -89,10 +89,10 @@ class Controllers extends Component {
                       width={40}
                     />
                   </li>
-                  <li className="icon item-li"><Link to={`/bulb-ip/${controller.id}`}><i className="fas fa-wifi fa-lg"></i></Link></li>
-                  <li className="icon item-li"><Link to={`/bulb-color/${controller.id}`}><i className="fas fa-palette fa-lg"></i></Link></li>
-                  <li className="icon item-li"><Link to={`/edit-controller/${controller.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
-                  <li className="icon item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteController.bind(this, controller.id)}></i></li>
+                  <li className="item-li item-li-icon"><Link to={`/bulb-ip/${controller.id}`}><i className="fas fa-wifi fa-lg"></i></Link></li>
+                  <li className="item-li item-li-icon"><Link to={`/bulb-color/${controller.id}`}><i className="fas fa-palette fa-lg"></i></Link></li>
+                  <li className="item-li item-li-icon"><Link to={`/edit-controller/${controller.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                  <li className="item-li item-li-icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteController.bind(this, controller.id)}></i></li>
                 </ul>
               </div>
             )
@@ -108,10 +108,10 @@ class Controllers extends Component {
             return (
               <div key={controller.id} className="item">
                 <ul className="item-ul">
-                  <li className="item-li">{controller.name}</li>
-                  <li className="item-li"><i className="far fa-play-circle fa-lg" onClick={this.props.runController.bind(this, controller.name)}></i></li>
-                  <li className="icon item-li"><Link to={`/edit-controller/${controller.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
-                  <li className="icon item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteController.bind(this, controller.id)}></i></li>
+                  <li className="item-li item-li-name">{controller.name}</li>
+                  <li className="item-li item-li-icon"><i className="far fa-play-circle fa-lg" onClick={this.props.runController.bind(this, controller.name)}></i></li>
+                  <li className="item-li item-li-icon"><Link to={`/edit-controller/${controller.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                  <li className="item-li item-li-icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteController.bind(this, controller.id)}></i></li>
                 </ul>
               </div>
             )

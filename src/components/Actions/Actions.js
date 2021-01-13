@@ -35,9 +35,9 @@ class Actions extends Component {
           return (
             <div key={interaction.id} className="item">
               <ul className="item-ul">
-                <li className="item-li">{interaction.name}</li>
-                <li className="icon item-li"><Link to={`/edit-action/${interaction.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
-                <li className="icon item-li"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteAction.bind(this, interaction.id)}></i></li>
+                <li className="item-li item-li-name">{interaction.name}</li>
+                <li className="icon item-li item-li-icon"><Link to={`/edit-action/${interaction.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                <li className="icon item-li item-li-icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteAction.bind(this, interaction.id)}></i></li>
               </ul>
             </div>
           )
