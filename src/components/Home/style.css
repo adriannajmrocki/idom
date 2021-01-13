@@ -358,6 +358,20 @@
     grid-row: 1 / 2;
   }
 
+  .lng-mobile {
+    display: flex;
+    align-items: center;
+  }
+
+  .lng-mobile h6 {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .lng-field {
+    padding: 0;
+  }
+
   .right-panel {
     grid-row: 3 / 4;
   }
@@ -396,6 +410,15 @@
 
   .panel .content {
     padding: 0.2rem 1rem;
+  }
+
+  .panel .content p {
+    margin-bottom: 5px;
+  }
+
+  .panel-head {
+    margin-top: 10px;
+    margin-bottom: 0;
   }
 
   .home-container:before {

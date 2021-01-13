@@ -235,20 +235,22 @@ class Home extends Component {
         <div className="panels-container">
           <div className="panel left-panel">
             <div className="content">
-              <h6 className="lng-h6">{t('home.lng')}</h6>
-              <div className="lng-field">
-                <button 
-                  className="lng-btn btn-pl" 
-                  onClick={() => {
-                    i18n.changeLanguage('pl');
-                    localStorage.setItem('lang', 'pl');
-                  }}>PL</button>
-                <button 
-                  className="lng-btn btn-en" 
-                  onClick={() => {
-                    i18n.changeLanguage('en');
-                    localStorage.setItem('lang', 'en');
-                  }}>ENG</button>
+              <div className="lng-mobile">
+                <h6 className="lng-h6">{t('home.lng')}</h6>
+                <div className="lng-field">
+                  <button 
+                    className="lng-btn btn-pl" 
+                    onClick={() => {
+                      i18n.changeLanguage('pl');
+                      localStorage.setItem('lang', 'pl');
+                    }}>PL</button>
+                  <button 
+                    className="lng-btn btn-en" 
+                    onClick={() => {
+                      i18n.changeLanguage('en');
+                      localStorage.setItem('lang', 'en');
+                    }}>ENG</button>
+                </div>
               </div>
               <h3 className="panel-head">{t('home.lp-head')}</h3>
               <p>{t('home.lp-p1')}. <br /> {t('home.lp-p2')}!</p>
