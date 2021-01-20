@@ -25,7 +25,6 @@ class Actions extends Component {
     return (  
       <div className="container">
         <div className="head" style={{"marginBottom": "40px"}}>
-          <i className="fas fa-angle-double-right fa-2x"></i>
           <h2>{t('actions.actions-h')}</h2>
           <div className="line"></div>
           <Link to='/add-action'><button type="button" className="add-btn">+</button></Link>

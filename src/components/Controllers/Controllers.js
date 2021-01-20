@@ -34,7 +34,6 @@ class Controllers extends Component {
     return (
       <div className="container">
         <div className="head" style={{"marginBottom": "40px"}}>
-          <i className="fas fa-gamepad fa-2x"></i>
           <h2>{t('header.controllers')}</h2>
           <div className="line"></div>
           <Link to='/add-controller'><button type="button" className="add-btn">+</button></Link>

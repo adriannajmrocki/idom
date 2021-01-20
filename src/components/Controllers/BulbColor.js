@@ -47,9 +47,8 @@ class BulbColor extends Component {
     return (  
       <div className="container">
         <div className="head" style={{"marginBottom": "40px"}}>
-          <i className="fas fa-palette fa-2x"></i>
           <h2>Ustawienia koloru</h2>
-          <div className="line" style={{'width': '600px'}}></div>
+          <div className="line" style={{'width': '700px'}}></div>
         </div>
 
         <div className="col-md-6 m-auto">
@@ -57,7 +56,7 @@ class BulbColor extends Component {
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label>Jasność</label>
-                <input className="form-control" type="range" name="brightness" min="0" max="100" value={this.state.brightness} onChange={this.handleBrightnessChange} data-sizing="px" />
+                <input className="custom-range" type="range" name="brightness" min="0" max="100" value={this.state.brightness} onChange={this.handleBrightnessChange} data-sizing="px" />
               </div>
 
               <div className="form-group">
