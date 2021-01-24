@@ -175,10 +175,11 @@ class AddSensor extends Component {
                 <option value="smoke">{t('sensors.smoke')}</option>
                 <option value="gas">Gaz</option>
                 <option value="rain_sensor">{t('sensors.rain')}</option>
+                <option value="motion_sensor">Ruch</option>
               </select>
             </div>
             
-            {this.state.category === 'water_temp' || this.state.category === 'smoke' || this.state.category === 'rain_sensor' || this.state.category === 'breathalyser' || this.state.category === 'gas' ?
+            {this.state.category === 'water_temp' || this.state.category === 'smoke' || this.state.category === 'rain_sensor' || this.state.category === 'breathalyser' || this.state.category === 'gas' || this.state.category === 'motion_sensor' ?
             <div className="form-group">
               <label>{t('sensors.data-samp-freq')}</label>
               <select name="frequencyUnit" className="form-control custom-input-style" value={this.state.frequencyUnit} onChange={this.handleSelect}>
@@ -198,7 +199,7 @@ class AddSensor extends Component {
               </select>
             </div> }
 
-            {this.state.category === 'water_temp' || this.state.category === 'smoke' || this.state.category === 'rain_sensor' || this.state.category === 'breathalyser' || this.state.category === 'gas' ?
+            {this.state.category === 'water_temp' || this.state.category === 'smoke' || this.state.category === 'rain_sensor' || this.state.category === 'breathalyser' || this.state.category === 'gas' || this.state.category === 'motion_sensor' ?
             <div>
               <label>{t('sensors.value')}</label>
               <select name="frequency" className="form-control custom-input-style" value={this.state.frequency} onChange={this.handleSelect}>

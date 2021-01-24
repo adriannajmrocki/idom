@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 
 import { getUsers, deleteUser } from '../../actions/users';
+import pdf from './hard-reset.pdf'
 
 import '../../styles/utilStyles.css';
 import './style.css';
@@ -50,7 +51,7 @@ class UsersList extends Component {
 
         <div className="reset-section">
           <p>{t('users.need-reset')}?</p>
-          <p>{t('users.see')} <span className='guide'><a href="https://adriannajmrocki.github.io/idom-website/" target="_blank" rel="noreferrer">{t('users.guide')}</a></span></p>
+          <p>{t('users.see')} <span className='guide'><a href={pdf} target="_blank" rel="noreferrer">{t('users.guide')}</a></span></p>
         </div>
       </div>
     );

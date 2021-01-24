@@ -153,7 +153,8 @@ export const runController = name => (dispatch, getState) => {
 
   axios.post(`${baseURL}/drivers/action`, name, config)
   .then(res => {
-    if (res.status === 201) {
+    console.log(res);
+    if (res.status === 200) {
       dispatch(createMessage({ controllerRunning: 'Sterownik został uruchomiony' }))
       dispatch({
         type: RUN_CONTROLLER,
@@ -163,7 +164,11 @@ export const runController = name => (dispatch, getState) => {
   })
   .catch(err => {
     console.log(err.response)
-    dispatch(createMessage({ controllerRunError: 'Nie udało się uruchomić sterownika' }))
+    if (err.response.status === 404) {
+      dispatch(createMessage({ controllerRunError: 'Nie znaleziono sterownika' }))
+    } else if (err.response.status === 503) {
+      dispatch(createMessage({ controllerOfflineError: 'Sterownik poza siecią' }))
+    }
   })
 }
 
