@@ -45,10 +45,10 @@
 }
 
 .visible ul button {
-  border: none;
+  border: 1px solid var(--gold);
   background: none;
   color: #000;
-  font-size: 15px;
+  font-size: 13px;
   text-transform: uppercase;
   margin: 0 10px;
   padding: 7px 13px;
@@ -56,18 +56,16 @@
   outline: none;
 }
 
-.visible ul li a{
+.visible ul li a {
   color: #000;
-  font-size: 15px;
+  font-size: 13px;
   text-transform: uppercase;
   padding: 7px 13px;
-  /* border-radius: 3px; */
 }
 
 .visible ul li a:hover,
 .visible ul button:hover,
 .active {
-  /* background: var(--gold); */
   border-bottom: 3px solid var(--gold);
   text-decoration: none;
   color: var(--gold);
@@ -131,10 +129,6 @@
     font-size: 20px;
     color: #fff;
   }
-
-  /* #check:checked ~ ul {
-    left: 0;
-  } */
 
   .visible .show-menu {
     left: 0

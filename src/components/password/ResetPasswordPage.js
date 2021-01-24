@@ -51,23 +51,23 @@ class ResetPasswordPage extends Component {
     return (  
       <Fragment>
         <div className="col-md-6 m-auto">
-          <div className="card card-body mt-5">
-            <h2 className="text-center">Reset hasła</h2>
+          <div className="card card-body mt-5 custom-border-style">
+            <h2 className="text-center custom-mb">Reset hasła</h2>
             <form onSubmit={this.handleSubmit} noValidate>
               <div className="form-group">
                 <label>Email</label>
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control custom-input-style"
                   name="email"
                   onChange={this.handleChange}
                   value={this.state.email}
                 />
               </div>
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary">Potwierdź</button>
+              <div className="ff-center">
+                <button type="submit" className="button">Potwierdź</button>
             </div>
-              <p>
+              <p style={{"marginTop": "20px"}}>
                 * Na podany adres email zostanie wysłany link umożliwiający zmianę hasła.
               </p>
             </form>

@@ -29,7 +29,6 @@ class Cameras extends Component {
     return (
       <div className="container">
         <div className="head" style={{"marginBottom": "40px"}}>
-          <i class="fas fa-video fa-2x"></i>
           <h2>{t('cameras.cams')}</h2>
           <div className="line"></div>
           <Link to='/add-camera'><button type="button" className="add-btn">+</button></Link>

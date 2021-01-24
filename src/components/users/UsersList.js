@@ -28,7 +28,6 @@ class UsersList extends Component {
     return (  
       <div className="container">
         <div className="head" style={{"marginBottom": "40px"}}>
-          <i className="far fa-user fa-2x"></i>
           <h2 className="ml-10">{t('users.usrs')}</h2>
           <div className="line"></div>
         </div>

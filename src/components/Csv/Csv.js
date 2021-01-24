@@ -84,7 +84,6 @@ function Csv(props) {
   return (
     <div className="container">
       <div className="head" style={{"marginBottom": "40px"}}>
-        <i className="far fa-file-alt fa-2x"></i>
         <h2>{t('csv-generate.csv-file')}</h2>
         <div className="line"></div>
       </div>
