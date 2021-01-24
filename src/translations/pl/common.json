@@ -166,7 +166,7 @@
     "controllerUpdated": "Sterownik został zmodyfikowany",
     "noDataError": "Podaj aktualny stan rolety",
     "controllerRunning": "Sterownik został uruchomiony",
-    "controllerRunError": "Nie udało się uruchomić sterownika",
+    "controllerRunError": "Nie znaleziono sterownika",
     "bulbDataSent": "Dane zostały zaktualizowane",
     "bulbDataSentError": "Operacja nie powiodła się",
     "noItems": "Wybierz interesujące cię czujniki lub kategorie",

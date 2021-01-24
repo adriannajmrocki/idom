@@ -152,7 +152,7 @@ class EditSensor extends Component {
           <div className="form-group">
             <label>{t('sensors.category')}</label>
             <select className="form-control custom-input-style" onChange={this.handleCategorySelect} value={this.state.category}>
-              <option value="" disabled defaultValue>{(this.props.sensorCategory === 'temperature' && `${t('sensors.temp')}`) || (this.props.sensorCategory === 'water_temp' && `${t('sensors.water_temp')}`) || (this.props.sensorCategory === 'humidity' && `${t('sensors.hum')}`) || (this.props.sensorCategory === 'air_humidity' && `${t('sensors.air_hum')}`) || (this.props.sensorCategory === 'atmo_pressure' && `${t('sensors.pressure')}`) || (this.props.sensorCategory === 'breathalyser' && `${t('sensors.alc')}`) || (this.props.sensorCategory === 'smoke' && `${t('sensors.smoke')}`) || (this.props.sensorCategory === 'gas' && `Gaz`) || (this.props.sensorCategory === 'rain_sensor' && `${t('sensors.rain')}`)}</option>
+              <option value="" disabled defaultValue>{(this.props.sensorCategory === 'temperature' && `${t('sensors.temp')}`) || (this.props.sensorCategory === 'water_temp' && `${t('sensors.water_temp')}`) || (this.props.sensorCategory === 'humidity' && `${t('sensors.hum')}`) || (this.props.sensorCategory === 'air_humidity' && `${t('sensors.air_hum')}`) || (this.props.sensorCategory === 'atmo_pressure' && `${t('sensors.pressure')}`) || (this.props.sensorCategory === 'breathalyser' && `${t('sensors.alc')}`) || (this.props.sensorCategory === 'smoke' && `${t('sensors.smoke')}`) || (this.props.sensorCategory === 'gas' && `Gaz`) || (this.props.sensorCategory === 'rain_sensor' && `${t('sensors.rain')}`) || (this.props.sensorCategory === 'motion_sensor' && 'Ruch')}</option>
               <option value="temperature">{t('sensors.temp')}</option>
               <option value="water_temp">{t('sensors.water-temp')}</option>
               <option value="humidity">{t('sensors.hum')}</option>
@@ -162,11 +162,12 @@ class EditSensor extends Component {
               <option value="smoke">{t('sensors.smoke')}</option>
               <option value="gas">Gaz</option>
               <option value="rain_sensor">{t('sensors.rain')}</option>
+              <option value="motion_sensor">Ruch</option>
             </select>
           </div> 
           {/* : false} */}
 
-          {(this.props.sensorCategory !== 'water_temp' && this.props.sensorCategory !== 'smoke' && this.props.sensorCategory !== 'rain_sensor' && this.props.sensorCategory !== 'breathalyser' && this.props.sensorCategory !== 'gas') && (this.state.category !== 'water_temp' && this.state.category !== 'smoke' && this.state.category !== 'rain_sensor' && this.state.category !== 'breathalyser' && this.state.category !== 'gas') ? (
+          {(this.props.sensorCategory !== 'water_temp' && this.props.sensorCategory !== 'smoke' && this.props.sensorCategory !== 'rain_sensor' && this.props.sensorCategory !== 'breathalyser' && this.props.sensorCategory !== 'gas' && this.props.sensorCategory !== 'motion_sensor') && (this.state.category !== 'water_temp' && this.state.category !== 'smoke' && this.state.category !== 'rain_sensor' && this.state.category !== 'breathalyser' && this.state.category !== 'gas' && this.props.sensorCategory !== 'motion_sensor') ? (
             <div className="form-group">
               <label>{t('sensors.data-samp-freq')}</label>
               <select className="form-control custom-input-style" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
@@ -187,7 +188,7 @@ class EditSensor extends Component {
             </div> 
           )}
 
-            {(this.props.sensorCategory !== 'water_temp' && this.props.sensorCategory !== 'smoke' && this.props.sensorCategory !== 'rain_sensor' && this.props.sensorCategory !== 'breathalyser' && this.props.sensorCategory !== 'gas') && (this.state.category !== 'water_temp' && this.state.category !== 'smoke' && this.state.category !== 'rain_sensor' && this.state.category !== 'breathalyser' && this.state.category !== 'gas') ? (
+            {(this.props.sensorCategory !== 'water_temp' && this.props.sensorCategory !== 'smoke' && this.props.sensorCategory !== 'rain_sensor' && this.props.sensorCategory !== 'breathalyser' && this.props.sensorCategory !== 'gas' && this.props.sensorCategory !== 'motion_sensor') && (this.state.category !== 'water_temp' && this.state.category !== 'smoke' && this.state.category !== 'rain_sensor' && this.state.category !== 'breathalyser' && this.state.category !== 'gas' && this.props.sensorCategory !== 'motion_sensor') ? (
             <div className="form-group">
               <input
                 type="string"

@@ -81,6 +81,7 @@ export class Alerts extends Component {
       // if (message.ipError) alert.error(t('messages.ipError'));
       if (message.ipSet) alert.success(message.ipSet);
       if (message.ipError) alert.error(message.ipError);
+      if (message.controllerOfflineError) alert.error(message.controllerOfflineError);
 
       // CSV alerts
       if (message.noItems) alert.error(t('messages.noItems'));

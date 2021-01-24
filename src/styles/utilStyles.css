@@ -171,6 +171,10 @@ li {
   color: #987316;
 }
 
+.fa-trash-alt {
+  color: #9f0000;
+}
+
 @media (max-width: 994px) {
   .item-li-data-users,
   .item-li-email-users {
@@ -179,5 +183,11 @@ li {
 
   .item-li-name-users {
     flex: 4;
+  }
+}
+
+@media (max-width: 500px) {
+  .item-li-data {
+    display: none;
   }
 }

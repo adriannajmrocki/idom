@@ -154,7 +154,6 @@ class SensorsList extends Component {
                 <ul className="item-ul">
                   <li className="item-li item-li-name">{sensor.name}</li>
                   <li className="item-li item-li-data">{`${sensor.last_data === null ? '---' : sensor.last_data} ‰`}</li>
-                  <li className="item-li item-li-data"><i className="fas fa-battery-three-quarters fa-sm"></i>{`${sensor.battery_level}%`}</li>
                   <li className="item-li item-li-icon"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="item-li item-li-icon"><Link to={`/chart/${sensor.id}`}><i className="fas fa-chart-line fa-lg"></i></Link></li>
                   <li className="item-li item-li-icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
@@ -175,7 +174,6 @@ class SensorsList extends Component {
                 <ul className="item-ul">
                   <li className="item-li item-li-name">{sensor.name}</li>
                   <li className="item-li item-li-data">{`${sensor.last_data === null ? '---' : sensor.last_data} %`}</li>
-                  <li className="item-li item-li-data"><i className="fas fa-battery-three-quarters fa-sm"></i>{`${sensor.battery_level}%`}</li>
                   <li className="item-li item-li-icon"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="item-li item-li-icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
                 </ul>
@@ -194,7 +192,6 @@ class SensorsList extends Component {
               <div key={sensor.id} className="item">
                 <ul className="item-ul">
                   <li className="item-li item-li-name">{sensor.name}</li>
-                  <li className="item-li item-li-data"><i className="fas fa-battery-three-quarters fa-sm"></i>{`${sensor.battery_level}%`}</li>
                   <li className="item-li item-li-icon"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="item-li item-li-icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
                 </ul>
@@ -213,7 +210,24 @@ class SensorsList extends Component {
               <div key={sensor.id} className="item">
                 <ul className="item-ul">
                   <li className="item-li item-li-name">{sensor.name}</li>
-                  <li className="item-li item-li-data"><i className="fas fa-battery-three-quarters fa-sm"></i>{`${sensor.battery_level}%`}</li>
+                  <li className="item-li item-li-icon"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
+                  <li className="item-li item-li-icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
+                </ul>
+              </div>
+            )
+          }
+        })}
+
+        <div className="category-field add-margin" style={{"marginTop": "40px"}}>
+          <i className="fas fa-running fa-2x"></i>
+          <h5 className="category-title">Ruch</h5>
+        </div>
+        {this.props.sensors.map((sensor, id) => {
+          if (sensor.category === 'motion_sensor') {
+            return (
+              <div key={sensor.id} className="item">
+                <ul className="item-ul">
+                  <li className="item-li item-li-name">{sensor.name}</li>
                   <li className="item-li item-li-icon"><Link to={`/edit-sensor/${sensor.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                   <li className="item-li item-li-icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteSensor.bind(this, sensor.id)}></i></li>
                 </ul>

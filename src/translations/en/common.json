@@ -166,7 +166,7 @@
     "controllerUpdated": "Controller has been updated",
     "noDataError": "Enter the current position of the roller blind",
     "controllerRunning": "Controller has been run",
-    "controllerRunError": "Failed to run the controller",
+    "controllerRunError": "Controller not found",
     "bulbDataSent": "Data have been updated",
     "bulbDataSentError": "Data have not been updated",
     "noItems": "Select sensors or categories from the list",
