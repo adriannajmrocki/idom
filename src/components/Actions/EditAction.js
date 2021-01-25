@@ -200,7 +200,7 @@ class EditAction extends Component {
                     <Fragment>
                       <label>{t('actions.act-to-work')}</label>
                       <select name="type" className="form-control" onChange={this.handleSelect} value={type}>
-                        <option value="" disabled defaultValue>{(this.props.type === 'turn' && `${t('actions.act-switch')}`) || (this.props.type === 'brightness' && `${t('actions.set-brightness')}`) || (this.props.type === 'colour' && `${t('actions.set-color')}`)}</option>
+                        <option value="" disabled defaultValue key={item.id}>{(this.props.type === 'turn' && `${t('actions.act-switch')}`) || (this.props.type === 'brightness' && `${t('actions.set-brightness')}`) || (this.props.type === 'colour' && `${t('actions.set-color')}`)}</option>
                       </select>
                     </Fragment>
                   )                  
@@ -209,7 +209,7 @@ class EditAction extends Component {
                     <Fragment>
                       <label>{t('actions.act-to-work')}</label>
                       <select name="status" className="form-control" onChange={this.handleSelect} value={status}>
-                        <option value="" disabled defaultValue>{this.props.status === 'on' && `${t('actions.click')}`}</option>
+                        <option value="" disabled defaultValue key={item.id}>{this.props.status === 'on' && `${t('actions.click')}`}</option>
                       </select>
                     </Fragment>
                   )

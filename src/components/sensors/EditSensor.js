@@ -169,7 +169,7 @@ class EditSensor extends Component {
             <div className="form-group">
               <label>{t('sensors.data-samp-freq')}</label>
               <select className="form-control custom-input-style" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
-                <option value="" disabled selected>{t('sensors.sec')}</option>
+                <option value="" disabled defaultValue>{t('sensors.sec')}</option>
                 <option value="seconds">{t('sensors.sec')}</option>
                 <option value="minutes">{t('sensors.min')}</option>
                 <option value="hours">{t('sensors.h')}</option>
@@ -180,7 +180,7 @@ class EditSensor extends Component {
             <div className="form-group">
               <label>{t('sensors.data-samp-freq')}</label>
               <select className="form-control custom-input-style" onChange={this.handleFrequencyUnitSelect} value={this.state.frequencyUnit}>
-                <option value="" disabled selected>{t('sensors.sec')}</option>
+                <option value="" disabled defaultValue>{t('sensors.sec')}</option>
                 <option value="seconds">{t('sensors.sec')}</option>
               </select>
             </div> 

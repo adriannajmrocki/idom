@@ -19,10 +19,6 @@ const Board = (props) => {
   useEffect(() => {
     onMessageListener()
     .then((payload) => {
-      console.log('not body', payload.notification.body)
-      const { body } = payload.notification.body;
-      // console.log('title', title);
-      // console.log('body', body);
       toast.warn(`${payload.notification.body}`, {
         position: "top-right",
         autoClose: false,
@@ -32,7 +28,6 @@ const Board = (props) => {
         draggable: true,
         progress: undefined,
       });
-      // toast.success('test')
     })
     .catch((err) => {
       toast.error(JSON.stringify(err));
@@ -42,7 +37,6 @@ const Board = (props) => {
   requestFirebaseNotificationPermission()
   .then((firebaseToken) => {
     // eslint-disable-next-line no-console
-    console.log('firebase token', firebaseToken);
 
     const registration_id = firebaseToken;
     const type = 'web';
@@ -53,7 +47,6 @@ const Board = (props) => {
     if (props.firebaseTokenStatus !== 200) {
       props.sendFirebaseToken(data);
     }
-    console.log('send token', data);
   })
   .catch((err) => {
     return err;

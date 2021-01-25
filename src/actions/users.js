@@ -9,7 +9,6 @@ import { baseURL } from '../utils/url';
 export const getUsers = () => (dispatch, getState) => {
     // Get token from state
     const token = getState().auth.token;
-    console.log(token);
   
     // Headers
     const config = {
@@ -72,7 +71,6 @@ export const deleteUser = id => (dispatch, getState) => {
 
   // Get token from state
   const token = getState().auth.token;
-  console.log(token);
 
   // Headers
   const config = {

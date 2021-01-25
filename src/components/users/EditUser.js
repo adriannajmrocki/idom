@@ -132,7 +132,7 @@ class EditUser extends Component {
             <div className="form-group">
               <label>{t('home.notifications-lng')}</label>
               <select className="form-control custom-input-style" onChange={this.handleLangSelect} value={this.state.language}>
-                <option value="" disabled selected>{this.props.language === 'pl' ? `${t('home.pl')}` : `${t('home.en')}`}</option>
+                <option value="" disabled defaultValue>{this.props.language === 'pl' ? `${t('home.pl')}` : `${t('home.en')}`}</option>
                 <option value="pl">{t('home.pl')}</option>
                 <option value="eng">{t('home.en')}</option>
               </select>
@@ -140,7 +140,7 @@ class EditUser extends Component {
             <div className="form-group">
               <label>{t('users.app-not')}</label>
               <select className="form-control custom-input-style" onChange={this.handleAppSelect} value={this.state.app_notifications}>
-                <option value="" disabled selected>{this.props.appNotifications === 'true' ? `${t('users.yes')}` : `${t('users.no')}`}</option>
+                <option value="" disabled defaultValue>{this.props.appNotifications === 'true' ? `${t('users.yes')}` : `${t('users.no')}`}</option>
                 <option value="true">{t('users.yes')}</option>
                 <option value="false">{t('users.no')}</option>
               </select>
@@ -148,7 +148,7 @@ class EditUser extends Component {
             <div className="form-group">
               <label>{t('users.sms-not')}</label>
               <select className="form-control custom-input-style" onChange={this.handleSmsSelect} value={this.state.sms_notifications}>
-                <option value="" disabled selected>{this.props.smsNotifications === 'true' ? `${t('users.yes')}` : `${t('users.no')}`}</option>
+                <option value="" disabled defaultValue>{this.props.smsNotifications === 'true' ? `${t('users.yes')}` : `${t('users.no')}`}</option>
                 <option value="true">{t('users.yes')}</option>
                 <option value="false">{t('users.no')}</option>
               </select>
