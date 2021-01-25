@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
 
 import { setBulbIp } from '../../actions/controllers';
 
@@ -29,14 +30,15 @@ class BulbIp extends Component {
   render() { 
 
     const { ip } = this.state;
+    const { t } = this.props;
 
     return (  
       <div className="col-md-6 m-auto custom-position">
         <div className="card card-body mt-5 custom-border-style custom-position">
-          <h2 className="text-center custom-mb">Adres IP żarówki</h2>
+          <h2 className="text-center custom-mb">{t('controllers.bulb-ip')}</h2>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label>Adres IP</label>
+              <label>{t('controllers.ip')}</label>
               <input
                 type="text"
                 className="form-control custom-input-style"
@@ -47,7 +49,7 @@ class BulbIp extends Component {
             </div>
 
             <div className="ff-center">
-              <button className="button">Dodaj</button>
+              <button className="button">{t('sensors.add')}</button>
             </div>
           </form>
         </div>
@@ -56,4 +58,4 @@ class BulbIp extends Component {
   }
 }
  
-export default connect(null, { setBulbIp })(BulbIp);
+export default withTranslation('common')(connect(null, { setBulbIp })(BulbIp));

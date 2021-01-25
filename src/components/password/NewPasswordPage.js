@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
+
 import { resetPassword } from '../../actions/password';
 import Alerts from '../Alerts/Alerts';
 
@@ -30,13 +32,16 @@ class NewPasswordView extends Component {
   }
 
   render() { 
+
+    const { t } = this.props;
+
     return (  
       <div className="col-md-6 m-auto">
         <div className="card card-body mt-5 custom-border-style">
-          <h2 className="text-center custom-mb">Nowe hasło</h2>
+          <h2 className="text-center custom-mb">{t('pwd.new-pwd')}</h2>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label>Nowe hasło</label>
+              <label>{t('pwd.new-pwd')}</label>
                 <input
                   type="password"
                   className="form-control custom-input-style"
@@ -46,7 +51,7 @@ class NewPasswordView extends Component {
                 />
             </div>
             <div className="ff-center">
-              <button type="submit" className="button">Potwierdź</button>
+              <button type="submit" className="button">{t('controllers.confirm')}</button>
             </div>
           </form>
         </div>
@@ -68,4 +73,4 @@ const NewPasswordPage = connect(
   mapDispatchToProps
  )(NewPasswordView);
  
- export default withRouter(NewPasswordPage);
+ export default withTranslation('common')(withRouter(NewPasswordPage));

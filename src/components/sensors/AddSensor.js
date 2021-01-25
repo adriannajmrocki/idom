@@ -173,9 +173,9 @@ class AddSensor extends Component {
                 <option value="atmo_pressure">{t('sensors.pressure')}</option>
                 <option value="breathalyser">{t('sensors.alc')}</option>
                 <option value="smoke">{t('sensors.smoke')}</option>
-                <option value="gas">Gaz</option>
+                <option value="gas">{t('sensors.gas')}</option>
                 <option value="rain_sensor">{t('sensors.rain')}</option>
-                <option value="motion_sensor">Ruch</option>
+                <option value="motion_sensor">{t('sensors.motion')}</option>
               </select>
             </div>
             

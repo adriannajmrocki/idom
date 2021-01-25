@@ -27,13 +27,13 @@ class AddAction extends Component {
     operator: '',
     controller: '',
     days: [
-      { id: 1, isChecked: false, value: '1', label: 'Poniedziałek' },
-      { id: 2, isChecked: false, value: '2', label: 'Wtorek' },
-      { id: 3, isChecked: false, value: '3', label: 'Środa' },
-      { id: 4, isChecked: false, value: '4', label: 'Czwartek' },
-      { id: 5, isChecked: false, value: '5', label: 'Piątek' },
-      { id: 6, isChecked: false, value: '6', label: 'Sobota' },
-      { id: 7, isChecked: false, value: '0', label: 'Niedziela' },
+      { id: 1, isChecked: false, value: '1', label: `${this.props.t('actions.mon')}` },
+      { id: 2, isChecked: false, value: '2', label: `${this.props.t('actions.tue')}` },
+      { id: 3, isChecked: false, value: '3', label: `${this.props.t('actions.wed')}` },
+      { id: 4, isChecked: false, value: '4', label: `${this.props.t('actions.thu')}` },
+      { id: 5, isChecked: false, value: '5', label: `${this.props.t('actions.fri')}` },
+      { id: 6, isChecked: false, value: '6', label: `${this.props.t('actions.sat')}` },
+      { id: 7, isChecked: false, value: '0', label: `${this.props.t('actions.sun')}` },
     ],
     startEvent: '',
     endEvent: '',
@@ -86,7 +86,7 @@ class AddAction extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { name, sensor, trigger, operator, controller, days, startEvent, endEvent, flag, action, type, status, brightness, red, green, blue } = this.state;
+    const { name, sensor, trigger, operator, controller, days, startEvent, endEvent, flag, type, status, brightness, red, green, blue } = this.state;
 
     let daysArray = [];
     days.map(day => {
@@ -109,13 +109,13 @@ class AddAction extends Component {
         operator: '',
         controller: '',
         days: [
-          { id: 1, isChecked: false, value: '1', label: 'Poniedziałek' },
-          { id: 2, isChecked: false, value: '2', label: 'Wtorek' },
-          { id: 3, isChecked: false, value: '3', label: 'Środa' },
-          { id: 4, isChecked: false, value: '4', label: 'Czwartek' },
-          { id: 5, isChecked: false, value: '5', label: 'Piątek' },
-          { id: 6, isChecked: false, value: '6', label: 'Sobota' },
-          { id: 7, isChecked: false, value: '7', label: 'Niedziela' },
+          { id: 1, isChecked: false, value: '1', label: `${this.props.t('actions.mon')}` },
+          { id: 2, isChecked: false, value: '2', label: `${this.props.t('actions.tue')}` },
+          { id: 3, isChecked: false, value: '3', label: `${this.props.t('actions.wed')}` },
+          { id: 4, isChecked: false, value: '4', label: `${this.props.t('actions.thu')}` },
+          { id: 5, isChecked: false, value: '5', label: `${this.props.t('actions.fri')}` },
+          { id: 6, isChecked: false, value: '6', label: `${this.props.t('actions.sat')}` },
+          { id: 7, isChecked: false, value: '0', label: `${this.props.t('actions.sun')}` },
         ],
         startEvent: '',
         endEvent: '',
@@ -137,13 +137,13 @@ class AddAction extends Component {
         operator: '',
         controller: '',
         days: [
-          { id: 1, isChecked: false, value: '1', label: 'Poniedziałek' },
-          { id: 2, isChecked: false, value: '2', label: 'Wtorek' },
-          { id: 3, isChecked: false, value: '3', label: 'Środa' },
-          { id: 4, isChecked: false, value: '4', label: 'Czwartek' },
-          { id: 5, isChecked: false, value: '5', label: 'Piątek' },
-          { id: 6, isChecked: false, value: '6', label: 'Sobota' },
-          { id: 7, isChecked: false, value: '7', label: 'Niedziela' },
+          { id: 1, isChecked: false, value: '1', label: `${this.props.t('actions.mon')}` },
+          { id: 2, isChecked: false, value: '2', label: `${this.props.t('actions.tue')}` },
+          { id: 3, isChecked: false, value: '3', label: `${this.props.t('actions.wed')}` },
+          { id: 4, isChecked: false, value: '4', label: `${this.props.t('actions.thu')}` },
+          { id: 5, isChecked: false, value: '5', label: `${this.props.t('actions.fri')}` },
+          { id: 6, isChecked: false, value: '6', label: `${this.props.t('actions.sat')}` },
+          { id: 7, isChecked: false, value: '0', label: `${this.props.t('actions.sun')}` },
         ],
         startEvent: '',
         endEvent: '',
@@ -165,13 +165,13 @@ class AddAction extends Component {
         operator: '',
         controller: '',
         days: [
-          { id: 1, isChecked: false, value: '1', label: 'Poniedziałek' },
-          { id: 2, isChecked: false, value: '2', label: 'Wtorek' },
-          { id: 3, isChecked: false, value: '3', label: 'Środa' },
-          { id: 4, isChecked: false, value: '4', label: 'Czwartek' },
-          { id: 5, isChecked: false, value: '5', label: 'Piątek' },
-          { id: 6, isChecked: false, value: '6', label: 'Sobota' },
-          { id: 7, isChecked: false, value: '7', label: 'Niedziela' },
+          { id: 1, isChecked: false, value: '1', label: `${this.props.t('actions.mon')}` },
+          { id: 2, isChecked: false, value: '2', label: `${this.props.t('actions.tue')}` },
+          { id: 3, isChecked: false, value: '3', label: `${this.props.t('actions.wed')}` },
+          { id: 4, isChecked: false, value: '4', label: `${this.props.t('actions.thu')}` },
+          { id: 5, isChecked: false, value: '5', label: `${this.props.t('actions.fri')}` },
+          { id: 6, isChecked: false, value: '6', label: `${this.props.t('actions.sat')}` },
+          { id: 7, isChecked: false, value: '0', label: `${this.props.t('actions.sun')}` },
         ],
         startEvent: '',
         endEvent: '',
@@ -225,7 +225,7 @@ class AddAction extends Component {
                 false
               ) : (
               <div className="form-group">
-                <label>Sterownik wykonujący akcję</label>
+                <label>{t('actions.act-controller')}</label>
                 <select name="controller" className="form-control custom-input-style" onChange={this.handleSelect} value={controller}>
                   <option value="" defaultValue></option>
                   {this.props.controllers.map(controller => {
@@ -245,33 +245,33 @@ class AddAction extends Component {
                     if (controller === item.name && item.category === 'bulb') {
                       return (
                         <Fragment>
-                          <label>Akcja do wykonania</label>
+                          <label>{t('actions.act-to-work')}</label>
                           <select name="type" className="form-control custom-input-style" onChange={this.handleSelect} value={type}>
                             <option value="" defaultValue></option>
-                            <option value="turn">Włącz / wyłącz żarówkę</option>
-                            <option value="brightness">Ustaw jasność</option>
-                            <option value="colour">Ustaw kolor</option>
+                            <option value="turn">{t('actions.act-switch')}</option>
+                            <option value="brightness">{t('actions.set-brightness')}</option>
+                            <option value="colour">{t('actions.set-color')}</option>
                           </select>
                         </Fragment>
                       )
                     } else if (controller === item.name && item.category === 'clicker') {
                       return (
                         <Fragment>
-                          <label>Akcja do wykonania</label>
+                          <label>{t('actions.act-to-work')}</label>
                           <select name="status" className="form-control custom-input-style" onChange={this.handleSelect} value={status}>
                             <option value="" defaultValue></option>
-                            <option value="on">Kliknij przycisk</option>
+                            <option value="on">{t('actions.click')}</option>
                           </select>
                         </Fragment>
                       )
                     } else if (controller === item.name && item.category === 'roller_blind') {
                       return (
                         <Fragment>
-                          <label>Akcja do wykonania</label>
+                          <label>{t('actions.act-to-work')}</label>
                           <select name="status" className="form-control custom-input-style" onChange={this.handleSelect} value={status}>
                             <option value="" defaultValue></option>
-                            <option value="on">Zasłoń rolety</option>
-                            <option value="off">Odsłoń rolety</option>
+                            <option value="on">{t('actions.close-blinds')}</option>
+                            <option value="off">{t('actions.reveal-blinds')}</option>
                           </select>
                         </Fragment>
                       )
@@ -284,22 +284,22 @@ class AddAction extends Component {
               <div className="form-group">
                 <select name="status" className="form-control custom-input-style" onChange={this.handleSelect} value={status}>
                   <option value="" defaultValue></option>
-                  <option value="on">Włącz</option>
-                  <option value="off">Wyłącz</option>
+                  <option value="on">{t('actions.switch-on')}</option>
+                  <option value="off">{t('actions.switch-off')}</option>
                 </select>
               </div>
               )}
 
               {type === 'brightness' && (
                 <div className="form-group">
-                  <label>Jasność</label>
+                  <label>{t('actions.brightness')}</label>
                   <input className="custom-range" type="range" name="brightness" min="0" max="100" value={brightness} onChange={this.handleBrightnessChange} data-sizing="px" />
                 </div>
               )}
 
               {type === 'colour' && (
               <div className="form-group">
-                <label>Kolor</label>
+                <label>{t('actions.color')}</label>
                 <input className="form-control" id="color" type="color" name="color" value={color} onChange={this.handleColorChange} />
               </div>                
               )}
@@ -324,12 +324,12 @@ class AddAction extends Component {
                 false
               ) : (
               <div className="form-group">
-                <label>Dla jakiej wartości z czujnika wykonać akcję?</label>
+                <label>{t('actions.operator')}</label>
                 <select name="operator" className="form-control custom-input-style" onChange={this.handleSelect} value={operator}>
                   <option value="" defaultValue></option>
-                  <option value="<">Wartość mniejsza od</option>
-                  <option value=">">Wartość większa od</option>
-                  <option value="=">Wartość równa</option>
+                  <option value="<">{t('actions.less')}</option>
+                  <option value=">">{t('actions.greater')}</option>
+                  <option value="=">{t('actions.equal')}</option>
                 </select>
               </div>
               )}
@@ -344,7 +344,7 @@ class AddAction extends Component {
                   name="trigger"
                   onChange={this.handleTextChange}
                   value={trigger}
-                  placeholder="Podaj wartość..."
+                  placeholder={`${t('actions.set-value')}`}
                 />
               </div>
               )}
@@ -352,7 +352,7 @@ class AddAction extends Component {
               {!flag ? (
                 false
               ) : (
-              <fieldset className="form-group">Dni
+              <fieldset className="form-group">{t('actions.days')}
               {days.map(day => {
                 return (
                   <div key={day.id} className="form-check">
@@ -385,7 +385,7 @@ class AddAction extends Component {
                 false
               ) : (
               <div className="form-group">
-                <label>Godzina rozpoczęcia akcji</label>
+                <label>{t('actions.start-time')}</label>
                 <br />
                 <TimePicker
                   onChange={this.handleStartEventChange}
@@ -398,7 +398,7 @@ class AddAction extends Component {
                 false
               ) : (
               <div className="form-group">
-                <label>Godzina zakończenia akcji</label>
+                <label>{t('actions.end-time')}</label>
                 <br />
                 <TimePicker
                   onChange={this.handleEndEventChange}
@@ -407,8 +407,8 @@ class AddAction extends Component {
               </div>
               )}
 
-              <div className="form-group">
-                <button className="btn btn-primary">Dodaj</button>
+              <div className="ff-center">
+                <button className="button">{t('sensors.add')}</button>
               </div>
             </form>
           </div>

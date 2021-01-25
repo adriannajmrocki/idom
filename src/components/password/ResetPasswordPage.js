@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
+
 import { createMessage } from '../../actions/messages';
 import Alerts from '../Alerts/Alerts';
 
@@ -48,11 +50,14 @@ class ResetPasswordPage extends Component {
   }
 
   render() { 
+
+    const { t } = this.props;
+
     return (  
       <Fragment>
         <div className="col-md-6 m-auto">
           <div className="card card-body mt-5 custom-border-style">
-            <h2 className="text-center custom-mb">Reset hasła</h2>
+            <h2 className="text-center custom-mb">{t('pwd.reset-pwd')}</h2>
             <form onSubmit={this.handleSubmit} noValidate>
               <div className="form-group">
                 <label>Email</label>
@@ -65,10 +70,10 @@ class ResetPasswordPage extends Component {
                 />
               </div>
               <div className="ff-center">
-                <button type="submit" className="button">Potwierdź</button>
+                <button type="submit" className="button">{t('controllers.confirm')}</button>
             </div>
               <p style={{"marginTop": "20px"}}>
-                * Na podany adres email zostanie wysłany link umożliwiający zmianę hasła.
+                * {t('pwd.pwd-p')}
               </p>
             </form>
           </div>
@@ -78,4 +83,4 @@ class ResetPasswordPage extends Component {
   }
 }
  
-export default connect(null, { createMessage })(ResetPasswordPage);
+export default withTranslation('common')(connect(null, { createMessage })(ResetPasswordPage));

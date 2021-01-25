@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_CONTROLLERS, ADD_CONTROLLER, DELETE_CONTROLLER, UPDATE_CONTROLLER, GET_CONTROLLER_DATA, RUN_CONTROLLER, SET_BULB_IP } from './types';
+import { GET_CONTROLLERS, ADD_CONTROLLER, DELETE_CONTROLLER, UPDATE_CONTROLLER, GET_CONTROLLER_DATA, RUN_CONTROLLER, SET_BULB_IP, AUTH_ERROR } from './types';
 import { createMessage } from './messages';
 import { baseURL } from '../utils/url';
 
@@ -19,13 +19,18 @@ export const getControllers = () => (dispatch, getState) => {
 
   axios.get(`${baseURL}/drivers/list`, config)
   .then(res => {
-    console.log(res);
     dispatch({
       type: GET_CONTROLLERS,
       payload: res.data
     })
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 // ADD CONTROLLER
@@ -43,7 +48,6 @@ export const addController = controller => (dispatch, getState) => {
 
   axios.post(`${baseURL}/drivers/add`, controller, config)
   .then(res => {
-    console.log(res)
     if (res.status === 201) {
       dispatch(createMessage({ controllerAdded: 'Sterownik został dodany' }))
       dispatch({
@@ -55,6 +59,10 @@ export const addController = controller => (dispatch, getState) => {
   .catch(err => {
     if (err.response.status === 400) {
       dispatch(createMessage({ controllerExists: 'Sterownik o podanej nazwie już istnieje' }))
+    } else if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
     }
   })
 }
@@ -80,7 +88,13 @@ export const deleteController = id => (dispatch, getState) => {
       payload: id
     })
   })
-  .catch(err => console.log(err.response))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 // UPDATE CONTROLLER
@@ -109,6 +123,10 @@ export const updateController = (id, controller) => (dispatch, getState) => {
   .catch(err => {
     if (err.response.status === 400 || err.response.status === 404) {
       dispatch(createMessage({ controllerExists: 'Sterownik o podanej nazwie już istnieje' }))
+    } else if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
     }
   })
 }
@@ -135,7 +153,13 @@ export const getControllerData = (id) => (dispatch, getState) => {
       })
     }
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 // RUN CONTROLLER
@@ -153,7 +177,6 @@ export const runController = name => (dispatch, getState) => {
 
   axios.post(`${baseURL}/drivers/action`, name, config)
   .then(res => {
-    console.log(res);
     if (res.status === 200) {
       dispatch(createMessage({ controllerRunning: 'Sterownik został uruchomiony' }))
       dispatch({
@@ -163,11 +186,14 @@ export const runController = name => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log(err.response)
     if (err.response.status === 404) {
       dispatch(createMessage({ controllerRunError: 'Nie znaleziono sterownika' }))
     } else if (err.response.status === 503) {
       dispatch(createMessage({ controllerOfflineError: 'Sterownik poza siecią' }))
+    } else if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
     }
   })
 }
@@ -187,7 +213,6 @@ export const runBulb = (id, flag) => (dispatch, getState) => {
 
   axios.post(`${baseURL}/bulbs/switch/${id}`, flag, config)
   .then(res => {
-    console.log(res);
     if (res.status === 200) {
       dispatch(createMessage({ controllerRunning: 'Sterownik został uruchomiony' }))
       dispatch({
@@ -197,8 +222,13 @@ export const runBulb = (id, flag) => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log(err.response)
-    dispatch(createMessage({ controllerRunError: 'Nie udało się uruchomić sterownika' }))
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    } else {
+      dispatch(createMessage({ controllerRunError: 'Nie udało się uruchomić sterownika' }))
+    }
   })
 }
 
@@ -217,7 +247,6 @@ export const postBulbBrightness = (id, data) => (dispatch, getState) => {
 
   axios.post(`${baseURL}/bulbs/brightness/${id}`, data, config)
   .then(res => {
-    console.log(res);
     if (res.status === 200) {
       dispatch(createMessage({ bulbDataSent: 'Dane zostały zaktualizowane' }))
       dispatch({
@@ -227,8 +256,13 @@ export const postBulbBrightness = (id, data) => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log(err.response)
-    dispatch(createMessage({ bulbDataSentError: 'Operacja nie powiodła się' }))
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    } else {
+      dispatch(createMessage({ bulbDataSentError: 'Operacja nie powiodła się' }))
+    }
   })
 }
 
@@ -247,7 +281,6 @@ export const postBulbColor = (id, data) => (dispatch, getState) => {
 
   axios.post(`${baseURL}/bulbs/color/${id}`, data, config)
   .then(res => {
-    console.log(res);
     if (res.status === 200) {
       dispatch(createMessage({ bulbDataSent: 'Dane zostały zaktualizowane' }))
       dispatch({
@@ -257,8 +290,13 @@ export const postBulbColor = (id, data) => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log(err.response)
-    dispatch(createMessage({ bulbDataSentError: 'Operacja nie powiodła się' }))
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    } else {
+      dispatch(createMessage({ bulbDataSentError: 'Operacja nie powiodła się' }))
+    }
   })
 }
 
@@ -277,7 +315,6 @@ export const setBulbIp = (id, data) => (dispatch, getState) => {
 
   axios.put(`${baseURL}/bulbs/ip/${id}`, data, config)
   .then(res => {
-    console.log(res);
     if (res.status === 200) {
       dispatch(createMessage({ ipSet: 'Adres IP został poprawnie dodany' }))
       dispatch({
@@ -287,11 +324,14 @@ export const setBulbIp = (id, data) => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log(err.response)
     if (err.response.status === 400) {
       dispatch(createMessage({ ipError: 'Podany adres IP jest nieprawidłowy' }))
     } else if (err.response.status === 503) {
       dispatch(createMessage({ ipSet: 'Adres IP został poprawnie dodany' }))
+    } else if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
     }
   })
 }

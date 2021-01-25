@@ -1,10 +1,8 @@
 import axios from 'axios';
 
-import { createMessage, returnErrors } from './messages';
-import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL } from './types';
+import { createMessage } from './messages';
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL, AUTH_ERROR } from './types';
 import { baseURL } from '../utils/url';
-
-// http://127.0.0.1:8000
 
 // LOGIN USER
 export const login = (username, password) => dispatch => {
@@ -14,16 +12,11 @@ export const login = (username, password) => dispatch => {
     }
   }
 
-  // const host = 'https://tauriform-wren-7690.dataplicity.io/';
-  // axios.defaults.baseURL = host;
-  // axios.defaults.port = 8001;
-
   // Request Body
   const body = JSON.stringify({ username, password });
 
   axios.post(`${baseURL}/api-token-auth/`, body, config)
   .then(res => {
-    // console.log(res);
     if (res.status === 200) {
       dispatch({
         type: LOGIN_SUCCESS,
@@ -32,7 +25,6 @@ export const login = (username, password) => dispatch => {
     }
   })
   .catch(err => {
-    console.log(err.response.data)
     if (err.response.status === 400) {
       dispatch(createMessage({ loginError: 'Nieprawidłowy login lub hasło. Spróbuj ponownie' }));
       dispatch({
@@ -56,7 +48,6 @@ export const register = ({ username, email, telephone, password1, password2, lan
 
   axios.post(`${baseURL}/users/add`, body, config)
   .then(res => {
-    console.log(res.status)
     if (res.status === 201) {
       dispatch(createMessage({ registerSuccess: 'Rejestracja przebiegła pomyślnie. Możesz się zalogować' }))
       dispatch({
@@ -92,13 +83,15 @@ export const logout = () => (dispatch, getState) => {
 
   axios.post(`${baseURL}/api-logout/${token}`, null, config)
   .then(res => {
-    console.log(res);
     dispatch({
       type: LOGOUT_SUCCESS
     })
   })
   .catch(err => {
-    console.log(err);
-    dispatch(returnErrors('Błąd wylogowania', err.response.status));
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
   })
 }

@@ -39,7 +39,7 @@ class Cameras extends Component {
             <div key={camera.id} className="item">
               <ul className="item-ul">
                 <li className="item-li item-li-name">{camera.name}</li>
-                <li className="item-li item-li-icon"><a href={`${baseURL}/cameras/stream/${camera.id}`} target="_blank" rel="noreferrer"><i class="far fa-play-circle fa-lg"></i></a></li>
+                <li className="item-li item-li-icon"><a href={`${baseURL}/cameras/stream/${camera.id}`} target="_blank" rel="noreferrer"><i className="far fa-play-circle fa-lg"></i></a></li>
                 <li className="item-li item-li-icon"><Link to={`/edit-camera/${camera.id}`}><i className="far fa-edit fa-lg"></i></Link></li>
                 <li className="item-li item-li-icon"><i className="far fa-trash-alt fa-lg" onClick={this.props.deleteCamera.bind(this, camera.id)}></i></li>
               </ul>

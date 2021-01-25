@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_CAMERAS, ADD_CAMERA, DELETE_CAMERA, UPDATE_CAMERA, GET_CAMERA_DATA } from './types';
+import { GET_CAMERAS, ADD_CAMERA, DELETE_CAMERA, UPDATE_CAMERA, GET_CAMERA_DATA, AUTH_ERROR } from './types';
 import { baseURL } from '../utils/url';
 import { createMessage } from './messages';
 
@@ -19,13 +19,18 @@ export const getCameras = () => (dispatch, getState) => {
 
   axios.get(`${baseURL}/cameras/list`, config)
   .then(res => {
-    console.log(res);
     dispatch({
       type: GET_CAMERAS,
       payload: res.data
     })
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 // ADD CAMERA
@@ -43,7 +48,6 @@ export const addCamera = camera => (dispatch, getState) => {
 
   axios.post(`${baseURL}/cameras/add`, camera, config)
   .then(res => {
-    console.log(res)
     if (res.status === 201) {
       dispatch(createMessage({ cameraAdded: 'Kamera została dodana' }))
       dispatch({
@@ -55,6 +59,10 @@ export const addCamera = camera => (dispatch, getState) => {
   .catch(err => {
     if (err.response.status === 400) {
       dispatch(createMessage({ cameraExists: 'Kamera o podanej nazwie już istnieje' }))
+    } else if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
     }
   })
 }
@@ -80,7 +88,13 @@ export const deleteCamera = id => (dispatch, getState) => {
       payload: id
     })
   })
-  .catch(err => console.log(err.response))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 // UPDATE CAMERA
@@ -109,6 +123,10 @@ export const updateCamera = (id, camera) => (dispatch, getState) => {
   .catch(err => {
     if (err.response.status === 400 || err.response.status === 404) {
       dispatch(createMessage({ cameraExists: 'Kamera o podanej nazwie już istnieje' }))
+    } else if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
     }
   })
 }
@@ -135,5 +153,11 @@ export const getCameraData = (id) => (dispatch, getState) => {
       })
     }
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
