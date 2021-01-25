@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_ACTIONS, ADD_ACTION, DELETE_ACTION, GET_ACTION_DATA, UPDATE_ACTION } from './types';
+import { GET_ACTIONS, ADD_ACTION, DELETE_ACTION, GET_ACTION_DATA, UPDATE_ACTION, AUTH_ERROR } from './types';
 import { baseURL } from '../utils/url';
 import { createMessage } from './messages';
 
@@ -19,13 +19,18 @@ export const getActions = () => (dispatch, getState) => {
 
   axios.get(`${baseURL}/actions/list`, config)
   .then(res => {
-    console.log('liosta', res);
     dispatch({
       type: GET_ACTIONS,
       payload: res.data
     })
   })
-  .catch(err => console.log(err.response))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 // ADD ACTION
@@ -43,7 +48,6 @@ export const addAction = data => (dispatch, getState) => {
 
   axios.post(`${baseURL}/actions/add`, data, config)
   .then(res => {
-    console.log(res);
     if (res.status === 201) {
       dispatch(createMessage({ actionAdded: 'Akcja została dodana' }))
       dispatch({
@@ -53,11 +57,14 @@ export const addAction = data => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log(err.response);
     if (err.response.status === 400) {
       dispatch(createMessage({ actionExists: 'Akcja o podanej nazwie już istnieje' }))
     } else if (err.response.status === 404) {
       dispatch(createMessage({ emptyFieldsError: 'Nie wszystkie wymagane pola zostały wypełnione' }))
+    } else if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
     }
   })
 }
@@ -83,7 +90,13 @@ export const deleteAction = id => (dispatch, getState) => {
       payload: id
     })
   })
-  .catch(err => console.log(err.response))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 // GET ACTION DATA
@@ -103,7 +116,6 @@ export const getActionData = (id) => (dispatch, getState) => {
 
   axios.get(`${baseURL}/actions/detail/${id}`, config)
   .then(res => {
-    console.log('data', res)
     if (res.status === 200) {
       dispatch({
         type: GET_ACTION_DATA,
@@ -111,7 +123,13 @@ export const getActionData = (id) => (dispatch, getState) => {
       })
     }
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 // UPDATE ACTION
@@ -132,7 +150,6 @@ export const updateAction = (id, data) => (dispatch, getState) => {
 
   axios.put(`${baseURL}/actions/update/${id}`, data, config)
   .then(res => {
-    console.log(res)
     if (res.status === 200) {
       dispatch(createMessage({ actionUpdated: 'Akcja została zmodyfikowana' }))
       dispatch({
@@ -142,11 +159,14 @@ export const updateAction = (id, data) => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log(err.response)
     if (err.response.status === 400) {
       dispatch(createMessage({ invalidData: 'Wprowadzone dane są nieprawidłowe' }))
     } else if (err.response.status === 404) {
       dispatch(createMessage({ actionExistsError: 'Akcja nie istnieje' }))
+    } else if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
     }
   })
 }

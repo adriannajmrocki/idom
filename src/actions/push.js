@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SEND_TOKEN, GET_FIREBASE_TOKEN, GET_FIREBASE_TOKEN_STATUS } from './types';
+import { SEND_TOKEN, GET_FIREBASE_TOKEN, GET_FIREBASE_TOKEN_STATUS, AUTH_ERROR } from './types';
 import { baseURL } from '../utils/url';
 
 // SEND FIREBASE TOKEN
@@ -18,7 +18,6 @@ export const sendFirebaseToken = data => (dispatch, getState) => {
 
   axios.post(`${baseURL}/devices/`, data, config)
   .then(res => {
-    console.log('body', res.body)
     if (res.status === 201) {
       dispatch({
         type: SEND_TOKEN,
@@ -27,7 +26,11 @@ export const sendFirebaseToken = data => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log('nie wyslano', err);
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
   })
 }
 
@@ -45,7 +48,6 @@ export const getFirebaseToken = () => (dispatch, getState) => {
 
   axios.get(`${baseURL}/devices/`, config)
   .then(res => {
-    console.log('get token', res);
     dispatch({
       type: GET_FIREBASE_TOKEN,
       payload: res.data
@@ -55,5 +57,11 @@ export const getFirebaseToken = () => (dispatch, getState) => {
       payload: res.status
     })
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }

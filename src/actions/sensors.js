@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA, GET_CHART_DATA, POST_CSV_STATUS, POST_CSV_DATA } from './types';
+import { GET_SENSORS, DELETE_SENSOR, ADD_SENSOR, UPDATE_SENSOR, GET_SENSOR_DATA, GET_CHART_DATA, POST_CSV_STATUS, POST_CSV_DATA, AUTH_ERROR } from './types';
 import { createMessage } from './messages';
 import { baseURL } from '../utils/url';
 
@@ -26,7 +26,13 @@ export const getSensors = () => (dispatch, getState) => {
       payload: res.data
     })
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 
@@ -54,7 +60,13 @@ export const getSensorData = (id) => (dispatch, getState) => {
       })
     }
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 
@@ -80,14 +92,19 @@ export const deleteSensor = id => (dispatch, getState) => {
   // Delete request to API
   axios.delete(`${baseURL}/sensors/delete/${id}`, config)
   .then(res => {
-    // console.log(res)
     dispatch(createMessage({ sensorDeleted: 'Czujnik został usunięty' }))
     dispatch({
       type: DELETE_SENSOR,
       payload: id
     })
   })
-  .catch(err => console.log(err.response))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 
@@ -124,6 +141,10 @@ export const addSensor = sensor => (dispatch, getState) => {
   .catch(err => {
     if (err.response.status === 400) {
       dispatch(createMessage({ sensorExists: 'Czujnik o podanej nazwie już istnieje' }))
+    } else if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
     }
   })
 }
@@ -158,6 +179,10 @@ export const updateSensor = (id, sensor) => (dispatch, getState) => {
   .catch(err => {
     if (err.response.status === 400 || err.response.status === 404) {
       dispatch(createMessage({ sensorExists: 'Taki czujnik już istnieje' }))
+    } else if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
     }
   })
 }
@@ -182,7 +207,13 @@ export const getChartData = id => (dispatch, getState) => {
       payload: res.data
     })
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
+  })
 }
 
 // POST CSV
@@ -207,7 +238,6 @@ export const postCsv = sensorData => (dispatch, getState) => {
   // Post request to API
   axios.post(`${baseURL}/sensors_data/csv`, sensorData, config)
   .then(res => {
-    console.log(res);
     if (res.status === 200) {
       dispatch(createMessage({ csvAccepted: 'Dane zostały zapisane do pliku CSV. Kliknij "Pobierz", by zapisać go na swoim komputerze' }))
       dispatch({
@@ -221,6 +251,10 @@ export const postCsv = sensorData => (dispatch, getState) => {
     }
   })
   .catch(err => {
-    console.log(err.response);
+    if (err.response.status === 401) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
   })
 }
