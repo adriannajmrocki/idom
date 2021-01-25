@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import hexRgb from 'hex-rgb'
 import TimePicker from 'react-time-picker';
+import { withTranslation } from 'react-i18next';
 
 import { getActionData, updateAction } from '../../actions/actions';
 import { getSensors } from '../../actions/sensors';
@@ -20,13 +21,13 @@ class EditAction extends Component {
     operator: '',
     controller: '',
     days: [
-      { id: 1, isChecked: false, value: '1', label: 'Poniedziałek' },
-      { id: 2, isChecked: false, value: '2', label: 'Wtorek' },
-      { id: 3, isChecked: false, value: '3', label: 'Środa' },
-      { id: 4, isChecked: false, value: '4', label: 'Czwartek' },
-      { id: 5, isChecked: false, value: '5', label: 'Piątek' },
-      { id: 6, isChecked: false, value: '6', label: 'Sobota' },
-      { id: 7, isChecked: false, value: '0', label: 'Niedziela' },
+      { id: 1, isChecked: false, value: '1', label: `${this.props.t('actions.mon')}` },
+      { id: 2, isChecked: false, value: '2', label: `${this.props.t('actions.tue')}` },
+      { id: 3, isChecked: false, value: '3', label: `${this.props.t('actions.wed')}` },
+      { id: 4, isChecked: false, value: '4', label: `${this.props.t('actions.thu')}` },
+      { id: 5, isChecked: false, value: '5', label: `${this.props.t('actions.fri')}` },
+      { id: 6, isChecked: false, value: '6', label: `${this.props.t('actions.sat')}` },
+      { id: 7, isChecked: false, value: '0', label: `${this.props.t('actions.sun')}` },
     ],
     startEvent: '',
     endEvent: '',
@@ -114,13 +115,13 @@ class EditAction extends Component {
     let newArray = [];
 
     daysPropArray.map(day => {
-      if (day === '1') newArray.push(' Poniedziałek');
-      if (day === '2') newArray.push(' Wtorek');
-      if (day === '3') newArray.push(' Środa');
-      if (day === '4') newArray.push(' Czwartek');
-      if (day === '5') newArray.push(' Piątek');
-      if (day === '6') newArray.push(' Sobota');
-      if (day === '0') newArray.push(' Niedziela');
+      if (day === '1') newArray.push(` ${this.props.t('actions.mon')}`);
+      if (day === '2') newArray.push(` ${this.props.t('actions.tue')}`);
+      if (day === '3') newArray.push(` ${this.props.t('actions.wed')}`);
+      if (day === '4') newArray.push(` ${this.props.t('actions.thu')}`);
+      if (day === '5') newArray.push(` ${this.props.t('actions.fri')}`);
+      if (day === '6') newArray.push(` ${this.props.t('actions.sat')}`);
+      if (day === '0') newArray.push(` ${this.props.t('actions.sun')}`);
 
       return newArray
     })
@@ -159,14 +160,15 @@ class EditAction extends Component {
   render() { 
 
     const { name, flag, sensor, trigger, operator, controller, days, type, status, brightness, color, startEvent, endEvent } = this.state;
+    const { t } = this.props;
 
     return (  
       <div className="col-md-6 m-auto custom-position">
         <div className="card card-body mt-5 custom-border-style custom-position">
-          <h2 className="text-center custom-mb">Edytuj akcję</h2>
+          <h2 className="text-center custom-mb">{t('actions.act-edit')}</h2>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label>Nazwa</label>
+              <label>{t('sensors.name')}</label>
                 <input
                 type="text"
                 className="form-control custom-input-style"
@@ -178,14 +180,14 @@ class EditAction extends Component {
             </div>
 
             <div className="form-group">
-              <label>Działanie akcji</label>
+              <label>{t('actions.action-func')}</label>
               <select name="flag" className="form-control" onChange={this.handleSelect} value={flag}>
-                <option value="" disabled defaultValue>{(this.props.flag === 1 && 'Akcja o wybranej godzinie') || (this.props.flag === 3 && 'Akcja po wykryciu przez czujnik danej wartości') || (this.props.flag === 4 && 'Akcja po wykryciu przez czujnik danej wartości pomiędzy wybranymi godzinami')}</option>
+                <option value="" disabled defaultValue>{(this.props.flag === 1 && `${t('actions.act-time')}`) || (this.props.flag === 3 && `${t('actions.act-sensor')}`) || (this.props.flag === 4 && `${t('actions.act-sensor-between')}`)}</option>
               </select>
             </div>
 
             <div className="form-group">
-              <label>Sterownik wykonujący akcję</label>
+              <label>{t('actions.act-controller')}</label>
               <select name="controller" className="form-control" onChange={this.handleSelect} value={controller}>
                 <option value="" disabled defaultValue>{this.props.controller}</option>
               </select>
@@ -196,29 +198,29 @@ class EditAction extends Component {
                 if (this.props.controller === item.name && item.category === 'bulb') {
                   return (
                     <Fragment>
-                      <label>Akcja do wykonania</label>
+                      <label>{t('actions.act-to-work')}</label>
                       <select name="type" className="form-control" onChange={this.handleSelect} value={type}>
-                        <option value="" disabled defaultValue>{(this.props.type === 'turn' && 'Włącz / wyłącz żarówkę') || (this.props.type === 'brightness' && 'Ustaw jasność') || (this.props.type === 'colour' && 'Ustaw kolor')}</option>
+                        <option value="" disabled defaultValue>{(this.props.type === 'turn' && `${t('actions.act-switch')}`) || (this.props.type === 'brightness' && `${t('actions.set-brightness')}`) || (this.props.type === 'colour' && `${t('actions.set-color')}`)}</option>
                       </select>
                     </Fragment>
                   )                  
                 } else if (this.props.controller === item.name && item.category === 'clicker') {
                   return (
                     <Fragment>
-                      <label>Akcja do wykonania</label>
+                      <label>{t('actions.act-to-work')}</label>
                       <select name="status" className="form-control" onChange={this.handleSelect} value={status}>
-                        <option value="" disabled defaultValue>{this.props.status === 'on' && 'Kliknij przycisk'}</option>
+                        <option value="" disabled defaultValue>{this.props.status === 'on' && `${t('actions.click')}`}</option>
                       </select>
                     </Fragment>
                   )
                 } else if (this.props.controller === item.name && item.category === 'roller_blind') {
                   return (
                     <Fragment>
-                      <label>Akcja do wykonania</label>
+                      <label>{t('actions.act-to-work')}</label>
                       <select name="status" className="form-control custom-input-style" onChange={this.handleSelect} value={status}>
-                        <option value="" disabled defaultValue>{(this.props.status === 'on' && 'Zasłoń rolety') || (this.props.status === 'off' && 'Odsłoń rolety')}</option>
-                        <option value="on">Zasłoń rolety</option>
-                        <option value="off">Odsłoń rolety</option>
+                        <option value="" disabled defaultValue>{(this.props.status === 'on' && `${t('actions.close-blinds')}`) || (this.props.status === 'off' && `${t('actions.reveal-blinds')}`)}</option>
+                        <option value="on">{t('actions.close-blinds')}</option>
+                        <option value="off">{t('actions.reveal-blinds')}</option>
                       </select>
                     </Fragment>
                   )
@@ -229,16 +231,16 @@ class EditAction extends Component {
             {this.props.type === 'turn' && (
               <div className="form-group">
                 <select name="status" className="form-control custom-input-style" onChange={this.handleSelect} value={status}>
-                  <option value="" disabled defaultValue>{(this.props.status === 'on' && 'Włącz') || (this.props.status === 'off' && 'Wyłącz')}</option>
-                  <option value="on">Włącz</option>
-                  <option value="off">Wyłącz</option>
+                  <option value="" disabled defaultValue>{(this.props.status === 'on' && `${t('actions.switch-on')}`) || (this.props.status === 'off' && `${t('actions.switch-off')}`)}</option>
+                  <option value="on">{t('actions.switch-on')}</option>
+                  <option value="off">{t('actions.switch-off')}</option>
                 </select>
               </div>
             )}
 
             {this.props.type === 'brightness' && (
               <div className="form-group">
-                <label>Jasność (obecnie: {`${this.props.brightness}%`})</label>
+                <label>{t('actions.brightness')} ({t('actions.currently')}: {`${this.props.brightness}%`})</label>
                 <input 
                   className="custom-range" 
                   type="range" 
@@ -253,14 +255,14 @@ class EditAction extends Component {
 
             {this.props.type === 'colour' && (
               <div className="form-group">
-                <label>Kolor (obecnie: {`${this.props.red}, ${this.props.green}, ${this.props.blue}`})</label>
+                <label>{t('actions.color')} ({t('actions.currently')}: {`${this.props.red}, ${this.props.green}, ${this.props.blue}`})</label>
                 <input className="form-control" id="color" type="color" name="color" value={color} onChange={this.handleColorChange} />
               </div>  
             )}
 
             {(this.props.flag === 3 || this.props.flag === 4) && (
             <div className="form-group">
-              <label>Czujnik</label>
+              <label>{t('actions.sensor')}</label>
               <select name="sensor" className="form-control custom-input-style" onChange={this.handleSelect} value={sensor}>
                 <option value='' disabled defaultValue>{this.props.sensor}</option>
                 {this.props.sensors.map(sensor => {
@@ -274,12 +276,12 @@ class EditAction extends Component {
 
             {(this.props.flag === 3 || this.props.flag === 4) && (
               <div className="form-group">
-                <label>Dla jakiej wartości z czujnika wykonać akcję?</label>
+                <label>{t('actions.operator')}</label>
                 <select name="operator" className="form-control custom-input-style" onChange={this.handleSelect} value={operator}>
-                  <option value='' disabled defaultValue>{(this.props.operator === '<' && 'Wartość mniejsza od') || (this.props.operator === '>' && 'Wartość większa od') || (this.props.operator === '=' && 'Wartość równa')}</option>
-                  <option value="<">Wartość mniejsza od</option>
-                  <option value=">">Wartość większa od</option>
-                  <option value="=">Wartość równa</option>
+                  <option value='' disabled defaultValue>{(this.props.operator === '<' && `${t('actions.less')}`) || (this.props.operator === '>' && `${t('actions.greater')}`) || (this.props.operator === '=' && `${t('actions.equal')}`)}</option>
+                  <option value="<">{t('actions.less')}</option>
+                  <option value=">">{t('actions.greater')}</option>
+                  <option value="=">{t('actions.equal')}</option>
                 </select>
               </div>
             )}
@@ -297,7 +299,7 @@ class EditAction extends Component {
               </div>
             )}
 
-            <fieldset className="form-group">Dni {`(obecnie:${this.showDays()})`}
+            <fieldset className="form-group">{t('actions.days')} {`(${t('actions.currently')}:${this.showDays()})`}
               {days.map(day => {
                 return (
                   <div key={day.id} className="form-check">
@@ -327,7 +329,7 @@ class EditAction extends Component {
 
             {(this.props.flag === 1 || this.props.flag === 4) && (
               <div className="form-group">
-              <label>Godzina rozpoczęcia akcji</label>
+              <label>{t('actions.start-time')}</label>
               <br />
               <TimePicker
                 onChange={this.handleStartEventChange}
@@ -340,7 +342,7 @@ class EditAction extends Component {
 
             {this.props.flag === 4 && (
               <div className="form-group">
-                <label>Godzina zakończenia akcji</label>
+                <label>{t('actions.end-time')}</label>
                 <br />
                 <TimePicker
                   onChange={this.handleEndEventChange}
@@ -352,7 +354,7 @@ class EditAction extends Component {
             )}
 
             <div className="ff-center">
-              <button className="button">Edytuj</button>
+              <button className="button">{t('sensors.edit')}</button>
             </div>
           </form>
         </div>
@@ -383,4 +385,4 @@ const mapStateToProps = state => ({
   blue: state.actions.blue,
 })
  
-export default connect(mapStateToProps, { getActionData, getSensors, getControllers, updateAction })(EditAction);
+export default withTranslation('common')(connect(mapStateToProps, { getActionData, getSensors, getControllers, updateAction })(EditAction));

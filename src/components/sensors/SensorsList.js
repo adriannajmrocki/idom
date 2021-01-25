@@ -184,7 +184,7 @@ class SensorsList extends Component {
 
         <div className="category-field add-margin" style={{"marginTop": "40px"}}>
           <i className="fas fa-smoking fa-2x"></i>
-          <h5 className="category-title">Gaz</h5>
+          <h5 className="category-title">{t('sensors.gas')}</h5>
         </div>
         {this.props.sensors.map((sensor) => {
           if (sensor.category === 'gas') {
@@ -220,7 +220,7 @@ class SensorsList extends Component {
 
         <div className="category-field add-margin" style={{"marginTop": "40px"}}>
           <i className="fas fa-running fa-2x"></i>
-          <h5 className="category-title">Ruch</h5>
+          <h5 className="category-title">{t('sensors.motion')}</h5>
         </div>
         {this.props.sensors.map((sensor, id) => {
           if (sensor.category === 'motion_sensor') {

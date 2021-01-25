@@ -43,6 +43,8 @@
     "pressure": "Ciśnienie",
     "alc": "Alkomat",
     "smoke": "Dym",
+    "gas": "Gaz",
+    "motion": "Ruch",
     "rain": "Deszcz",
     "edit-sensor": "Edytuj czujnik",
     "name": "Nazwa",
@@ -52,7 +54,7 @@
     "min": "Minuty",
     "h": "Godziny",
     "days": "Dni",
-    "edit": "Edit",
+    "edit": "Edytuj",
     "add-sensor": "Dodaj czujnik",
     "select": "Wybierz...",
     "value": "Wartość",
@@ -87,7 +89,10 @@
     "current-pos": "Aktualne położenie rolet",
     "up": "Odsłonięte",
     "down": "Zasłonięte",
-    "ip": "Adres IP"
+    "ip": "Adres IP",
+    "color-settings": "Ustawienia koloru",
+    "confirm": "Potwierdź",
+    "bulb-ip": "Adres IP żarówki"
   },
 
   "actions": {
@@ -98,8 +103,36 @@
     "act-between-time": "Akcja pomiędzy wybranymi godzinami",
     "act-sensor": "Akcja po wykryciu przez czujnik danej wartości",
     "act-sensor-between": "Akcja po wykryciu przez czujnik danej wartości pomiędzy wybranymi godzinami",
-    "act-to-work": "Akcja, jaka ma się wykonać",
-    "sensor": "Czujnik"
+    "act-to-work": "Akcja do wykonania",
+    "sensor": "Czujnik",
+    "mon": "Poniedziałek",
+    "tue": "Wtorek",
+    "wed": "Środa",
+    "thu": "Czwartek",
+    "fri": "Piątek",
+    "sat": "Sobota",
+    "sun": "Niedziela",
+    "act-controller": "Sterownik wykonujący akcję",
+    "act-switch": "Włącz / wyłącz żarówkę",
+    "set-brightness": "Ustaw jasność",
+    "set-color": "Ustaw kolor",
+    "click": "Kliknij przycisk",
+    "close-blinds": "Zasłoń rolety",
+    "reveal-blinds": "Odsłoń rolety",
+    "switch-on": "Włącz",
+    "switch-off": "Wyłącz",
+    "brightness": "Jasność",
+    "color": "Kolor",
+    "operator": "Dla jakiej wartości z czujnika wykonać akcję?",
+    "less": "Wartość mniejsza od",
+    "greater": "Wartość większa od",
+    "equal": "Wartość równa",
+    "set-value": "Podaj wartość...",
+    "days": "Dni",
+    "start-time": "Godzina rozpoczęcia akcji",
+    "end-time": "Godzina zakończenia akcji",
+    "act-edit": "Edytuj akcję",
+    "currently": "obecnie"
   },
 
   "cameras": {
@@ -118,6 +151,12 @@
     "yes": "TAK",
     "no": "NIE",
     "sms-not": "Powiadomienia SMS"
+  },
+
+  "pwd": {
+    "new-pwd": "Nowe hasło",
+    "reset-pwd": "Reset hasła",
+    "pwd-p": "Na podany adres email zostanie wysłany link umożliwiający zmianę hasła."
   },
 
   "messages": {
@@ -176,6 +215,12 @@
     "actionAdded": "Akcja została dodana",
     "actionDeleted": "Akcja została usunięta",
     "actionExists": "Akcja o podanej nazwie już istnieje",
-    "ipError": "Podany adres IP jest nieprawidłowy"
+    "ipError": "Podany adres IP jest nieprawidłowy",
+    "ipSet": "Adres IP został poprawnie dodany",
+    "controllerOfflineError": "Sterownik poza siecią",
+    "actionUpdated": "Akcja została zmodyfikowana",
+    "emptyFieldsError": "Nie wszystkie wymagane pola zostały wypełnione",
+    "invalidData": "Wprowadzone dane są nieprawidłowe",
+    "actionExistsError": "Akcja nie istnieje"
   }
 }

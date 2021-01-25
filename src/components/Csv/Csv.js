@@ -20,7 +20,9 @@ function Csv(props) {
     { id: 5, isChecked: false, value: "atmo_pressure", label: `${t('sensors.pressure')}` },
     { id: 6, isChecked: false, value: "breathalyser", label: `${t('sensors.alc')}` },
     { id: 7, isChecked: false, value: "smoke", label: `${t('sensors.smoke')}` },
-    { id: 8, isChecked: false, value: "rain_sensor", label: `${t('sensors.rain')}` },
+    { id: 8, isChecked: false, value: "gas", label: `${t('sensors.gas')}` },
+    { id: 9, isChecked: false, value: "rain_sensor", label: `${t('sensors.rain')}` },
+    { id: 10, isChecked: false, value: "motion_sensor", label: `${t('sensors.motion')}` },
   ]
 
   const [filter, setFilter] = useState('');

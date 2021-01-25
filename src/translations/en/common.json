@@ -43,6 +43,8 @@
     "pressure": "Pressure",
     "alc": "Breathalyser",
     "smoke": "Smoke",
+    "gas": "Gas",
+    "motion": "Motion",
     "rain": "Rain",
     "edit-sensor": "Edit sensor",
     "name": "Name",
@@ -87,7 +89,10 @@
     "current-pos": "Current position of blinds",
     "up": "Up",
     "down": "Down",
-    "ip": "IP address"
+    "ip": "IP address",
+    "color-settings": "Color settings",
+    "confirm": "Confirm",
+    "bulb-ip": "Bulb IP address"
   },
 
   "actions": {
@@ -99,7 +104,35 @@
     "act-sensor": "Action when sensor detects a given value",
     "act-sensor-between": "Action when sensor detects a given value between selected hours",
     "act-to-work": "Action to be worked",
-    "sensor": "Sensor"
+    "sensor": "Sensor",
+    "mon": "Monday",
+    "tue": "Tuesday",
+    "wed": "Wednesday",
+    "thu": "Thursday",
+    "fri": "Friday",
+    "sat": "Saturday",
+    "sun": "Sunday",
+    "act-controller": "Controller executing an action",
+    "act-switch": "Switch on / off a bulb",
+    "set-brightness": "Set brightness",
+    "set-color": "Set color",
+    "click": "Click the button",
+    "close-blinds": "Close the blinds",
+    "reveal-blinds": "Reveal the blinds",
+    "switch-on": "Switch on",
+    "switch-off": "Switch off",
+    "brightness": "Brightness",
+    "color": "Color",
+    "operator": "Sensor's value to execute an action",
+    "less": "Value less than",
+    "greater": "Value greater than",
+    "equal": "Value equal to",
+    "set-value": "Set value...",
+    "days": "Days",
+    "start-time": "Action's start time",
+    "end-time": "Action's end time",
+    "act-edit": "Edit action",
+    "currently": "currently"
   },
 
   "cameras": {
@@ -118,6 +151,12 @@
     "yes": "YES",
     "no": "NO",
     "sms-not": "SMS notifications"
+  },
+
+  "pwd": {
+    "new-pwd": "New password",
+    "reset-pwd": "Reset password",
+    "pwd-p": "A link to change the password will be sent to the e-mail address provided."
   },
 
   "messages": {
@@ -176,6 +215,12 @@
     "actionAdded": "Action has been added",
     "actionDeleted": "Action has been deleted",
     "actionExists": "Action with given name already exists",
-    "ipError": "Given IP address is incorrect"
+    "ipError": "Given IP address is incorrect",
+    "ipSet": "IP address has been added correctly",
+    "controllerOfflineError": "Controller offline",
+    "actionUpdated": "Action has been updated",
+    "emptyFieldsError": "There are empty fields",
+    "invalidData": "Given data are incorrect",
+    "actionExistsError": "Action does not exist"
   }
 }
