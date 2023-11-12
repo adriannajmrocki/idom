@@ -4,7 +4,7 @@
   "proxy": "http://localhost:8000",
   "private": true,
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^1.6.0",
     "chart.js": "^2.9.4",
     "cors": "^2.8.5",
     "firebase": "^8.0.0",
